@@ -1,30 +1,18 @@
----
-BasedOnStyle: Google
-AlignAfterOpenBracket: Align
-AlignConsecutiveAssignments: 'true'
-AlignConsecutiveDeclarations: 'true'
-AlignOperands: 'true'
-AllowAllParametersOfDeclarationOnNextLine: 'false'
-AllowShortCaseLabelsOnASingleLine: 'false'
+BasedOnStyle: LLVM
+IndentWidth: 4
+Language: Cpp
+AlignConsecutiveMacros:
+  PadOperators: True
+ReferenceAlignment: Left
+SpacesInParens: Custom
+ColumnLimit: 100
+IndentCaseLabels: true
+PointerAlignment: Left
+AllowShortBlocksOnASingleLine: Empty
 AllowShortFunctionsOnASingleLine: Empty
-AllowShortLoopsOnASingleLine: 'false'
-AlwaysBreakAfterDefinitionReturnType: None
-AlwaysBreakAfterReturnType: None
-AlwaysBreakBeforeMultilineStrings: 'false'
-BinPackArguments: 'true'
-BinPackParameters: 'true'
-ColumnLimit: '1000'
-IndentCaseLabels: 'true'
-IndentPPDirectives: AfterHash
-IndentWidth: '4'
-MaxEmptyLinesToKeep: '1'
-PointerAlignment: Right
-SortIncludes: 'false'
-SpaceBeforeAssignmentOperators: 'true'
-SpaceBeforeParens: ControlStatements
-SpaceInEmptyParentheses: 'false'
-SpacesBeforeTrailingComments: 1
-TabWidth: '4'
-UseTab: Never
-
-...
+AllowShortIfStatementsOnASingleLine: Never
+AlignAfterOpenBracket: BlockIndent
+AlignArrayOfStructures: None
+AlignTrailingComments:
+  Kind: Leave
+AllowShortEnumsOnASingleLine: false
