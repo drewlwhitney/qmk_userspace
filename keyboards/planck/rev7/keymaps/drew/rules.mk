@@ -5,7 +5,6 @@ SRC += utils/deletion.c
 SRC += custom_keys/custom_keys.c
 SRC += custom_keys/mapping.c
 
-VIA_ENABLE = yes
 LTO_ENABLE = yes
 
 CAPS_WORD_ENABLE = yes

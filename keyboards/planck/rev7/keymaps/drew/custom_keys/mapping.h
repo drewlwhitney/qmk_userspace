@@ -1,5 +1,6 @@
 #pragma once
 #include QMK_KEYBOARD_H
+#include "../common.h"
 #include "../layers.h"
 #include "../utils/deletion.h"
 #include "alias.h"
@@ -14,7 +15,6 @@
 enum custom_keycodes {
     // _BASE layer
     NK_Q,
-    NK_R,
     // _NUM layer
     NK_COLN,
     NK_MINS_NUM,

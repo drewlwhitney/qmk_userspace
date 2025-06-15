@@ -1,9 +1,11 @@
 #include QMK_KEYBOARD_H
 #include "caps_word/caps_word.h"
+#include "common.h"
 #include "custom_keys/custom_keys.h"
 #include "custom_keys/mapping.h"
 #include "layers.h"
-#include "tap_dance.c"
+#include "tap_dance/tap_dance.c"
+#include "tap_dance/tap_dance.h"
 #include "taphold/taphold_options.h"
 
 bool NAV_enabled = false;
@@ -12,14 +14,14 @@ bool NAV_enabled = false;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // base
     [_BASE] = LAYOUT_ortho_4x12(
-        NK(NK_ESC),        NK(NK_Q),             KC_W,           KC_E,            NK(NK_R),        KC_T,               KC_Y,               KC_U,           KC_I,         KC_O,          KC_P,          NK(NK_BSPC),
+        NK(NK_ESC),        NK(NK_Q),             KC_W,           KC_E,            KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,         KC_O,          KC_P,          NK(NK_BSPC),
         CTL_T(KC_TAB),     KC_A,                 KC_S,           KC_D,            KC_F,            KC_G,               KC_H,               KC_J,           KC_K,         KC_L,          KC_SCLN,       KC_QUOT,
         SFT_SFT,           KC_Z,                 KC_X,           KC_C,            KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       ALT_DEL,
         KC_RCTL,           LT(_FUNC, KC_MPLY),   ALT_T(KC_LALT), TD(TD_CAD_LOCK), GUI_LAUNCH,      NUM_SPC,            NAV_ENT,            ALT_COMP,       KC_LEFT,      NK(NK_DOWN),   NK(NK_UP),     KC_RGHT
     ),
     // gamer
     [_GAME] = LAYOUT_ortho_4x12(
-        KC_TRNS,           KC_Q,                 KC_TRNS,        KC_TRNS,         KC_R,            KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
+        KC_TRNS,           KC_Q,                 KC_TRNS,        KC_TRNS,         KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         KC_TAB,            KC_TRNS,              KC_TRNS,        KC_TRNS,         KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         KC_LSFT,           KC_TRNS,              KC_TRNS,        KC_TRNS,         KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         KC_TRNS,           KC_TRNS,              KC_TRNS,        KC_PGDN,         KC_PGUP,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS
@@ -42,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_FUNC] = LAYOUT_ortho_4x12(
         KC_F1,             KC_F2,                KC_F3,          KC_F4,           KC_F5,           KC_F6,              KC_F7,              KC_F8,          KC_F9,        KC_F10,        KC_F11,        KC_F12,
         KC_F7,             KC_F8,                KC_F9,          KC_F10,          KC_F11,          KC_F12,             KC_NO,              KC_NO,          KC_NO,        KC_NO,         KC_NO,         KC_NO,
-        KC_TRNS,           KC_MUTE,              KC_MPRV,        KC_VOLD,         KC_VOLU,         KC_MNXT,            KC_NO,              KC_NO,          KC_NO,        QK_AUDIO_OFF,  TG(_GAME),     QK_BOOT,
+        KC_TRNS,           KC_MUTE,              KC_MPRV,        KC_VOLD,         KC_VOLU,         KC_MNXT,            KC_NO,              KC_NO,          KC_NO,        KC_NO,         TG(_GAME),     QK_BOOT,
         KC_TRNS,           KC_NO,                KC_BRID,        KC_BRIU,         KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       QK_RBT
     ),
 };

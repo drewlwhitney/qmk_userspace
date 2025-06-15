@@ -41,9 +41,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
         case GUI_LAUNCH:
             return 500;
             break;
-        case TD(TD_PASSWORD):
-            return 800;
-            break;
         default:
             return TAPPING_TERM;
             break;

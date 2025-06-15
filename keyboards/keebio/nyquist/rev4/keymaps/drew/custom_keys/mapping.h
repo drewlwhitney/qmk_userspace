@@ -15,7 +15,6 @@
 enum custom_keycodes {
     // _BASE layer
     NK_Q,
-    NK_R,
     // _NUM layer
     NK_COLN,
     NK_MINS_NUM,

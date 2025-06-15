@@ -5,7 +5,7 @@
 #include "../custom_keys/alias.h"
 #include "../custom_keys/mapping.h"
 #include "../layers.h"
-#include "../tap_dance.h"
+#include "../tap_dance/tap_dance.h"
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record);
 bool get_permissive_hold(uint16_t keycode, keyrecord_t* record);

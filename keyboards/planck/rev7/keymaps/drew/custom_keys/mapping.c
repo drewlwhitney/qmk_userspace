@@ -20,11 +20,13 @@ void turn_on_caps_word(custom_key_t* custom_key) {
 custom_key_t custom_keys[] = {
     // _BASE layer
     [NK_Q] = CUSTOM_KEY(KC_Q, 1, REMAP_WITH_OPTIONS(A(KC_F4), MOD_MASK_GUI, REMOVE_TRIGGER, false)),
-    [NK_R] = CUSTOM_KEY(KC_R, 1, REMAP(KC_Y, MOD_MASK_CTRL)),
 
     // _NUM layer
     [NK_COLN] = CUSTOM_KEY(KC_COLN, 1, REMAP(KC_M, MOD_MASK_CTRL)),
-    [NK_MINS_NUM] = CUSTOM_KEY(KC_MINS, 1, REMAP(KC_Y, MOD_MASK_CTRL)),
+    [NK_MINS_NUM] = CUSTOM_KEY(
+        KC_MINS, 2, REMAP(KC_R, MOD_MASK_CTRL),
+        REMAP_WITH_OPTIONS(KC_MINS, MOD_MASK_SHIFT, REMOVE_TRIGGER, false)
+    ),
     [NK_1] = CUSTOM_KEY(
         KC_1, 2, REMAP(KC_A, MOD_MASK_CTRL),
         REMAP_WITH_OPTIONS(KC_1, MOD_MASK_SHIFT, REMOVE_TRIGGER, false)

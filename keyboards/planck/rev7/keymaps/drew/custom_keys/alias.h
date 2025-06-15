@@ -1,5 +1,7 @@
 #pragma once
+
 #include QMK_KEYBOARD_H
+#include "../common.h"
 
 #define TAB_FORWARD C(KC_TAB)
 #define TAB_BACKWARD (C(S(KC_TAB)))
