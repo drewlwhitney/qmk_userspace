@@ -16,7 +16,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_ortho_4x12(
         NK(NK_ESC),        NK(NK_Q),             KC_W,           KC_E,            KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,         KC_O,          KC_P,          NK(NK_BSPC),
         CTL_T(KC_TAB),     KC_A,                 KC_S,           KC_D,            KC_F,            KC_G,               KC_H,               KC_J,           KC_K,         KC_L,          KC_SCLN,       KC_QUOT,
-        SFT_SFT,           KC_Z,                 KC_X,           KC_C,            KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       ALT_DEL,
+        SFT_SFT,           KC_Z,                 KC_X,           KC_C,            KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       SFT_DEL,
         KC_RCTL,           LT(_FUNC, KC_MPLY),   ALT_T(KC_LALT), TD(TD_CAD_LOCK), GUI_LAUNCH,      NUM_SPC,            NAV_ENT,            ALT_COMP,       KC_LEFT,      NK(NK_DOWN),   NK(NK_UP),     KC_RGHT
     ),
     // gamer
@@ -73,7 +73,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             return false;
             break;
         case GUI_LAUNCH:
-        case ALT_DEL:
+        case SFT_DEL:
         case ALT_COMP:
         case SFT_TILD:
         case SFT_SFT:

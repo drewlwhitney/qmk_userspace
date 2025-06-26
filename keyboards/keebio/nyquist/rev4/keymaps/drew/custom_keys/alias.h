@@ -8,7 +8,7 @@
 #define LAUNCH A(KC_SPC)
 #define MENU S(KC_F10)
 #define GUI_LAUNCH GUI_T(NK(TH_LAUNCH))
-#define ALT_DEL ALT_T(NK(TH_DEL))
+#define SFT_DEL SFT_T(NK(TH_DEL))
 #define ALT_COMP ALT_T(NK(TH_RALT))
 #define SFT_TILD SFT_T(NK(TH_TILD))
 #define SFT_SFT SFT_T(NK(TH_LSFT))
