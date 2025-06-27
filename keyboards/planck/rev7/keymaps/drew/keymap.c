@@ -43,9 +43,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // function
     [_FUNC] = LAYOUT_ortho_4x12(
         KC_F1,             KC_F2,                KC_F3,          KC_F4,           KC_F5,           KC_F6,              KC_F7,              KC_F8,          KC_F9,        KC_F10,        KC_F11,        KC_F12,
-        KC_F7,             KC_F8,                KC_F9,          KC_F10,          KC_F11,          KC_F12,             KC_NO,              KC_NO,          KC_NO,        KC_NO,         KC_NO,         QK_RBT,
+        KC_F7,             KC_F8,                KC_F9,          KC_F10,          KC_F11,          KC_F12,             KC_NO,              KC_NO,          KC_NO,        KC_NO,         KC_NO,         KC_NO,
         KC_TRNS,           KC_MUTE,              KC_MPRV,        KC_VOLD,         KC_VOLU,         KC_MNXT,            KC_NO,              KC_NO,          KC_NO,        KC_NO,         TG(_GAME),     QK_BOOT,
-        KC_TRNS,           KC_NO,                KC_BRID,        KC_BRIU,         KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_WBAK,      KC_TRNS,       KC_TRNS,       KC_WFWD
+        KC_TRNS,           KC_NO,                KC_BRID,        KC_BRIU,         KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       QK_RBT
     ),
 };
 // clang-format on
