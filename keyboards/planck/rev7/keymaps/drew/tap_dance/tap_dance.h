@@ -3,7 +3,7 @@
 #include "../common.h"
 
 enum {
-    TD_CAD_LOCK,
+    TD_CAD_SLEEP,
 };
 
 // tap_dance_action_t tap_dance_actions;

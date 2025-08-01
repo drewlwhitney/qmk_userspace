@@ -3,5 +3,5 @@
 #include "../custom_keys/alias.h"
 
 tap_dance_action_t tap_dance_actions[] = {
-    [TD_CAD_LOCK] = ACTION_TAP_DANCE_DOUBLE(CAD, LOCK),
+    [TD_CAD_SLEEP] = ACTION_TAP_DANCE_DOUBLE(CAD, KC_SLEP),
 };
