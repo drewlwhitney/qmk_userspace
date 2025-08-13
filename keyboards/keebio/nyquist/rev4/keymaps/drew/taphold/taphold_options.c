@@ -5,7 +5,8 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
         case CTL_T(KC_TAB):
         case NUM_SPC:
         case NAV_ENT:
-        case GUI_LAUNCH: // no repeat tapping when tapped and then held for these keys
+        case GUI_LAUNCH:
+        case LT(_FUNC, KC_MPLY): // no repeat tapping when tapped and then held for these keys
             return 0;
             break;
         default:
