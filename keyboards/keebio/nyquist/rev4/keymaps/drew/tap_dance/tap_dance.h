@@ -3,5 +3,5 @@
 #include "../common.h"
 
 enum {
-    TD_CAD_SLEEP,
+    TD_CAD_LOCK_SLEEP,
 };
