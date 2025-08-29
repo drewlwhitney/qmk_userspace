@@ -6,8 +6,8 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
         case NUM_SPC:
         case NAV_ENT:
         case GUI_LAUNCH:
-        case LT(_FUNC, KC_MPLY): // no repeat tapping when tapped and then held for these keys
-            return 0;
+        case LT(_FUNC, KC_MPLY):
+            return 0; // no repeat tapping when tapped and then held for these keys
             break;
         default:
             return QUICK_TAP_TERM;
@@ -42,6 +42,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
         case GUI_LAUNCH:
             return 400;
             break;
+        case SFT_SFT:
+            return get_mods() & MOD_MASK_ALT ? TAPPING_TERM : 0;
         default:
             return TAPPING_TERM;
             break;
