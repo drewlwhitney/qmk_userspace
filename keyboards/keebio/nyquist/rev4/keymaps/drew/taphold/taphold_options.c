@@ -9,10 +9,8 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
         case LT(_FUNC, KC_MPLY):
             return 0; // no repeat tapping when tapped and then held for these keys
             break;
-        default:
-            return QUICK_TAP_TERM;
-            break;
     }
+    return QUICK_TAP_TERM;
 }
 
 bool get_permissive_hold(uint16_t keycode, keyrecord_t* record) {
@@ -20,10 +18,8 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t* record) {
         case NUM_SPC: // permissive hold for layer tap space
             return true;
             break;
-        default:
-            return false;
-            break;
     }
+    return false;
 }
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t* record) {
@@ -31,10 +27,8 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t* record) {
         case NUM_SPC: // no hold on other key press for layer tap space
             return false;
             break;
-        default:
-            return true;
-            break;
     }
+    return true;
 }
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
@@ -42,10 +36,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
         case GUI_LAUNCH:
             return 400;
             break;
-        case SFT_SFT:
-            return get_mods() & MOD_MASK_ALT ? TAPPING_TERM : 0;
-        default:
-            return TAPPING_TERM;
-            break;
     }
+    return TAPPING_TERM;
 }
