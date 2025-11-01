@@ -1,7 +1,9 @@
 {
     "userspace_version": "1.1",
     "build_targets": [
-        ["keebio/nyquist/rev4", "drew"],
-        ["planck/rev7", "drew"]
+        [
+            "keebio/nyquist/rev4",
+            "drew"
+        ]
     ]
 }
