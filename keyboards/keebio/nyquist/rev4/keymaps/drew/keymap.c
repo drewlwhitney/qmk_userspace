@@ -1,8 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "caps_word/caps_word.h"
 #include "common.h"
-#include "custom_keys/custom_keys.h"
-#include "custom_keys/mapping.h"
 #include "layers.h"
 #include "tap_dance/tap_dance.c"
 #include "tap_dance/tap_dance.h"
@@ -10,13 +8,16 @@
 
 bool NAV_enabled = false;
 
+#define SFT_DEL SFT_T(KC_DEL)
+#define L_SFT SFT_T(KC_LSFT)
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // base
     [_BASE] = LAYOUT_ortho_4x12(
-        NK(NK_ESC),        NK(NK_Q),             KC_W,           KC_E,                  KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,         KC_O,          KC_P,          NK(NK_BSPC),
+        KC_ESC,            KC_Q,                 KC_W,           KC_E,                  KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,         KC_O,          KC_P,          KC_BSPC,
         CTL_T(KC_TAB),     KC_A,                 KC_S,           KC_D,                  KC_F,            KC_G,               KC_H,               KC_J,           KC_K,         KC_L,          KC_SCLN,       KC_QUOT,
-        SFT_SFT,           KC_Z,                 KC_X,           KC_C,                  KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       ALT_DEL,
+        L_SFT,             KC_Z,                 KC_X,           KC_C,                  KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       SFT_DEL,
         KC_RCTL,           LT(_FUNC, KC_MPLY),   ALT_T(KC_LALT), TD(TD_CAD_LOCK_SLEEP), GUI_LAUNCH,      NUM_SPC,            NAV_ENT,            ALT_COMP,       KC_LEFT,      NK(NK_DOWN),   NK(NK_UP),     KC_RGHT
     ),
     // gamer
@@ -68,6 +69,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 NAV_enabled = record->event.pressed;
             }
             break;
+        case SFT_DEL:
+            uint8_t mods = get_mods();
+            if (mods & MOD_MASK_GUI) {
+                if (record->tap.count) {
+                    if (record->event.pressed) {
+                        del_mods(MOD_MASK_GUI);
+                        tap_code16(S(KC_END));
+                        register_code(KC_DEL);
+                        set_mods(mods);
+                        tap_code(DUMMY_MOD_NEUTRALIZER_KEYCODE);
+                    } else {
+                        unregister_code(KC_DEL);
+                    }
+                    return false;
+                }
+            } else if (get_mods() & MOD_MASK_SHIFT) {
+                if (record->tap.count) {
+                    if (record->event.pressed) {
+                        caps_word_on();
+                    }
+                    return false;
+                }
+            }
+            break;
+
         case CUSTOM_KEY_RANGE:
             process_custom_key(keycode, record);
             return false;
@@ -84,3 +110,81 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     }
     return true;
 }
+
+/// @brief Obliterate a line of text.
+/// @param key_down Whether the key was pressed down.
+/// @param deletion_keycode The deletion keycode. Either `KC_BSPC` or `KC_DEL`.
+/// @param movement_keycode The movement keycode. Either `KC_HOME` or `KC_END`.
+/// @return Always returns `false`.
+bool obliterate_line2(bool key_down, uint8_t deletion_keycode, uint8_t movement_keycode) {
+    if (key_down) {
+        tap_code16(S(movement_keycode));
+        register_code(deletion_keycode);
+    } else {
+        unregister_code(deletion_keycode);
+    }
+    return false;
+}
+
+/// @brief Obliterate a line of text backwards from the cursor.
+/// @param key_down Whether the key was pressed down.
+/// @param _ Unused.
+/// @return Always returns `false`.
+bool obliterate_line_backwards2(bool key_down, void* _) {
+    return obliterate_line2(key_down, KC_BSPC, KC_HOME);
+}
+
+/// @brief Obliterate a line of text forwards from the cursor.
+/// @param key_down Whether the key was pressed down.
+/// @param _ Unused.
+/// @return Always returns `false`.
+bool obliterate_line_forwards2(bool key_down, void* _) {
+    return obliterate_line2(key_down, KC_DEL, KC_END);
+}
+
+/// @brief Wrapper to turn on caps word.
+/// @param key_down Whether the key was pressed down.
+/// @param _ Unused.
+/// @return Always returns `false`.
+bool turn_on_caps_word2(bool key_down, void* _) {
+    caps_word_on();
+    return false;
+}
+
+const key_override_t Q_TO_KILL = ko_make_basic(MOD_MASK_GUI, KC_Q, A(KC_F4));
+
+const key_override_t BSPC_TO_OBLITERATE = {
+    .trigger = KC_BSPC,
+    .trigger_mods = MOD_MASK_GUI,
+    .layers = 0xFF,
+    .custom_action = obliterate_line_backwards2,
+    .suppressed_mods = MOD_MASK_GUI,
+};
+
+const key_override_t DEL_TO_OBLITERATE = {
+    .trigger = KC_DEL,
+    .trigger_mods = MOD_MASK_GUI,
+    .layers = 0xFF,
+    .custom_action = obliterate_line_forwards2,
+    .suppressed_mods = MOD_MASK_GUI,
+};
+const key_override_t DEL_TO_CAPS_WORD = {
+    .trigger = SFT_DEL,
+    .trigger_mods = MOD_MASK_SHIFT,
+    .layers = 0xFF,
+    .custom_action = turn_on_caps_word2,
+};
+
+const key_override_t ESC_TO_TAB_FORWARD = ko_make_basic(MOD_MASK_ALT, KC_ESC, TAB_FORWARD);
+
+// const key_override_t SFT_TO_TAB_BACKWARD =
+// ko_make_basic(MOD_MASK_ALT, L_SFT, );
+
+// this globally defines all key overrides to be used
+const key_override_t* key_overrides[] = {
+    &Q_TO_KILL,
+    &BSPC_TO_OBLITERATE,
+    // &DEL_TO_OBLITERATE,
+    &DEL_TO_CAPS_WORD,
+    &ESC_TO_TAB_FORWARD,
+};
