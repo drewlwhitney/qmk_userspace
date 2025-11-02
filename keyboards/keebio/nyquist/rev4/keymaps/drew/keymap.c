@@ -16,8 +16,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_ortho_4x12(
         KC_ESC,            KC_Q,                 KC_W,           KC_E,                  KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,         KC_O,          KC_P,          KC_BSPC,
         CTL_T(KC_TAB),     KC_A,                 KC_S,           KC_D,                  KC_F,            KC_G,               KC_H,               KC_J,           KC_K,         KC_L,          KC_SCLN,       KC_QUOT,
-        L_SFT,             KC_Z,                 KC_X,           KC_C,                  KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       SFT_DEL,
-        KC_NO,             FUNC_PLAY,            ALT_T(KC_LALT), TD(TD_CAD_LOCK_SLEEP), GUI_LAUNCH,      NUM_SPC,            NAV_ENT,            ALT_COMP,       KC_LEFT,      DOWN,          UP,            KC_RGHT
+        GUI_LAUNCH,        KC_Z,                 KC_X,           KC_C,                  KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       ALT_DEL,
+        KC_NO,             FUNC_PLAY,            ALT_T(KC_LALT), TD(TD_CAD_LOCK_SLEEP), SFT_COMP,        NUM_SPC,            NAV_ENT,            SFT_CW,         KC_LEFT,      DOWN,          UP,            KC_RGHT
     ),
     // gamer
     [_GAME] = LAYOUT_ortho_4x12(
@@ -77,14 +77,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             break;
 
-        case GUI_LAUNCH:
-            if (record->tap.count && record->event.pressed) {
-                tap_code16(LAUNCH);
+        case GUI_LAUNCH: {
+            static bool tab_backward_held = false;
+            if (record->tap.count) {
+                if (record->event.pressed) {
+                    uint8_t mods = get_mods();
+                    if (mods & TABBING_TRIGGER_MODS) { // tabbing
+                        del_mods(TABBING_TRIGGER_MODS);
+                        register_code16(TAB_BACKWARD);
+                        set_mods(mods);
+                        tab_backward_held = true; // set the flag
+                    } else {
+                        tap_code16(LAUNCH);
+                    }
+                } else {
+                    if (tab_backward_held) {
+                        tab_backward_held = false; // clear the flag
+                        unregister_code16(TAB_BACKWARD);
+                        neutralize_flashing_mods();
+                    }
+                }
                 return false;
             }
             break;
+        }
 
-        case SFT_DEL:
+        case ALT_DEL:
             if (record->tap.count) { // only trigger on taps, not holds
                 uint8_t mods = get_mods();
                 if (mods & OBLITERATE_TRIGGER_MODS) { // obliterate line forwards
@@ -97,46 +115,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                     } else {
                         neutralize_flashing_mods();
                     }
-                } else if (mods & MOD_MASK_SHIFT) { // caps word
-                    if (record->event.pressed) {
-                        caps_word_on();
-                    }
+                }
+            }
+            break;
+
+        case SFT_COMP:
+            if (record->tap.count && record->event.pressed) {
+                if (get_mods() & MOD_MASK_SHIFT) {
+                    tap_code(KC_CAPS);
                     return false;
                 }
             }
             break;
 
-        case L_SFT: {
-            static bool tab_backward_held = false;
-            if (record->tap.count) {
-                if (record->event.pressed) {
-                    uint8_t mods = get_mods();
-                    if (mods & TABBING_TRIGGER_MODS) { // tabbing
-                        del_mods(TABBING_TRIGGER_MODS);
-                        register_code16(TAB_BACKWARD);
-                        set_mods(mods);
-                        tab_backward_held = true; // set the flag
-                        return false;
-                    } else if (mods & MOD_MASK_SHIFT) { // caps word
-                        caps_word_on();
-                        return false;
-                    }
-                } else {
-                    if (tab_backward_held) {
-                        tab_backward_held = false; // clear the flag
-                        unregister_code16(TAB_BACKWARD);
-                        neutralize_flashing_mods();
-                        return false;
-                    }
+        case SFT_CW:
+            if (record->tap.count && record->event.pressed) { // only trigger on taps
+                if (get_mods() & MOD_MASK_SHIFT) { // caps lock
+                    tap_code(KC_CAPS);
+                } else { // caps word
+                    caps_word_toggle();
                 }
-            }
-            break;
-        }
-
-        case ALT_COMP:
-            // caps lock
-            if (record->tap.count && record->event.pressed && get_mods() & MOD_MASK_SHIFT) {
-                tap_code(KC_CAPS);
                 return false;
             }
             break;
@@ -215,7 +213,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case KC_V:
         case KC_B: // left-side
             if (record->event.pressed && get_mods() == MOD_BIT(KC_LSFT)) {
-                return false; // do nothing
+                del_mods(MOD_BIT(KC_LSFT)); // unmod the key
             }
             break;
 
@@ -236,7 +234,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case KC_DOT:
         case KC_SLSH:
             if (record->event.pressed && get_mods() == MOD_BIT(KC_RSFT)) {
-                return false; // do nothing
+                del_mods(MOD_BIT(KC_RSFT));
             }
             break;
     }
@@ -465,3 +463,4 @@ const key_override_t* key_overrides[] = {
 
     &F2_TO_M,
 };
+

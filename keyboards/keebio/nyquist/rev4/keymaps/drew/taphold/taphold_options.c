@@ -7,9 +7,13 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
         case CTL_T(KC_TAB):
         case NUM_SPC:
         case NAV_ENT:
-        case GUI_LAUNCH:
         case FUNC_PLAY:
             return 0; // no repeat tapping when tapped and then held for these keys
+            break;
+        case GUI_LAUNCH:
+            if (!(get_mods() & TABBING_TRIGGER_MODS)) {
+                return 0; // disable repeat tapping unless we are tabbing
+            }
             break;
     }
     return QUICK_TAP_TERM;

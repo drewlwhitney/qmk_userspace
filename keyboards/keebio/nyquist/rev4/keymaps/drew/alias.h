@@ -32,14 +32,15 @@ enum CustomKeycodes {
 
 // mod-tap
 // 8-bit tap key
-#define SFT_DEL RSFT_T(KC_DEL)
-#define L_SFT SFT_T(KC_LSFT)
+#define ALT_DEL ALT_T(KC_DEL)
+#define SFT_COMP SFT_T(KC_RALT)
 #define SFT_COMM SFT_T(KC_COMM)
-#define ALT_COMP ALT_T(KC_RALT)
 // 16-bit tap key
 #define SFT_TILD SFT_T(KC_TILD)
 #define CTL_COLN CTL_T(KC_COLN)
 #define GUI_LAUNCH GUI_T(LAUNCH)
+// special
+#define SFT_CW RSFT_T(KC_RSFT)
 
 // trigger mods
 #define TABBING_TRIGGER_MODS MOD_MASK_ALT
