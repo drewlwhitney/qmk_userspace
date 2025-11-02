@@ -214,7 +214,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case KC_C:
         case KC_V:
         case KC_B: // left-side
-            if (record->event.pressed && get_mods() & MOD_BIT(KC_LSFT)) {
+            if (record->event.pressed && get_mods() == MOD_BIT(KC_LSFT)) {
                 return false; // do nothing
             }
             break;
@@ -235,7 +235,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case KC_COMM:
         case KC_DOT:
         case KC_SLSH:
-            if (record->event.pressed && get_mods() & MOD_BIT(KC_RSFT)) {
+            if (record->event.pressed && get_mods() == MOD_BIT(KC_RSFT)) {
                 return false; // do nothing
             }
             break;
