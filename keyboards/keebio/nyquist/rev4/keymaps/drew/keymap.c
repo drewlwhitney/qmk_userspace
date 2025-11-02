@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 #include "./caps_word/caps_word.h"
-#include "./custom_keys/mapping.h"
 #include "./layers.h"
 #include "./tap_dance/tap_dance.c"
 #include "./tap_dance/tap_dance.h"
@@ -11,32 +10,6 @@
 
 bool NAV_enabled = false;
 
-enum CustomKeycodes {
-    DOWN = SAFE_RANGE + 50,
-    UP,
-
-    LOW_6,
-    LOW_7,
-    LOW_8,
-    LOW_9,
-    LOW_0,
-
-
-};
-
-#define SFT_DEL SFT_T(KC_DEL)
-#define L_SFT SFT_T(KC_LSFT)
-#define ALT_COMP ALT_T(KC_RALT)
-#define TABBING_TRIGGER_MODS MOD_MASK_ALT
-#define OBLITERATE_TRIGGER_MODS MOD_MASK_GUI
-
-/// @brief Neutralize flashing modifiers (Alt and Super) if they are active.
-static inline void neutralize_flashing_mods(void) {
-    if (get_mods() & MOD_MASK_AG) {
-        tap_code(DUMMY_MOD_NEUTRALIZER_KEYCODE);
-    }
-}
-
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // base
@@ -44,27 +17,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,            KC_Q,                 KC_W,           KC_E,                  KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,         KC_O,          KC_P,          KC_BSPC,
         CTL_T(KC_TAB),     KC_A,                 KC_S,           KC_D,                  KC_F,            KC_G,               KC_H,               KC_J,           KC_K,         KC_L,          KC_SCLN,       KC_QUOT,
         L_SFT,             KC_Z,                 KC_X,           KC_C,                  KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       SFT_DEL,
-        KC_RCTL,           FUNC_PLAY,            ALT_T(KC_LALT), TD(TD_CAD_LOCK_SLEEP), GUI_LAUNCH,      NUM_SPC,            NAV_ENT,            ALT_COMP,       KC_LEFT,      DOWN,          UP,            KC_RGHT
+        KC_NO,             FUNC_PLAY,            ALT_T(KC_LALT), TD(TD_CAD_LOCK_SLEEP), GUI_LAUNCH,      NUM_SPC,            NAV_ENT,            ALT_COMP,       KC_LEFT,      DOWN,          UP,            KC_RGHT
     ),
     // gamer
     [_GAME] = LAYOUT_ortho_4x12(
         KC_TRNS,           KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         KC_TAB,            KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         KC_LSFT,           KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
-        KC_TRNS,           KC_TRNS,              KC_TRNS,        KC_PGDN,               KC_PGUP,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS
+        KC_LCTL,           KC_TRNS,              KC_TRNS,        KC_PGDN,               KC_PGUP,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS
     ),
     // special characters
     // numbers
     [_NUM] = LAYOUT_ortho_4x12(
-        KC_TRNS,           KC_SLSH,              KC_AT,          KC_ASTR,               KC, KC_PLUS,            NK(NK_CIRC),        NK(NK_AMPR),    NK(NK_ASTR),  KC_LPRN,       NK(NK_RPRN),   KC_TRNS,
+        KC_TRNS,           KC_SLSH,              KC_AT,          MULT,                  KC_MINS,         KC_PLUS,            KC_CIRC,            KC_AMPR,        KC_ASTR,      KC_LPRN,       KC_RPRN,       KC_TRNS,
         CTL_T(KC_DOT),     KC_1,                 KC_2,           KC_3,                  KC_4,            KC_5,               KC_6,               KC_7,           KC_8,         KC_9,          KC_0,          KC_TRNS,
-        SFT_COMM,          LOW_6,                LOW_7,          LOW_8,                 LOW_9,           LOW_0,              KC_SCLN,            NK(NK_COLN),    KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
+        SFT_COMM,          LOW_6,                LOW_7,          LOW_8,                 LOW_9,           LOW_0,              KC_SCLN,            KC_COLN,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         CTL_COLN,          KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_NO,              KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS
     ),
     [_NAV] = LAYOUT_ortho_4x12(
-        KC_GRV,            KC_EXLM,              KC_AT,          KC_HASH,               NK(NK_DLR),      KC_PERC,            NK(NK_CIRC),        NK(NK_AMPR),    NK(NK_ASTR),  KC_LPRN,       NK(NK_RPRN),   KC_TRNS,
-        KC_TRNS,           NK(NK_BSLS),          NK(NK_LBRC),    NK(NK_RBRC),           NK(NK_MINS_NAV), NK(NK_EQL),         KC_HOME,            KC_LEFT,        KC_DOWN,      KC_UP,         KC_RGHT,       KC_END,
-        SFT_TILD,          NK(NK_PIPE),          NK(NK_LCBR),    NK(NK_RCBR),           NK(NK_UNDS),     NK(NK_PLUS),        KC_NO,              NK(NK_F2),      KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
+        KC_GRV,            KC_EXLM,              KC_AT,          KC_HASH,               KC_DLR,          KC_PERC,            KC_CIRC,            KC_AMPR,        KC_ASTR,      KC_LPRN,       KC_RPRN,       KC_TRNS,
+        KC_TRNS,           KC_BSLS,              KC_LBRC,        KC_RBRC,               KC_MINS,         KC_EQL,             KC_HOME,            KC_LEFT,        KC_DOWN,      KC_UP,         KC_RGHT,       KC_END,
+        SFT_TILD,          KC_PIPE,              KC_LCBR,        KC_RCBR,               KC_UNDS,         KC_PLUS,            KC_NO,              KC_F2,          KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         KC_TRNS,           KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_TRNS,            KC_NO,              KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS
     ),
     // function
@@ -224,11 +197,53 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 return false;
             }
             break;
+
+        // make it so only the opposite-side shift key works
+        case KC_Q:
+        case KC_W:
+        case KC_E:
+        case KC_R:
+        case KC_T:
+        case KC_A:
+        case KC_S:
+        case KC_D:
+        case KC_F:
+        case KC_G:
+        case KC_Z:
+        case KC_X:
+        case KC_C:
+        case KC_V:
+        case KC_B: // left-side
+            if (record->event.pressed && get_mods() & MOD_BIT(KC_LSFT)) {
+                return false; // do nothing
+            }
+            break;
+
+        case KC_Y:
+        case KC_U:
+        case KC_I:
+        case KC_O:
+        case KC_P:
+        case KC_H:
+        case KC_J:
+        case KC_K:
+        case KC_L:
+        case KC_SCLN:
+        case KC_QUOT:
+        case KC_N:
+        case KC_M:
+        case KC_COMM:
+        case KC_DOT:
+        case KC_SLSH:
+            if (record->event.pressed && get_mods() & MOD_BIT(KC_RSFT)) {
+                return false; // do nothing
+            }
+            break;
     }
     return true;
 }
 
-const key_override_t Q_TO_KILL = ko_make_with_layers(MOD_MASK_GUI, KC_Q, A(KC_F4), _BASE + 1);
+const key_override_t Q_TO_KILL = ko_make_with_layers(MOD_MASK_GUI, KC_Q, A(KC_F4), 1 << _BASE);
 
 const key_override_t BSPC_TO_OBLITERATE = {
     .trigger = KC_BSPC,
@@ -254,23 +269,24 @@ const key_override_t DOWN_DEFAULT = ko_make_basic(0, DOWN, KC_DOWN);
 const key_override_t UP_TO_ZOOM_IN = ko_make_basic(MOD_MASK_CTRL, UP, C(KC_EQL));
 const key_override_t UP_DEFAULT = ko_make_basic(0, UP, KC_UP);
 
-const key_override_t ONE_TO_A = ko_make_basic(MOD_MASK_CTRL, KC_1, C(KC_A));
+// NUM layer
+const key_override_t ONE_TO_A = ko_make_with_layers(MOD_MASK_CTRL, KC_1, C(KC_A), 1 << _NUM);
 const key_override_t ONE_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_1, KC_1);
 
-const key_override_t TWO_TO_S = ko_make_basic(MOD_MASK_CTRL, KC_2, C(KC_S));
+const key_override_t TWO_TO_S = ko_make_with_layers(MOD_MASK_CTRL, KC_2, C(KC_S), 1 << _NUM);
 const key_override_t TWO_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_2, KC_2);
 
 const key_override_t THREE_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_3, KC_3);
 
-const key_override_t FOUR_TO_F = ko_make_basic(MOD_MASK_CTRL, KC_4, C(KC_F));
+const key_override_t FOUR_TO_F = ko_make_with_layers(MOD_MASK_CTRL, KC_4, C(KC_F), 1 << _NUM);
 const key_override_t FOUR_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_4, KC_4);
 
 const key_override_t FIVE_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_5, KC_5);
 
-const key_override_t SIX_TO_H = ko_make_basic(MOD_MASK_CTRL, KC_6, C(KC_H));
+const key_override_t SIX_TO_H = ko_make_with_layers(MOD_MASK_CTRL, KC_6, C(KC_H), 1 << _NUM);
 const key_override_t SIX_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_6);
 
-const key_override_t SEVEN_TO_J = ko_make_basic(MOD_MASK_CTRL, KC_7, C(KC_J));
+const key_override_t SEVEN_TO_J = ko_make_with_layers(MOD_MASK_CTRL, KC_7, C(KC_J), 1 << _NUM);
 const key_override_t SEVEN_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_7, KC_7);
 
 const key_override_t EIGHT_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_8, KC_8);
@@ -298,6 +314,64 @@ const key_override_t LOW_9_DEFAULT = ko_make_basic(0, LOW_9, KC_9);
 const key_override_t LOW_0_TO_B = ko_make_basic(MOD_MASK_CTRL, LOW_0, C(KC_B));
 const key_override_t LOW_0_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, LOW_0, KC_0);
 const key_override_t LOW_0_DEFAULT = ko_make_basic(0, LOW_0, KC_0);
+
+// minus -
+const key_override_t MINUS_TO_R = ko_make_with_layers(MOD_MASK_CTRL, KC_MINS, C(KC_R), 1 << _NUM);
+const key_override_t MINUS_TO_F = ko_make_with_layers(MOD_MASK_CTRL, KC_MINS, C(KC_F), 1 << _NAV);
+const key_override_t MINUS_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_MINS, KC_MINS);
+
+// multiply symbol (prevents conflict with ASTR) *
+const key_override_t MULT_DEFAULT = ko_make_basic(0, MULT, KC_ASTR);
+
+// circ ^
+const key_override_t CIRC_TO_Y = ko_make_basic(MOD_MASK_CTRL, KC_CIRC, C(KC_Y));
+
+// ampr &
+const key_override_t AMPR_TO_U = ko_make_basic(MOD_MASK_CTRL, KC_AMPR, C(KC_U));
+
+// astr *
+const key_override_t ASTR_TO_I = ko_make_basic(MOD_MASK_CTRL, KC_ASTR, C(KC_I));
+
+// rprn (
+const key_override_t RPRN_TO_P = ko_make_basic(MOD_MASK_CTRL, KC_RPRN, C(KC_P));
+
+// coln )
+const key_override_t COLN_TO_M = ko_make_with_layers(MOD_MASK_CTRL, KC_COLN, C(KC_M), 1 << _NUM);
+
+// dlr $
+const key_override_t DLR_TO_R = ko_make_with_layers(MOD_MASK_CTRL, KC_DLR, C(KC_R), 1 << _NAV);
+
+// bsls
+const key_override_t BSLS_TO_A = ko_make_with_layers(MOD_MASK_CTRL, KC_BSLS, C(KC_A), 1 << _NAV);
+const key_override_t BSLS_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_BSLS, KC_BSLS);
+
+// lbrc [
+const key_override_t LBRC_TO_S = ko_make_with_layers(MOD_MASK_CTRL, KC_LBRC, C(KC_S), 1 << _NAV);
+const key_override_t LBRC_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_LBRC, KC_LBRC);
+
+// rbrc ]
+const key_override_t RBRC_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_RBRC, KC_RBRC);
+
+// eql =
+const key_override_t EQL_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_EQL);
+
+// pipe |
+const key_override_t PIPE_TO_Z = ko_make_with_layers(MOD_MASK_CTRL, KC_PIPE, C(KC_Z), 1 << _NAV);
+
+// lcbr {
+const key_override_t LCBR_TO_X = ko_make_with_layers(MOD_MASK_CTRL, KC_LCBR, C(KC_X), 1 << _NAV);
+
+// rcbr }
+const key_override_t RCBR_TO_C = ko_make_with_layers(MOD_MASK_CTRL, KC_RCBR, C(KC_C), 1 << _NAV);
+
+// unds _
+const key_override_t UNDS_TO_V = ko_make_with_layers(MOD_MASK_CTRL, KC_UNDS, C(KC_V), 1 << _NAV);
+
+// plus +
+const key_override_t PLUS_TO_B = ko_make_with_layers(MOD_MASK_CTRL, KC_PLUS, C(KC_B), 1 << _NAV);
+
+// F2
+const key_override_t F2_TO_M = ko_make_with_layers(MOD_MASK_CTRL, KC_F2, C(KC_M), 1 << _NAV);
 
 // this globally defines all key overrides to be used
 const key_override_t* key_overrides[] = {
@@ -350,4 +424,44 @@ const key_override_t* key_overrides[] = {
     &LOW_0_TO_B,
     &LOW_0_NOSHIFT,
     &LOW_0_DEFAULT,
+
+    &MINUS_TO_R,
+    &MINUS_TO_F,
+    &MINUS_NOSHIFT,
+
+    &MULT_DEFAULT,
+
+    &CIRC_TO_Y,
+
+    &AMPR_TO_U,
+
+    &ASTR_TO_I,
+
+    &RPRN_TO_P,
+
+    &COLN_TO_M,
+
+    &DLR_TO_R,
+
+    &BSLS_TO_A,
+    &BSLS_NOSHIFT,
+
+    &LBRC_TO_S,
+    &LBRC_NOSHIFT,
+
+    &RBRC_NOSHIFT,
+
+    &EQL_NOSHIFT,
+
+    &PIPE_TO_Z,
+
+    &LCBR_TO_X,
+
+    &RCBR_TO_C,
+
+    &UNDS_TO_V,
+
+    &PLUS_TO_B,
+
+    &F2_TO_M,
 };

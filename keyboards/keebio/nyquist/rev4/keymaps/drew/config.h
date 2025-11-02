@@ -19,15 +19,12 @@
 #define I2C0_SDA_PIN GP4
 #define I2C0_SCL_PIN GP5m
 
+#define SPLIT_USB_TIMEOUT 20000
+
+
 // -------------------------------------------------------------------------------------------------
 
 // #define DYNAMIC_KEYMAP_LAYER_COUNT 5
-
-// stuff I added
-#define MAX_REMAPS_PER_CUSTOM_KEY 2
-// end stuff I added
-
-#define SPLIT_USB_TIMEOUT 20000
 
 #define TAPPING_TERM 200
 
@@ -44,6 +41,3 @@
 
 // disable some features to make the code smaller
 #define NO_ACTION_ONESHOT
-
-// delete later; tap dance
-#define TAPPING_TERM_PER_KEY
