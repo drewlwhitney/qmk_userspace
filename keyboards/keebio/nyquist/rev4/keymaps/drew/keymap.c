@@ -1,10 +1,13 @@
 #include QMK_KEYBOARD_H
-#include "caps_word/caps_word.h"
-#include "common.h"
-#include "layers.h"
-#include "tap_dance/tap_dance.c"
-#include "tap_dance/tap_dance.h"
-#include "taphold/taphold_options.h"
+#include "./caps_word/caps_word.h"
+#include "./custom_keys/mapping.h"
+#include "./layers.h"
+#include "./tap_dance/tap_dance.c"
+#include "./tap_dance/tap_dance.h"
+#include "./taphold/taphold_options.h"
+#include "./utils/utils.h"
+#include "stdbool.h"
+#include "stdint.h"
 
 bool NAV_enabled = false;
 
@@ -17,11 +20,15 @@ enum CustomKeycodes {
     LOW_8,
     LOW_9,
     LOW_0,
+
+
 };
 
 #define SFT_DEL SFT_T(KC_DEL)
 #define L_SFT SFT_T(KC_LSFT)
 #define ALT_COMP ALT_T(KC_RALT)
+#define TABBING_TRIGGER_MODS MOD_MASK_ALT
+#define OBLITERATE_TRIGGER_MODS MOD_MASK_GUI
 
 /// @brief Neutralize flashing modifiers (Alt and Super) if they are active.
 static inline void neutralize_flashing_mods(void) {
@@ -37,11 +44,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,            KC_Q,                 KC_W,           KC_E,                  KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,         KC_O,          KC_P,          KC_BSPC,
         CTL_T(KC_TAB),     KC_A,                 KC_S,           KC_D,                  KC_F,            KC_G,               KC_H,               KC_J,           KC_K,         KC_L,          KC_SCLN,       KC_QUOT,
         L_SFT,             KC_Z,                 KC_X,           KC_C,                  KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       SFT_DEL,
-        KC_RCTL,           LT(_FUNC, KC_MPLY),   ALT_T(KC_LALT), TD(TD_CAD_LOCK_SLEEP), GUI_LAUNCH,      NUM_SPC,            NAV_ENT,            ALT_COMP,       KC_LEFT,      DOWN,          UP,            KC_RGHT
+        KC_RCTL,           FUNC_PLAY,            ALT_T(KC_LALT), TD(TD_CAD_LOCK_SLEEP), GUI_LAUNCH,      NUM_SPC,            NAV_ENT,            ALT_COMP,       KC_LEFT,      DOWN,          UP,            KC_RGHT
     ),
     // gamer
     [_GAME] = LAYOUT_ortho_4x12(
-        KC_TRNS,           KC_Q,                 KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
+        KC_TRNS,           KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         KC_TAB,            KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         KC_LSFT,           KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         KC_TRNS,           KC_TRNS,              KC_TRNS,        KC_PGDN,               KC_PGUP,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS
@@ -49,14 +56,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // special characters
     // numbers
     [_NUM] = LAYOUT_ortho_4x12(
-        KC_TRNS,           KC_SLSH,              KC_AT,          KC_ASTR,               NK(NK_MINS_NUM), KC_PLUS,            NK(NK_CIRC),        NK(NK_AMPR),    NK(NK_ASTR),  KC_LPRN,       NK(NK_RPRN),   KC_TRNS,
+        KC_TRNS,           KC_SLSH,              KC_AT,          KC_ASTR,               KC, KC_PLUS,            NK(NK_CIRC),        NK(NK_AMPR),    NK(NK_ASTR),  KC_LPRN,       NK(NK_RPRN),   KC_TRNS,
         CTL_T(KC_DOT),     KC_1,                 KC_2,           KC_3,                  KC_4,            KC_5,               KC_6,               KC_7,           KC_8,         KC_9,          KC_0,          KC_TRNS,
         SFT_COMM,          LOW_6,                LOW_7,          LOW_8,                 LOW_9,           LOW_0,              KC_SCLN,            NK(NK_COLN),    KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         CTL_COLN,          KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_NO,              KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS
     ),
     [_NAV] = LAYOUT_ortho_4x12(
-        NK(NK_GRV),        KC_EXLM,              KC_AT,          KC_HASH,               NK(NK_DLR),      KC_PERC,            NK(NK_CIRC),        NK(NK_AMPR),    NK(NK_ASTR),  KC_LPRN,       NK(NK_RPRN),   KC_TRNS,
-        KC_TRNS,           NK(NK_BSLS),          NK(NK_LBRC),    NK(NK_RBRC),           NK(NK_MINS_NAV), NK(NK_EQL),         NK(NK_HOME),        KC_LEFT,        KC_DOWN,      KC_UP,         KC_RGHT,       NK(NK_END),
+        KC_GRV,            KC_EXLM,              KC_AT,          KC_HASH,               NK(NK_DLR),      KC_PERC,            NK(NK_CIRC),        NK(NK_AMPR),    NK(NK_ASTR),  KC_LPRN,       NK(NK_RPRN),   KC_TRNS,
+        KC_TRNS,           NK(NK_BSLS),          NK(NK_LBRC),    NK(NK_RBRC),           NK(NK_MINS_NAV), NK(NK_EQL),         KC_HOME,            KC_LEFT,        KC_DOWN,      KC_UP,         KC_RGHT,       KC_END,
         SFT_TILD,          NK(NK_PIPE),          NK(NK_LCBR),    NK(NK_RCBR),           NK(NK_UNDS),     NK(NK_PLUS),        KC_NO,              NK(NK_F2),      KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         KC_TRNS,           KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_TRNS,            KC_NO,              KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS
     ),
@@ -82,7 +89,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 if (record->event.pressed) {
                     uint8_t mods = get_mods();
                     if (mods & MOD_MASK_CTRL) {
-                        del_mods(mods);
+                        del_mods(MOD_MASK_CTRL);
                         tap_code16(MENU);
                         set_mods(mods);
                         return false;
@@ -107,9 +114,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case SFT_DEL:
             if (record->tap.count) { // only trigger on taps, not holds
                 uint8_t mods = get_mods();
-                if (mods & MOD_MASK_GUI) { // obliterate line forwards
+                if (mods & OBLITERATE_TRIGGER_MODS) { // obliterate line forwards
                     if (record->event.pressed) {
-                        del_mods(MOD_MASK_GUI);
+                        del_mods(OBLITERATE_TRIGGER_MODS);
                         tap_code16(S(KC_END));
                         register_code(KC_DEL);
                         set_mods(mods);
@@ -126,18 +133,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             break;
 
-        case L_SFT:
+        case L_SFT: {
             static bool tab_backward_held = false;
             if (record->tap.count) {
                 if (record->event.pressed) {
                     uint8_t mods = get_mods();
-                    if (mods & MOD_MASK_ALT) {
-                        del_mods(MOD_MASK_ALT);
+                    if (mods & TABBING_TRIGGER_MODS) { // tabbing
+                        del_mods(TABBING_TRIGGER_MODS);
                         register_code16(TAB_BACKWARD);
                         set_mods(mods);
                         tab_backward_held = true; // set the flag
                         return false;
-                    } else if (mods & MOD_MASK_SHIFT) {
+                    } else if (mods & MOD_MASK_SHIFT) { // caps word
                         caps_word_on();
                         return false;
                     }
@@ -151,6 +158,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 }
             }
             break;
+        }
 
         case ALT_COMP:
             // caps lock
@@ -160,86 +168,86 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             break;
 
-        case CUSTOM_KEY_RANGE:
-            process_custom_key(keycode, record);
-            return false;
+        case SFT_TILD: {
+            static bool tab_backward_held = false;
+            if (record->tap.count) {
+                if (record->event.pressed) {
+                    uint8_t mods = get_mods();
+                    if (mods & TABBING_TRIGGER_MODS) { // tabbing
+                        del_mods(TABBING_TRIGGER_MODS);
+                        register_code16(TAB_BACKWARD);
+                        set_mods(mods);
+                        tab_backward_held = true; // set the flag
+                    } else { // TILDE is 16-bit
+                        register_code16(KC_TILD);
+                    }
+                } else {
+                    if (tab_backward_held) {
+                        tab_backward_held = false; // clear the flag
+                        unregister_code16(TAB_BACKWARD);
+                        neutralize_flashing_mods();
+                    } else {
+                        unregister_code16(KC_TILD);
+                    }
+                }
+                return false;
+            }
             break;
-        case ALT_DEL:
-        case SFT_TILD:
-        case SFT_SFT:
-        case SFT_COMM:
-        case CTL_COLN:
-            return process_custom_taphold(keycode, record);
+        }
+
+        case SFT_COMM: {
+            static bool tab_backward_held = false;
+            if (record->tap.count) {
+                if (record->event.pressed) {
+                    uint8_t mods = get_mods();
+                    if (mods & TABBING_TRIGGER_MODS) { // tabbing
+                        del_mods(TABBING_TRIGGER_MODS);
+                        register_code16(TAB_BACKWARD);
+                        set_mods(mods);
+                        tab_backward_held = true; // set the flag
+                        return false;
+                    }
+                } else {
+                    if (tab_backward_held) {
+                        unregister_code16(TAB_BACKWARD);
+                        neutralize_flashing_mods();
+                        return false;
+                    }
+                }
+            }
+            break;
+        }
+
+        case CTL_COLN: // COLN is 16-bit
+            if (record->tap.count) {
+                (record->event.pressed ? register_code16 : unregister_code16)(KC_COLN);
+                return false;
+            }
             break;
     }
     return true;
-}
-
-/// @brief Obliterate a line of text.
-/// @param key_down Whether the key was pressed down.
-/// @param deletion_keycode The deletion keycode. Either `KC_BSPC` or `KC_DEL`.
-/// @param movement_keycode The movement keycode. Either `KC_HOME` or `KC_END`.
-/// @return Always returns `false`.
-bool obliterate_line2(bool key_down, uint8_t deletion_keycode, uint8_t movement_keycode) {
-    if (key_down) {
-        tap_code16(S(movement_keycode));
-        register_code(deletion_keycode);
-    } else {
-        unregister_code(deletion_keycode);
-    }
-    return false;
-}
-
-/// @brief Obliterate a line of text backwards from the cursor.
-/// @param key_down Whether the key was pressed down.
-/// @param _ Unused.
-/// @return Always returns `false`.
-bool obliterate_line_backwards2(bool key_down, void* _) {
-    return obliterate_line2(key_down, KC_BSPC, KC_HOME);
-}
-
-/// @brief Obliterate a line of text forwards from the cursor.
-/// @param key_down Whether the key was pressed down.
-/// @param _ Unused.
-/// @return Always returns `false`.
-bool obliterate_line_forwards2(bool key_down, void* _) {
-    return obliterate_line2(key_down, KC_DEL, KC_END);
-}
-
-/// @brief Wrapper to turn on caps word.
-/// @param key_down Whether the key was pressed down.
-/// @param _ Unused.
-/// @return Always returns `false`.
-bool turn_on_caps_word2(bool key_down, void* _) {
-    caps_word_on();
-    return false;
 }
 
 const key_override_t Q_TO_KILL = ko_make_with_layers(MOD_MASK_GUI, KC_Q, A(KC_F4), _BASE + 1);
 
 const key_override_t BSPC_TO_OBLITERATE = {
     .trigger = KC_BSPC,
-    .trigger_mods = MOD_MASK_GUI,
+    .trigger_mods = OBLITERATE_TRIGGER_MODS,
     .layers = 0xFF,
-    .custom_action = obliterate_line_backwards2,
-    .suppressed_mods = MOD_MASK_GUI,
+    .custom_action = obliterate_line_backwards,
+    .suppressed_mods = OBLITERATE_TRIGGER_MODS,
 };
 
-const key_override_t DEL_TO_OBLITERATE = {
-    .trigger = KC_DEL,
-    .trigger_mods = MOD_MASK_GUI,
-    .layers = 0xFF,
-    .custom_action = obliterate_line_forwards2,
-    .suppressed_mods = MOD_MASK_GUI,
-};
-const key_override_t DEL_TO_CAPS_WORD = {
-    .trigger = SFT_DEL,
-    .trigger_mods = MOD_MASK_SHIFT,
-    .layers = 0xFF,
-    .custom_action = turn_on_caps_word2,
-};
+const key_override_t HOME_NOCTRL = ko_make_basic(MOD_MASK_CTRL, KC_HOME, KC_HOME);
+const key_override_t HOME_TO_MEGA_HOME = ko_make_basic(MOD_MASK_GUI, KC_HOME, C(KC_HOME));
 
-const key_override_t ESC_TO_TAB_FORWARD = ko_make_basic(MOD_MASK_ALT, KC_ESC, TAB_FORWARD);
+const key_override_t END_NO_CTRL = ko_make_basic(MOD_MASK_CTRL, KC_END, KC_END);
+const key_override_t END_TO_META_END = ko_make_basic(MOD_MASK_GUI, KC_END, C(KC_END));
+
+const key_override_t ESC_TO_TAB_FORWARD = ko_make_basic(TABBING_TRIGGER_MODS, KC_ESC, TAB_FORWARD);
+
+const key_override_t GRV_TO_TAB_FORWARD = ko_make_basic(TABBING_TRIGGER_MODS, KC_GRV, TAB_FORWARD);
+const key_override_t GRV_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_GRV, KC_GRV);
 
 const key_override_t DOWN_TO_ZOOM_OUT = ko_make_basic(MOD_MASK_CTRL, DOWN, C(KC_MINS));
 const key_override_t DOWN_DEFAULT = ko_make_basic(0, DOWN, KC_DOWN);
@@ -294,10 +302,18 @@ const key_override_t LOW_0_DEFAULT = ko_make_basic(0, LOW_0, KC_0);
 // this globally defines all key overrides to be used
 const key_override_t* key_overrides[] = {
     &Q_TO_KILL,
+    //
     &BSPC_TO_OBLITERATE,
-    // &DEL_TO_OBLITERATE,
-    &DEL_TO_CAPS_WORD,
+
+    &HOME_NOCTRL,
+    &HOME_TO_MEGA_HOME,
+    &END_NO_CTRL,
+    &END_TO_META_END,
+
     &ESC_TO_TAB_FORWARD,
+
+    &GRV_TO_TAB_FORWARD,
+    &GRV_NOSHIFT,
 
     &DOWN_TO_ZOOM_OUT,
     &DOWN_DEFAULT,

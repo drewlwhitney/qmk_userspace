@@ -1,9 +1,6 @@
 SRC += caps_word/caps_word.c
 SRC += taphold/taphold_options.c
-SRC += utils/mod_suppression.c
-SRC += utils/deletion.c
-SRC += custom_keys/custom_keys.c
-SRC += custom_keys/mapping.c
+SRC += utils/utils.c
 
 # VIA_ENABLE = yes
 LTO_ENABLE = yes

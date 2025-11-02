@@ -1,4 +1,6 @@
-#include "taphold_options.h"
+#include "./taphold_options.h"
+#include "../alias.h"
+#include "../tap_dance/tap_dance.h"
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
@@ -6,7 +8,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
         case NUM_SPC:
         case NAV_ENT:
         case GUI_LAUNCH:
-        case LT(_FUNC, KC_MPLY):
+        case FUNC_PLAY:
             return 0; // no repeat tapping when tapped and then held for these keys
             break;
     }

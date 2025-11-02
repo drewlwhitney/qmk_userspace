@@ -1,6 +1,6 @@
-#include "tap_dance.h"
-#include "../common.h"
-#include "../custom_keys/alias.h"
+#include QMK_KEYBOARD_H
+#include "./tap_dance.h"
+#include "../alias.h"
 
 void CAD_lock_sleep(tap_dance_state_t* state, void* user_data) {
     switch (state->count) {

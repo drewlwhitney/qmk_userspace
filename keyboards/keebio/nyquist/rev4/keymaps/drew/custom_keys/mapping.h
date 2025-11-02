@@ -1,11 +1,36 @@
 #pragma once
 #include QMK_KEYBOARD_H
-#include "../common.h"
+#include "../alias.h"
 #include "../layers.h"
-#include "../utils/deletion.h"
-#include "alias.h"
-#include "custom_keys.h"
 
+#define CUSTOM_KEY_RANGE NK(NK_Q)... NK(NK_LAST)
+#define KEYCODE_RANGE TH_DEL... TH_COLN
+#define FUNCTION_RANGE TH_LAUNCH
+#define NK(keycode) keycode + SAFE_RANGE
+
+typedef struct {
+    // 0 = do not change current mods, 1 = remove just trigger mods, 2 = remove all mods
+    uint8_t mod_removal_mode;
+    // true = mods must match exactly, false = only one match is required
+    bool exact_match;
+    // whether replacement_action is a function or a keycode
+    bool action_is_function;
+} key_remap_options_t;
+
+typedef struct {
+    void* replacement_action;
+    uint8_t trigger_mods;
+    uint8_t negative_mods;
+    key_remap_options_t options;
+} key_remap_t;
+
+typedef struct {
+    void* default_action; // the action to perform if none of the remaps trigger
+    uint16_t held_keycode; // the currently held keycode
+    uint8_t num_remaps; // how many entries are in remaps[]
+    // an array containing remaps that dictate how the key is handles based on the mod state
+    key_remap_t remaps[MAX_REMAPS_PER_CUSTOM_KEY];
+} custom_key_t;
 // -------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------------
