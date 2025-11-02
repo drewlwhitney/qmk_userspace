@@ -97,9 +97,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                     } else {
                         neutralize_flashing_mods();
                     }
-                } else if (mods & MOD_MASK_SHIFT) { // caps word
+                } else if (mods & MOD_MASK_SHIFT) { // caps lock
                     if (record->event.pressed) {
-                        caps_word_on();
+                        tap_code(KC_CAPS);
                     }
                     return false;
                 }
@@ -116,11 +116,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                         register_code16(TAB_BACKWARD);
                         set_mods(mods);
                         tab_backward_held = true; // set the flag
-                        return false;
-                    } else if (mods & MOD_MASK_SHIFT) { // caps word
-                        caps_word_on();
-                        return false;
+                    } else if (mods & MOD_MASK_SHIFT) { // caps lock
+                        tap_code(KC_CAPS);
+                    } else { // caps word
+                        caps_word_toggle();
                     }
+                    return false;
                 } else {
                     if (tab_backward_held) {
                         tab_backward_held = false; // clear the flag
@@ -132,14 +133,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             break;
         }
-
-        case ALT_COMP:
-            // caps lock
-            if (record->tap.count && record->event.pressed && get_mods() & MOD_MASK_SHIFT) {
-                tap_code(KC_CAPS);
-                return false;
-            }
-            break;
 
         case SFT_TILD: {
             static bool tab_backward_held = false;
