@@ -1,6 +1,7 @@
 SRC += caps_word/caps_word.c
 SRC += taphold/taphold_options.c
 SRC += utils/utils.c
+# SRC += chordal_hold/chordal_options.c
 
 # VIA_ENABLE = yes
 LTO_ENABLE = yes

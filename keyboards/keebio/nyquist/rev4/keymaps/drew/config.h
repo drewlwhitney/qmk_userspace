@@ -21,7 +21,6 @@
 
 #define SPLIT_USB_TIMEOUT 20000
 
-
 // -------------------------------------------------------------------------------------------------
 
 // #define DYNAMIC_KEYMAP_LAYER_COUNT 5
@@ -33,6 +32,7 @@
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 #define PERMISSIVE_HOLD_PER_KEY
 #define TAPPING_TERM_PER_KEY
+// #define CHORDAL_HOLD
 
 #define CAPS_WORD_IDLE_TIMEOUT 0
 
