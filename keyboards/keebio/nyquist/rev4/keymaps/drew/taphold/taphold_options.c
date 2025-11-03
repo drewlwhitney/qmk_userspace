@@ -136,6 +136,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
         case ALT_UP:
             return 400;
             break;
+        
+        case CW_CL: // have to hold for caps lock a little longer
+            return 300;
+            break;
     }
     return TAPPING_TERM;
 }
