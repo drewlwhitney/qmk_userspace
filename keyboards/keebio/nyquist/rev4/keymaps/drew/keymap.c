@@ -26,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,            KC_Q,                 KC_W,           KC_E,                  KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,         KC_O,          KC_P,          KC_BSPC,
         KC_TAB,            GUI_A,                ALT_S,          SFT_D,                 CTL_F,           CTL_G,              CTL_H,              CTL_J,          SFT_K,        ALT_L,         GUI_SCLN,      KC_QUOT,
         CW_CL,             KC_Z,                 KC_X,           KC_C,                  KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       KC_DEL,
-        KC_NO,             FUNC_PLAY,            ALT_T(KC_LALT), TD(TD_CAD_LOCK_SLEEP), LAUNCH,          NUM_SPC,            NAV_ENT,            KC_RALT,        KC_LEFT,      DOWN,          UP,            KC_RGHT
+        KC_NO,             FUNC_PLAY,            KC_LALT,        TD(TD_CAD_LOCK_SLEEP), LAUNCH,          NUM_SPC,            NAV_ENT,            KC_RALT,        KC_LEFT,      DOWN,          UP,            KC_RGHT
     ),
     // gamer
     [_GAME] = LAYOUT_ortho_4x12(
@@ -147,10 +147,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             break;
 
         // make arrow key homerow mods trigger the tap action when held and the hold time expires
-        case GUI_RGHT:
         case ALT_UP:
         case SFT_DOWN:
+            if (!record->tap.count && !record->tap.interrupted) {
+                if (record->event.pressed) {
+                    register_code(keycode);
+                    return false;
+                } else {
+                    unregister_code(keycode);
+                }
+            } else {
+                uint8_t mods = get_mods();
+                if (record->event.pressed) {
+                    if (mods == MOD_BIT(KC_LCTL)) { // remove control
+                        del_mods(MOD_BIT(KC_LCTL));
+                        register_code(keycode);
+                        set_mods(mods);
+                        return false;
+                    }
+                }
+            }
         case CTL_LEFT:
+        case GUI_RGHT:
             // if this is a hold action and it occurred naturally
             if (!record->tap.count && !record->tap.interrupted) {
                 if (record->event.pressed) {
@@ -199,7 +217,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case KC_COMM:
         case KC_DOT:
         case KC_SLSH:
-            if (record->event.pressed && get_mods() == MOD_BIT(KC_RSFT)) {
+            if (IS_LAYER_ON(_BASE) && record->event.pressed && get_mods() == MOD_BIT(KC_RSFT)) {
                 return false; // do nothing
             }
             break;
@@ -208,7 +226,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case SFT_K:
         case CTL_J:
         case CTL_H:
-            if (record->event.pressed && record->tap.count && get_mods() == MOD_BIT(KC_RSFT)) {
+            if (IS_LAYER_ON(_BASE) && record->event.pressed && record->tap.count &&
+                get_mods() == MOD_BIT(KC_RSFT)) {
                 return false; // do nothing
             }
             break;
