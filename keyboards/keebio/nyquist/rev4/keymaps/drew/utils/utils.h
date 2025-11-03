@@ -51,3 +51,9 @@ bool unshift_register_or_ctrl_fallthrough(
 /// @param record The current `keyrecord_t`.
 /// @return Whether processing of the key should continue.
 bool unshift_register(uint8_t keycode, keyrecord_t* record);
+
+/// @brief Trigger a key's tap action when it is held and not interrupted.
+/// @param keycode The keycode being processed.
+/// @param record The current `keyrecord_t`.
+/// @return Whether processing of the key should continue.
+bool trigger_tap_on_hold(uint8_t keycode, keyrecord_t* record);

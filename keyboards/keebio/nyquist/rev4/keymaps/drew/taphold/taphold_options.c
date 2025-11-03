@@ -1,4 +1,5 @@
-#include "./taphold_options.h"
+#include QMK_KEYBOARD_H
+
 #include "../alias.h"
 #include "../tap_dance/tap_dance.h"
 
