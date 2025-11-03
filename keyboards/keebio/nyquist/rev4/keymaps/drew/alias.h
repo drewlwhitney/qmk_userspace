@@ -27,9 +27,6 @@ enum CustomKeycodes {
 #define TAB_FORWARD C(KC_TAB)
 #define TAB_BACKWARD (C(S(KC_TAB)))
 
-// weird tap holds
-#define CW_CL SFT_T(CAPS_WORD)
-
 // layers
 #define NUM_SPC LT(_NUM, KC_SPC)
 #define NAV_ENT LT(_NAV, KC_ENT)

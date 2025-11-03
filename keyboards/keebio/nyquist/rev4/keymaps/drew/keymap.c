@@ -25,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_ortho_4x12(
         KC_ESC,            KC_Q,                 KC_W,           KC_E,                  KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,         KC_O,          KC_P,          KC_BSPC,
         KC_TAB,            GUI_A,                ALT_S,          SFT_D,                 CTL_F,           CTL_G,              CTL_H,              CTL_J,          SFT_K,        ALT_L,         GUI_SCLN,      KC_QUOT,
-        CW_CL,             KC_Z,                 KC_X,           KC_C,                  KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       KC_DEL,
+        TD(TD_CW_CL),      KC_Z,                 KC_X,           KC_C,                  KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       KC_DEL,
         KC_NO,             FUNC_PLAY,            KC_LALT,        TD(TD_CAD_LOCK_SLEEP), LAUNCH,          NUM_SPC,            NAV_ENT,            KC_RALT,        KC_LEFT,      DOWN,          UP,            KC_RGHT
     ),
     // gamer
@@ -61,35 +61,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
-        case CW_CL: { // caps word is really complicated, eek
-            static bool tab_backward_held = false;
-            if (record->tap.count) {
-                if (record->event.pressed) {
-                    uint8_t mods = get_mods();
-                    if (mods & TABBING_TRIGGER_MODS) { // tabbing
-                        del_mods(TABBING_TRIGGER_MODS);
-                        register_code16(TAB_BACKWARD);
-                        set_mods(mods);
-                        tab_backward_held = true; // set the flag
-                    } else { // caps word
-                        caps_word_toggle();
-                    }
-                } else {
-                    if (tab_backward_held) {
-                        tab_backward_held = false; // clear the flag
-                        unregister_code16(TAB_BACKWARD);
-                        neutralize_flashing_mods();
-                    }
-                }
-            } else { // hold; caps lock
-                if (record->event.pressed) {
-                    tap_code(KC_CAPS);
-                }
-            }
-            return false;
-            break;
-        }
-
         // make it possible to go from layer 3 to layer 2
         case NUM_SPC:
             if (!record->tap.count) {
@@ -235,6 +206,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     return true;
 }
 
+const key_override_t CW_CL_TO_TAB_BACKWARDS =
+    ko_make_basic(TABBING_TRIGGER_MODS, TD(TD_CW_CL), TAB_BACKWARD);
+
 const key_override_t Q_TO_KILL = ko_make_with_layers(MOD_MASK_GUI, KC_Q, A(KC_F4), 1 << _BASE);
 
 const key_override_t COMM_TO_TAB_BACKWARDS =
@@ -328,6 +302,7 @@ const key_override_t F2_TO_M = ko_make_with_layers(MOD_MASK_CTRL, KC_F2, C(KC_M)
 
 // this globally defines all key overrides to be used
 const key_override_t* key_overrides[] = {
+    &CW_CL_TO_TAB_BACKWARDS,
     &COMM_TO_TAB_BACKWARDS,
     &TILDE_TO_TAB_BACKWARDS,
     &Q_TO_KILL,

@@ -2,7 +2,7 @@
 #include "./tap_dance.h"
 #include "../alias.h"
 
-void CAD_lock_sleep(tap_dance_state_t* state, void* user_data) {
+void CAD_lock_sleep(tap_dance_state_t* state, void*) {
     switch (state->count) {
         case 1:
             tap_code16(CAD);
@@ -18,6 +18,27 @@ void CAD_lock_sleep(tap_dance_state_t* state, void* user_data) {
     }
 }
 
+void caps_lock_caps_word_on_tap(tap_dance_state_t* state, void*) {
+    switch (state->count) {
+        case 1: // do nothing for the first tap
+            break;
+        default:
+            tap_code(KC_CAPS);
+            break;
+    }
+}
+
+void caps_lock_caps_word_on_finish(tap_dance_state_t* state, void*) {
+    switch (state->count) {
+        case 1:
+            caps_word_toggle();
+            break;
+    }
+}
+
 tap_dance_action_t tap_dance_actions[] = {
     [TD_CAD_LOCK_SLEEP] = ACTION_TAP_DANCE_FN(CAD_lock_sleep),
+    [TD_CW_CL] = ACTION_TAP_DANCE_FN_ADVANCED(
+        caps_lock_caps_word_on_tap, caps_lock_caps_word_on_finish, NULL
+    ),
 };
