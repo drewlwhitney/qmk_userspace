@@ -24,28 +24,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // base
     [_BASE] = LAYOUT_ortho_4x12(
         KC_ESC,            KC_Q,                 KC_W,           KC_E,                  KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,         KC_O,          KC_P,          KC_BSPC,
-        KC_TAB,            GUI_A,                ALT_S,          SFT_D,                 CTL_F,           CTL_G,              CTL_H,              CTL_J,          SFT_K,        ALT_L,         GUI_SCLN,      KC_QUOT,
+        KC_TAB,            ALT_A,                GUI_S,          CTL_D,                 SFT_F,           KC_G,               KC_H,               SFT_J,          CTL_K,        GUI_L,         ALT_SCLN,      KC_QUOT,
         TD(TD_CW_CL),      KC_Z,                 KC_X,           KC_C,                  KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       KC_DEL,
         KC_NO,             FUNC_PLAY,            KC_LALT,        TD(TD_CAD_LOCK_SLEEP), LAUNCH,          NUM_SPC,            NAV_ENT,            KC_RALT,        KC_LEFT,      DOWN,          UP,            KC_RGHT
     ),
     // gamer
     [_GAME] = LAYOUT_ortho_4x12(
         KC_TRNS,           KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
-        KC_TAB,            KC_A,                 KC_S,           KC_D,                  KC_F,            KC_G,               KC_H,               KC_J,           KC_K,         KC_L,          KC_SCLN,       KC_TRNS,
+        KC_TAB,            KC_A,                 KC_S,           KC_D,                  KC_TRNS,         KC_TRNS,            KC_H,               KC_J,           KC_K,         KC_L,          KC_SCLN,       KC_TRNS,
         KC_LSFT,           KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         KC_LCTL,           KC_TRNS,              KC_TRNS,        KC_PGDN,               KC_PGUP,         KC_TRNS,            KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS
     ),
     // numbers
     [_NUM] = LAYOUT_ortho_4x12(
         KC_TRNS,           KC_SLSH,              KC_AT,          MULT,                  KC_MINS,         KC_PLUS,            KC_CIRC,            KC_AMPR,        KC_ASTR,      KC_LPRN,       KC_RPRN,       KC_TRNS,
-        KC_DOT,            GUI_1,                ALT_2,          SFT_3,                 CTL_4,           KC_5,               KC_6,               CTL_7,          SFT_8,        ALT_9,         GUI_0,         KC_TRNS,
+        KC_DOT,            ALT_1,                GUI_2,          CTL_3,                 SFT_4,           KC_5,               KC_6,               SFT_7,          CTL_8,        GUI_9,         ALT_0,         KC_TRNS,
         KC_COMM,           LOW_6,                LOW_7,          LOW_8,                 LOW_9,           LOW_0,              KC_SCLN,            KC_COLN,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         KC_COLN,           KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_NO,              KC_TRNS,            KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS
     ),
     // navigation and special characters
     [_NAV] = LAYOUT_ortho_4x12(
         KC_GRV,            KC_EXLM,              KC_AT,          KC_HASH,               KC_DLR,          KC_PERC,            KC_CIRC,            KC_AMPR,        KC_ASTR,      KC_LPRN,       KC_RPRN,       KC_TRNS,
-        KC_TRNS,           GUI_BSLS,             ALT_LBRC,       SFT_RBRC,              CTL_MINS,        KC_EQL,             KC_HOME,            CTL_LEFT,       SFT_DOWN,     ALT_UP,        GUI_RGHT,      KC_END,
+        KC_TRNS,           ALT_BSLS,             GUI_LBRC,       CTL_RBRC,              SFT_MINS,        KC_EQL,             KC_HOME,            SFT_LEFT,       CTL_DOWN,     GUI_UP,        ALT_RGHT,      KC_END,
         KC_TILDE,          KC_PIPE,              KC_LCBR,        KC_RCBR,               KC_UNDS,         KC_PLUS,            KC_NO,              KC_F2,          KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS,
         KC_TRNS,           KC_TRNS,              KC_TRNS,        KC_TRNS,               KC_TRNS,         KC_TRNS,            KC_NO,              KC_TRNS,        KC_TRNS,      KC_TRNS,       KC_TRNS,       KC_TRNS
     ),
@@ -87,39 +87,39 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             break;
 
         // noshift homerow mods with control overrides
-        case GUI_1:
+        case ALT_1:
             return unshift_register_or_ctrl_fallthrough(keycode, KC_A, record);
             break;
-        case ALT_2:
+        case GUI_2:
             return unshift_register_or_ctrl_fallthrough(keycode, KC_S, record);
             break;
-        case CTL_4:
+        case SFT_4:
             return unshift_register_or_ctrl_fallthrough(keycode, KC_F, record);
             break;
-        case CTL_7:
+        case SFT_7:
             return unshift_register_or_ctrl_fallthrough(keycode, KC_J, record);
             break;
-        case GUI_BSLS:
+        case ALT_BSLS:
             return unshift_register_or_ctrl_fallthrough(keycode, KC_A, record);
             break;
-        case ALT_LBRC:
+        case GUI_LBRC:
             return unshift_register_or_ctrl_fallthrough(keycode, KC_S, record);
             break;
-        case CTL_MINS:
+        case SFT_MINS:
             return unshift_register_or_ctrl_fallthrough(keycode, KC_F, record);
             break;
 
-        case SFT_3:
-        case GUI_0:
-        case SFT_8:
-        case ALT_9:
-        case SFT_RBRC: // no control override, just unshift
+        case CTL_3:
+        case ALT_0:
+        case CTL_8:
+        case GUI_9:
+        case CTL_RBRC: // no control override, just unshift
             return unshift_register(keycode, record);
             break;
 
         // make arrow key homerow mods trigger the tap action when held and the hold time expires
-        case ALT_UP:
-        case SFT_DOWN:
+        case GUI_UP:
+        case CTL_DOWN:
             if (!record->tap.count && !record->tap.interrupted) {
                 if (record->event.pressed) {
                     register_code(keycode);
@@ -138,8 +138,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                     }
                 }
             }
-        case CTL_LEFT:
-        case GUI_RGHT:
+        case SFT_LEFT:
+        case ALT_RGHT:
             // if this is a hold action and it occurred naturally
             if (!record->tap.count && !record->tap.interrupted) {
                 if (record->event.pressed) {
@@ -157,6 +157,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case KC_E:
         case KC_R:
         case KC_T:
+        case KC_G:
         case KC_Z:
         case KC_X:
         case KC_C:
@@ -167,11 +168,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             break;
 
-        case GUI_A:
-        case ALT_S:
-        case SFT_D:
-        case CTL_F:
-        case CTL_G:
+        case ALT_A:
+        case GUI_S:
+        case CTL_D:
+        case SFT_F:
             if (record->event.pressed && record->tap.count && get_mods() == MOD_BIT(KC_LSFT)) {
                 return false; // do nothing
             }
@@ -182,6 +182,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case KC_I:
         case KC_O:
         case KC_P:
+        case KC_H:
         case KC_QUOT:
         case KC_N:
         case KC_M:
@@ -192,11 +193,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 return false; // do nothing
             }
             break;
-        case GUI_SCLN:
-        case ALT_L:
-        case SFT_K:
-        case CTL_J:
-        case CTL_H:
+        case ALT_SCLN:
+        case GUI_L:
+        case CTL_K:
+        case SFT_J:
             if (IS_LAYER_ON(_BASE) && record->event.pressed && record->tap.count &&
                 get_mods() == MOD_BIT(KC_RSFT)) {
                 return false; // do nothing
@@ -248,6 +248,9 @@ const key_override_t UP_TO_ZOOM_IN = ko_make_basic(MOD_MASK_CTRL, UP, C(KC_EQL))
 const key_override_t UP_DEFAULT = ko_make_basic(0, UP, KC_UP);
 
 // NUM layer
+const key_override_t FIVE_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_5, KC_5);
+const key_override_t SIX_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_6);
+
 const key_override_t LOW_6_TO_Z = ko_make_basic(MOD_MASK_CTRL, LOW_6, C(KC_Z));
 const key_override_t LOW_6_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, LOW_6, KC_6);
 const key_override_t LOW_6_DEFAULT = ko_make_basic(0, LOW_6, KC_6);
@@ -325,6 +328,8 @@ const key_override_t* key_overrides[] = {
     &UP_TO_ZOOM_IN,
     &UP_DEFAULT,
 
+    &FIVE_NOSHIFT,
+    &SIX_NOSHIFT,
     &LOW_6_TO_Z,
     &LOW_6_NOSHIFT,
     &LOW_6_DEFAULT,

@@ -5,36 +5,33 @@
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
-        case CTL_T(KC_TAB):
         case NUM_SPC:
         case NAV_ENT:
         case FUNC_PLAY: // no repeat tapping for these keys
 
-        case GUI_A:
-        case ALT_S:
-        case SFT_D:
-        case CTL_F:
-        case CTL_G:
-        case GUI_SCLN:
-        case ALT_L:
-        case SFT_K:
-        case CTL_J:
-        case CTL_H:
+        case ALT_A:
+        case GUI_S:
+        case CTL_D:
+        case SFT_F:
+        case ALT_SCLN:
+        case GUI_L:
+        case CTL_K:
+        case SFT_J:
 
-        case GUI_1:
-        case ALT_2:
-        case SFT_3:
-        case CTL_4:
-        case GUI_0:
-        case ALT_9:
-        case SFT_8:
-        case CTL_7:
-
-        case GUI_BSLS:
-        case ALT_LBRC:
-        case SFT_RBRC:
-        case CTL_MINS: // no repeat tapping for homerow mods
+        case ALT_BSLS:
+        case GUI_LBRC:
+        case CTL_RBRC:
+        case SFT_MINS:
         // intentionally omitting arrow keys
+
+        case ALT_1:
+        case GUI_2:
+        case CTL_3:
+        case SFT_4:
+        case ALT_0:
+        case GUI_9:
+        case CTL_8:
+        case SFT_7: // no repeat tapping for homerow mods
             return 0;
             break;
     }
@@ -46,34 +43,33 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t* record) {
         case NUM_SPC: // permissive hold for layer tap space
             return true;
             break;
-        case GUI_A:
-        case ALT_S:
-        case SFT_D:
-        case CTL_F:
-        case CTL_G:
-        case GUI_SCLN:
-        case ALT_L:
-        case SFT_K:
-        case CTL_J:
-        case CTL_H:
 
-        case GUI_1:
-        case ALT_2:
-        case SFT_3:
-        case CTL_4:
-        case GUI_0:
-        case ALT_9:
-        case SFT_8:
-        case CTL_7:
+        case ALT_A:
+        case GUI_S:
+        case CTL_D:
+        case SFT_F:
+        case ALT_SCLN:
+        case GUI_L:
+        case CTL_K:
+        case SFT_J:
 
-        case GUI_BSLS:
-        case ALT_LBRC:
-        case SFT_RBRC:
-        case CTL_MINS: // permissive hold for homerow mods
-        case GUI_RGHT:
-        case ALT_UP:
-        case SFT_DOWN:
-        case CTL_LEFT:
+        case ALT_BSLS:
+        case GUI_LBRC:
+        case CTL_RBRC:
+        case SFT_MINS:
+        case ALT_RGHT:
+        case GUI_UP:
+        case CTL_DOWN:
+        case SFT_LEFT:
+
+        case ALT_1:
+        case GUI_2:
+        case CTL_3:
+        case SFT_4:
+        case ALT_0:
+        case GUI_9:
+        case CTL_8:
+        case SFT_7: // permissive hold for mod-taps
             return true;
             break;
     }
@@ -86,34 +82,32 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t* record) {
             return false;
             break;
 
-        case GUI_A:
-        case ALT_S:
-        case SFT_D:
-        case CTL_F:
-        case CTL_G:
-        case GUI_SCLN:
-        case ALT_L:
-        case SFT_K:
-        case CTL_J:
-        case CTL_H:
+        case ALT_A:
+        case GUI_S:
+        case CTL_D:
+        case SFT_F:
+        case ALT_SCLN:
+        case GUI_L:
+        case CTL_K:
+        case SFT_J:
 
-        case GUI_1:
-        case ALT_2:
-        case SFT_3:
-        case CTL_4:
-        case GUI_0:
-        case ALT_9:
-        case SFT_8:
-        case CTL_7:
+        case ALT_BSLS:
+        case GUI_LBRC:
+        case CTL_RBRC:
+        case SFT_MINS:
+        case ALT_RGHT:
+        case GUI_UP:
+        case CTL_DOWN:
+        case SFT_LEFT:
 
-        case GUI_BSLS:
-        case ALT_LBRC:
-        case SFT_RBRC:
-        case CTL_MINS: // no hold on other key press for homerow mods
-        case GUI_RGHT:
-        case ALT_UP:
-        case SFT_DOWN:
-        case CTL_LEFT:
+        case ALT_1:
+        case GUI_2:
+        case CTL_3:
+        case SFT_4:
+        case ALT_0:
+        case GUI_9:
+        case CTL_8:
+        case SFT_7: // no hold on other key press for mod taps
             return false;
             break;
     }
@@ -122,19 +116,19 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t* record) {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
-        case GUI_A:
-        case GUI_SCLN:
-        case GUI_1:
-        case GUI_0:
-        case GUI_BSLS:
-        case GUI_RGHT:
+        case GUI_S:
+        case GUI_L:
+        case GUI_2:
+        case GUI_9:
+        case GUI_LBRC:
+        case GUI_UP:
 
-        case ALT_S:
-        case ALT_L:
-        case ALT_2:
-        case ALT_9:
-        case ALT_LBRC: // alt and gui have events for a hold and release
-        case ALT_UP:
+        case ALT_A:
+        case ALT_SCLN:
+        case ALT_1:
+        case ALT_0:
+        case ALT_BSLS: // alt and gui have events for a hold and release
+        case ALT_RGHT:
             return 400;
             break;
     }
