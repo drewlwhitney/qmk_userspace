@@ -5,6 +5,7 @@
 
 uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
+        case GUI_LAUNCH:
         case NUM_SPC:
         case NAV_ENT:
         case FUNC_PLAY: // no repeat tapping for these keys
@@ -127,8 +128,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
         case ALT_SCLN:
         case ALT_1:
         case ALT_0:
-        case ALT_BSLS: // alt and gui have events for a hold and release
-        case ALT_RGHT:
+        case ALT_BSLS:
+        case ALT_RGHT: // alt and gui have events for a hold and release
+        
+        case GUI_LAUNCH: // also non-homerow mod-taps
             return 400;
             break;
     }

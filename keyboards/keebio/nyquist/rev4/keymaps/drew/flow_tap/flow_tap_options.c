@@ -23,9 +23,11 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record, uint16_t previ
         case CTL_RBRC:
         case CTL_DOWN: // control should always be allowed to hold
 
+        case GUI_LAUNCH: // same with non-homerow mod taps
+
         case NUM_SPC:
         case NAV_ENT:
-        case FUNC_PLAY: // same with layers
+        case FUNC_PLAY: // same with layer-taps
             return 0;
             break;
     }

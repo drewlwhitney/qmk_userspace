@@ -26,7 +26,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,            KC_Q,                 KC_W,           KC_E,                  KC_R,            KC_T,               KC_Y,               KC_U,           KC_I,         KC_O,          KC_P,          KC_BSPC,
         KC_TAB,            ALT_A,                GUI_S,          CTL_D,                 SFT_F,           KC_G,               KC_H,               SFT_J,          CTL_K,        GUI_L,         ALT_SCLN,      KC_QUOT,
         TD(TD_CW_CL),      KC_Z,                 KC_X,           KC_C,                  KC_V,            KC_B,               KC_N,               KC_M,           KC_COMM,      KC_DOT,        KC_SLSH,       KC_DEL,
-        KC_NO,             FUNC_PLAY,            KC_LALT,        TD(TD_CAD_LOCK_SLEEP), LAUNCH,          NUM_SPC,            NAV_ENT,            KC_RALT,        KC_LEFT,      DOWN,          UP,            KC_RGHT
+        KC_NO,             FUNC_PLAY,            KC_LALT,        TD(TD_CAD_LOCK_SLEEP), GUI_LAUNCH,      NUM_SPC,            NAV_ENT,            KC_RALT,        KC_LEFT,      DOWN,          UP,            KC_RGHT
     ),
     // gamer
     [_GAME] = LAYOUT_ortho_4x12(
@@ -61,6 +61,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
+        case GUI_LAUNCH: // make this keycode work (16-bit mod-tap)
+            if (record->tap.count) {
+                if (record->event.pressed) {
+                    tap_code16(LAUNCH);
+                }
+                return false;
+            }
+            break;
+
         // make it possible to go from layer 3 to layer 2
         case NUM_SPC:
             if (!record->tap.count) {

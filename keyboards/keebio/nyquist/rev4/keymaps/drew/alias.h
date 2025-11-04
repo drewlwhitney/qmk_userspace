@@ -32,6 +32,9 @@ enum CustomKeycodes {
 #define NAV_ENT LT(_NAV, KC_ENT)
 #define FUNC_PLAY LT(_FUNC, KC_MPLY)
 
+// mod-taps (not homerow mods)
+#define GUI_LAUNCH GUI_T(LAUNCH)
+
 // trigger mods
 #define TABBING_TRIGGER_MODS MOD_MASK_ALT
 #define OBLITERATE_TRIGGER_MODS MOD_MASK_GUI
