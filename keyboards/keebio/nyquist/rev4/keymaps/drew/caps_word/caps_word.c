@@ -19,6 +19,7 @@ bool caps_word_press_user(uint16_t keycode) {
         case KC_RGHT:
         case KC_MINS:
         case KC_UNDS:
+        case KC_SLSH:
         case TD(TD_CW_CL): // this makes toggling work
             return true;
             break;
