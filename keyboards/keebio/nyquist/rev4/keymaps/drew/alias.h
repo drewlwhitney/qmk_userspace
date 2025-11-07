@@ -41,34 +41,34 @@ enum CustomKeycodes {
 
 // home row mods
 // base layer
-#define ALT_A ALT_T(KC_A)
-#define GUI_S GUI_T(KC_S)
+#define GUI_A GUI_T(KC_A)
+#define ALT_S ALT_T(KC_S)
 #define CTL_D CTL_T(KC_D)
 #define SFT_F SFT_T(KC_F)
 
-#define ALT_SCLN ALT_T(KC_SCLN)
-#define GUI_L GUI_T(KC_L)
-#define CTL_K CTL_T(KC_K)
+#define GUI_SCLN RGUI_T(KC_SCLN)
+#define ALT_L RALT_T(KC_L)
+#define CTL_K RCTL_T(KC_K)
 #define SFT_J RSFT_T(KC_J)
 
 // nav layer
-#define ALT_BSLS ALT_T(KC_BSLS)
-#define GUI_LBRC GUI_T(KC_LBRC)
+#define GUI_BSLS GUI_T(KC_BSLS)
+#define ALT_LBRC ALT_T(KC_LBRC)
 #define CTL_RBRC CTL_T(KC_RBRC)
 #define SFT_MINS SFT_T(KC_MINS)
 
-#define ALT_RGHT ALT_T(KC_RGHT)
-#define GUI_UP GUI_T(KC_UP)
-#define CTL_DOWN CTL_T(KC_DOWN)
+#define GUI_RGHT RGUI_T(KC_RGHT)
+#define ALT_UP RALT_T(KC_UP)
+#define CTL_DOWN RCTL_T(KC_DOWN)
 #define SFT_LEFT RSFT_T(KC_LEFT)
 
 // num layer
-#define ALT_1 ALT_T(KC_1)
-#define GUI_2 GUI_T(KC_2)
+#define GUI_1 GUI_T(KC_1)
+#define ALT_2 ALT_T(KC_2)
 #define CTL_3 CTL_T(KC_3)
 #define SFT_4 SFT_T(KC_4)
 
-#define ALT_0 ALT_T(KC_0)
-#define GUI_9 GUI_T(KC_9)
-#define CTL_8 CTL_T(KC_8)
+#define GUI_0 RGUI_T(KC_0)
+#define ALT_9 RALT_T(KC_9)
+#define CTL_8 RCTL_T(KC_8)
 #define SFT_7 RSFT_T(KC_7)
