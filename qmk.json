@@ -1,9 +1,6 @@
 {
     "userspace_version": "1.1",
     "build_targets": [
-        [
-            "keebio/nyquist/rev4",
-            "drew"
-        ]
+        ["keebio/iris_lm/g1", "drew"]
     ]
 }
