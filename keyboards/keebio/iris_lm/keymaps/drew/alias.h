@@ -25,6 +25,7 @@ enum CustomKeycodes {
 #define MENU S(KC_F10)
 #define TAB_RIGHT C(KC_TAB)
 #define TAB_LEFT (C(S(KC_TAB)))
+#define WIN_SWAP 3 // TODO
 
 // layers
 // #define NUM_SPC LT(_NUM, KC_SPC)
