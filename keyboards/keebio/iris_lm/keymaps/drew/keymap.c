@@ -13,29 +13,29 @@ bool NAV_enabled = false;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BASE] = LAYOUT(
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
-   TD_CLS,     KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                                   KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       COMPOSE,
+   TD_CLS,     KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                                   KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_NO,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_ESC,     KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,                                   KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       KC_BSPC,
+   KC_NO,      KC_Q,       KC_W,       KC_E,       KC_R,       KC_T,                                   KC_Y,       KC_U,       KC_I,       KC_O,       KC_P,       KC_NO,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TAB,     KC_A,       KC_S,       KC_D,       KC_F,       KC_G,                                   KC_H,       KC_J,       KC_K,       KC_L,       KC_SCLN,    KC_QUOT,
+   KC_NO,      KC_A,       KC_S,       KC_D,       KC_F,       KC_G,                                   KC_H,       KC_J,       KC_K,       KC_L,       KC_QUOT,    KC_NO,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   CW_TOGG,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       KC_NO,          QK_BOOT,    KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_DEL,
+   KC_NO,      KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       KC_NO,          QK_BOOT,    KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SCLN,    KC_NO,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             KC_LALT,    NAV,        NUM_SPC,                    KC_ENT,     SYM,        KC_NO
+                                             LAUNCH_NUM, NAV,        KC_SPC,                     KC_LSFT,    SYM,        COMP_FUNC
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
 [_GAME] = LAYOUT(
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
-   KC_TAB,     KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
-//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_LCTL,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+   KC_TRNS,    KC_TAB,     KC_Q,       KC_W,       KC_E,       KC_R,                                   KC_T,       KC_Y,       KC_U,       KC_I,       KC_O,       KC_TRNS,
+//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
+   KC_TRNS,    KC_LCTL,    KC_A,       KC_S,       KC_D,       KC_F,                                   KC_G,       KC_H,       KC_J,       KC_K,       KC_L,       KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_LSFT,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  
+   KC_TRNS,    KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_TRNS,        KC_TRNS,    KC_B,       KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             KC_TRNS,    KC_SPC,     KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             KC_ESC,     KC_SPC,     KC_SPC,                     KC_LSFT,    SYM,        COMP_FUNC
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -98,16 +98,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    static bool 
-    if (layer_state_cmp(state, _NAV) && layer_state_cmp(state, _SYM)) {
+    static bool if (layer_state_cmp(state, _NAV) && layer_state_cmp(state, _SYM)) {
         layer_on(_NUM);
-    } else {
+    }
+    else {
         layer_off(_NUM);
     }
     return state;
 }
 
-
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    switch (keycode) {
+        case LAUNCH_NUM: // make the launch keycode work
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(LAUNCH);
+            }
+            break;
+    }
+}
 
 // bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 //     switch (keycode) {

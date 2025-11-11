@@ -36,6 +36,8 @@ enum CustomKeycodes {
 #define NAV MO(_NAV)
 #define NUM MO(_NUM)
 #define SYM MO(_SYM)
+#define LAUNCH_NUM LT(_SH_NUM, LAUNCH)
+#define COMP_FUNC LT(_FUNC, COMPOSE)
 
 // mod-taps (not homerow mods)
 // #define GUI_LAUNCH GUI_T(LAUNCH)
