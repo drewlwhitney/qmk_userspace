@@ -1,8 +1,8 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
-#include "stdbool.h"
-#include "stdint.h"
+#include <stdbool.h>
+#include <stdint.h>
 
 /// @brief Obliterate a line of text.
 /// @param key_down Whether the key was pressed down.
@@ -51,4 +51,3 @@ bool unshift_register_or_ctrl_fallthrough(
 /// @param record The current `keyrecord_t`.
 /// @return Whether processing of the key should continue.
 bool unshift_register(uint8_t keycode, keyrecord_t* record);
-

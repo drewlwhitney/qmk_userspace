@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "caps_word.h"
 #include "../alias.h"
 #include "../tap_dance/tap_dance.h"
 

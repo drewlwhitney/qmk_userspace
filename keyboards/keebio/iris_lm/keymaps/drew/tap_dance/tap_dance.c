@@ -1,4 +1,3 @@
-#include QMK_KEYBOARD_H
 #include "./tap_dance.h"
 #include "../alias.h"
 
@@ -17,7 +16,3 @@ void CAD_lock_sleep(tap_dance_state_t* state, void*) {
             break;
     }
 }
-
-tap_dance_action_t tap_dance_actions[] = {
-    [TD_CAD_LOCK_SLEEP] = ACTION_TAP_DANCE_FN(CAD_lock_sleep),
-};

@@ -1,7 +1,7 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
-#include "./layers.h"
+#include "./layers/layers.h"
 
 /// @brief Custom keycodes.
 enum CustomKeycodes {
@@ -15,6 +15,8 @@ enum CustomKeycodes {
     LOW_0,
 
     MULT, // avoids a conflict with KC_ASTR
+
+    WIN_SWAP,
 };
 
 #define TD_CLS TD(TD_CAD_LOCK_SLEEP)
@@ -25,7 +27,6 @@ enum CustomKeycodes {
 #define MENU S(KC_F10)
 #define TAB_RIGHT C(KC_TAB)
 #define TAB_LEFT (C(S(KC_TAB)))
-#define WIN_SWAP 3 // TODO
 
 // layers
 // #define NUM_SPC LT(_NUM, KC_SPC)
@@ -36,9 +37,13 @@ enum CustomKeycodes {
 #define NUM_SPC LT(_NUM, KC_SPC)
 #define NAV MO(_NAV)
 #define NUM MO(_NUM)
-#define SYM MO(_SYM)
+#define SYM_ENT LT(_SYM, KC_ENT)
+#define GAME MO(_GAME)
 #define LAUNCH_NUM LT(_SH_NUM, LAUNCH)
 #define COMP_FUNC LT(_FUNC, COMPOSE)
+
+#define ZOOM_IN C(KC_EQL)
+#define ZOOM_OUT C(KC_MINS)
 
 // mod-taps (not homerow mods)
 // #define GUI_LAUNCH GUI_T(LAUNCH)
