@@ -20,5 +20,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         state |= 1 << _NAV | 1 << _SYM; // turn on NAV and SYM
     }
 
+    // return update_tri_layer_state(state, _SYM, _NAV, _NUM);
+
     return state;
 }

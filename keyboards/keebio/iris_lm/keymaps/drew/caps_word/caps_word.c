@@ -11,7 +11,6 @@ bool caps_word_press_user(uint16_t keycode) {
             break;
         // Keycodes that continue Caps Word, without shifting
         case KC_1 ... KC_0:
-        case LOW_6 ... LOW_0:
         case KC_BSPC:
         case KC_DEL:
         case KC_LEFT:

@@ -20,7 +20,7 @@ bool process_combo_key_release(
                 case SYM_ENT:
                     layer_off(_SYM);
                     break;
-                case NAV:
+                case NAV_CANCEL:
                     layer_off(_NAV);
                     break;
             }

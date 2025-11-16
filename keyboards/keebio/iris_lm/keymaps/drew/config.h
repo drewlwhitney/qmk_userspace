@@ -3,11 +3,9 @@
 
 #define TAPPING_TERM 200
 
+// tap-
 #define QUICK_TAP_TERM_PER_KEY
-
 #define HOLD_ON_OTHER_KEY_PRESS
-// #define PERMISSIVE_HOLD_PER_KEY
-#define TAPPING_TERM_PER_KEY
 
 
 // combos

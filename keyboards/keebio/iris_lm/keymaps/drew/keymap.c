@@ -19,7 +19,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    CW_TOGG,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       TD_CLS,         GAME,       KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_DEL,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             LAUNCH_NUM, NAV,        KC_SPC,                     OS_LSFT,    SYM_ENT,    COMPOSE
+                                             LAUNCH_NUM, NAV_CANCEL, KC_SPC,                     OSO_SHIFT,  SYM_ENT,    COMP_ARROW
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_CAPS,    KC_PIPE,    KC_LCBR,    KC_RCBR,    KC_UNDS,    KC_GRV,     KC_TRNS,        QK_BOOT,    KC_TILD,    KC_COLN,    KC_LABK,    KC_RABK,    KC_QUES,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             KC_TRNS,    NAV,        KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             KC_TRNS,    NAV_CANCEL, KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -55,13 +55,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_NO,      KC_NO,      TAB_LEFT,   TAB_RIGHT,  KC_F11,                                 ZOOM_IN,    KC_HOME,     KC_UP,     KC_END,     KC_WFWD,    KC_TRNS,
+   KC_TRNS,    ZOOM_OUT,   ZOOM_IN,    TAB_LEFT,   TAB_RIGHT,  KC_F11,                                 KC_WFWD,    KC_HOME,    KC_UP,      KC_END,     PH_P,       KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    KC_MPLY,                                ZOOM_OUT,   KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_WBAK,    KC_TRNS,
+   KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    KC_MPLY,                                KC_WBAK,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_SCLN,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_MUTE,    KC_MPRV,    KC_VOLD,    KC_VOLU,    KC_MNXT,    KC_TRNS,        QK_BOOT,    KC_NO,      KC_F2,      KC_TRNS,    KC_TRNS,    KC_END,     KC_TRNS,
+   KC_CAPS,    KC_MUTE,    KC_MPRV,    KC_VOLD,    KC_VOLU,    KC_MNXT,    KC_TRNS,        QK_BOOT,    KC_NO,      KC_F2,      KC_COMM,    KC_DOT,     KC_SLSH,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             LAUNCH_NUM, NAV,        KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             LAUNCH_NUM, NAV_CANCEL, KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -75,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_SLSH,    KC_E,       KC_ASTR,    KC_MINS,    KC_PLUS,    KC_TRNS,        QK_BOOT,    KC_CIRC,    KC_COLN,    KC_COMM,    KC_DOT,     KC_SCLN,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             KC_TRNS,    NAV,        KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             KC_TRNS,    NAV_CANCEL, KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -89,9 +89,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_TRNS,        QK_BOOT,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_TRNS,    
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             KC_TRNS,    NAV,        KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             KC_TRNS,    NAV_CANCEL, KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
+
+[_SH_ARROW] = LAYOUT( // single-handed arrows
+//┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
+   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
+   KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,                                  KC_NO,      KC_NO,      KC_UP,      KC_NO,      KC_NO,      KC_TRNS,
+//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
+   KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,                                  KC_NO,      KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_NO,      KC_TRNS,
+//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
+   KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_TRNS,        QK_BOOT,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_TRNS,    
+//└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
+                                             KC_TRNS,    NAV_CANCEL, KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+//                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
+),
+
 };
 // clang-format on
 
@@ -99,7 +114,7 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_CAD_LOCK_SLEEP] = ACTION_TAP_DANCE_FN(CAD_lock_sleep),
 };
 
-const uint16_t PROGMEM num_layer_combo[] = {NAV, SYM_ENT, COMBO_END};
+const uint16_t PROGMEM num_layer_combo[] = {NAV_CANCEL, SYM_ENT, COMBO_END};
 const uint16_t PROGMEM win_swap_combo[] = {TAB_LEFT, TAB_RIGHT, COMBO_END};
 
 combo_t key_combos[] = {
@@ -112,14 +127,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
     switch (keycode) {
         // allow the SYM and NAV layers to override each other
-        case NAV:
-            NAV_is_on = record->event.pressed; // track NAV's state for SYM
-            break;
-
         case SYM_ENT:
             if (!record->tap.count) {
-                // if NAV is on, turn it off when SYM is turned on, then restore it when SYM is
-                // turned off
+                // if NAV is on, turn it off when SYM is turned on, then restore it when SYM
+                // is turned off
                 // if we're NUM-latched, don't interfere with the states
                 if (NAV_is_on) {
                     record->event.pressed && !NUM_latched ? layer_off(_NAV) : layer_on(_NAV);
@@ -127,12 +138,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             break;
 
+        case NAV_CANCEL: // allow oneshot mods to be canceled by pressing this key
+            if (!record->tap.count) {
+                NAV_is_on = record->event.pressed; // track NAV's state for SYM
+            } else {
+                if (record->event.pressed) {
+                    clear_oneshot_mods();
+                }
+                return false;
+            }
+            break;
+
         case WIN_SWAP: // easy Alt-Tab
             if (record->event.pressed) {
-                register_mods(MOD_LALT);
-                tap_code(KC_TAB);
+                tap_code(KC_A);
+                // register_mods(MOD_LALT);
+                // tap_code(KC_TAB);
             } else {
-                unregister_mods(MOD_LALT);
+                // unregister_mods(MOD_LALT);
             }
             break;
 
@@ -144,335 +167,156 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 return false;
             }
             break;
+
+        case OSO_SHIFT: // make thumb shift oneshot-only
+            if (record->event.pressed) {
+                set_oneshot_mods(MOD_BIT(KC_LSFT));
+            }
+            break;
     }
     return true;
 }
 
-// bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-//     switch (keycode) {
-//         case GUI_TD_CLS: // make this keycode work (16-bit mod-tap)
-//             if (record->tap.count) {
-//                 if (record->event.pressed) {
-//                     tap_code16(TD_CLS);
-//                 }
-//                 return false;
-//             }
-//             break;
+const key_override_t Q_TO_KILL = ko_make_with_layers(MOD_MASK_GUI, KC_Q, A(KC_F4), 1 << _BASE);
 
-//         // make it possible to go from layer 3 to layer 2
-//         case NUM_SPC:
-//             if (!record->tap.count) {
-//                 if (NAV_enabled) {
-//                     record->event.pressed ? layer_off(_NAV) : layer_on(_NAV);
-//                 }
-//             } else {
-//                 if (record->event.pressed) {
-//                     uint8_t mods = get_mods();
-//                     if (mods & MOD_MASK_CTRL) {
-//                         del_mods(MOD_MASK_CTRL);
-//                         tap_code16(MENU);
-//                         set_mods(mods);
-//                         return false;
-//                     }
-//                 }
-//             }
-//             break;
+const key_override_t SPACE_TO_MENU = ko_make_basic(MOD_MASK_CTRL, KC_SPACE, MENU);
 
-//         case NAV_ENT:
-//             if (!record->tap.count) {
-//                 NAV_enabled = record->event.pressed;
-//             }
-//             break;
+const key_override_t BSPC_TO_OBLITERATE = {
+    .trigger = KC_BSPC,
+    .trigger_mods = OBLITERATE_TRIGGER_MODS,
+    .layers = 0xFF,
+    .custom_action = obliterate_line_backwards,
+    .suppressed_mods = OBLITERATE_TRIGGER_MODS,
+};
+const key_override_t DEL_TO_OBLITERATE = {
+    .trigger = KC_DEL,
+    .trigger_mods = OBLITERATE_TRIGGER_MODS,
+    .layers = 0xFF,
+    .custom_action = obliterate_line_forwards,
+    .suppressed_mods = OBLITERATE_TRIGGER_MODS,
+};
 
-//         // noshift homerow mods with control overrides
-//         case GUI_1:
-//             return unshift_register_or_ctrl_fallthrough(keycode, KC_A, record);
-//             break;
-//         case ALT_2:
-//             return unshift_register_or_ctrl_fallthrough(keycode, KC_S, record);
-//             break;
-//         case SFT_4:
-//             return unshift_register_or_ctrl_fallthrough(keycode, KC_F, record);
-//             break;
-//         case SFT_7:
-//             return unshift_register_or_ctrl_fallthrough(keycode, KC_J, record);
-//             break;
-//         case GUI_BSLS:
-//             return unshift_register_or_ctrl_fallthrough(keycode, KC_A, record);
-//             break;
-//         case ALT_LBRC:
-//             return unshift_register_or_ctrl_fallthrough(keycode, KC_S, record);
-//             break;
-//         case SFT_MINS:
-//             return unshift_register_or_ctrl_fallthrough(keycode, KC_F, record);
-//             break;
+const key_override_t HOME_NOCTRL = ko_make_basic(MOD_MASK_CTRL, KC_HOME, KC_HOME);
+const key_override_t HOME_TO_MEGA_HOME = ko_make_basic(MOD_MASK_GUI, KC_HOME, C(KC_HOME));
 
-//         case CTL_3:
-//         case GUI_0:
-//         case CTL_8:
-//         case ALT_9:
-//         case CTL_RBRC: // no control override, just unshift
-//             return unshift_register(keycode, record);
-//             break;
+const key_override_t END_NO_CTRL = ko_make_basic(MOD_MASK_CTRL, KC_END, KC_END);
+const key_override_t END_TO_META_END = ko_make_basic(MOD_MASK_GUI, KC_END, C(KC_END));
 
-//         // make arrow key homerow mods trigger the tap action when held and the hold time expires
-//         case ALT_UP:
-//         case CTL_DOWN:
-//             if (!record->tap.count && !record->tap.interrupted) {
-//                 if (record->event.pressed) {
-//                     register_code(keycode);
-//                     return false;
-//                 } else {
-//                     unregister_code(keycode);
-//                 }
-//             } else {
-//                 uint8_t mods = get_mods();
-//                 if (record->event.pressed) {
-//                     if (mods == MOD_BIT(KC_LCTL)) { // remove control
-//                         del_mods(MOD_BIT(KC_LCTL));
-//                         register_code(keycode);
-//                         set_mods(mods);
-//                         return false;
-//                     }
-//                 }
-//             }
-//         case SFT_LEFT:
-//         case GUI_RGHT:
-//             // if this is a hold action and it occurred naturally
-//             if (!record->tap.count && !record->tap.interrupted) {
-//                 if (record->event.pressed) {
-//                     register_code(keycode);
-//                     return false;
-//                 } else {
-//                     unregister_code(keycode);
-//                 }
-//             }
-//             break;
+const key_override_t UP_NO_CTRL = ko_make_basic(MOD_MASK_CTRL, KC_UP, KC_UP);
+const key_override_t DOWN_NO_CTRL = ko_make_basic(MOD_MASK_CTRL, KC_DOWN, KC_DOWN);
 
-//         // make it so only the opposite-side shift key works
-//         case KC_Q:
-//         case KC_W:
-//         case KC_E:
-//         case KC_R:
-//         case KC_T:
-//         case KC_G:
-//         case KC_Z:
-//         case KC_X:
-//         case KC_C:
-//         case KC_V:
-//         case KC_B: // left-side
-//             if (record->event.pressed && get_mods() == MOD_BIT(KC_LSFT)) {
-//                 return false; // do nothing
-//             }
-//             break;
+// SYM layer
+// A S F R Z X C V B M P U Y I
+const key_override_t BSLS_TO_A = ko_make_with_layers(MOD_MASK_CTRL, KC_BSLS, C(KC_A), 1 << _SYM);
+const key_override_t LBRC_TO_S = ko_make_with_layers(MOD_MASK_CTRL, KC_LBRC, C(KC_S), 1 << _SYM);
+const key_override_t MINS_TO_F = ko_make_with_layers(MOD_MASK_CTRL, KC_MINS, C(KC_F), 1 << _SYM);
+const key_override_t DLR_TO_R = ko_make_with_layers(MOD_MASK_CTRL, KC_DLR, C(KC_R), 1 << _SYM);
+const key_override_t PIPE_TO_Z = ko_make_with_layers(MOD_MASK_CTRL, KC_PIPE, C(KC_Z), 1 << _SYM);
+const key_override_t LCBR_TO_X = ko_make_with_layers(MOD_MASK_CTRL, KC_LCBR, C(KC_X), 1 << _SYM);
+const key_override_t RCBR_TO_C = ko_make_with_layers(MOD_MASK_CTRL, KC_RCBR, C(KC_C), 1 << _SYM);
+const key_override_t UNDS_TO_V = ko_make_with_layers(MOD_MASK_CTRL, KC_UNDS, C(KC_V), 1 << _SYM);
+const key_override_t GRV_TO_B = ko_make_with_layers(MOD_MASK_CTRL, KC_GRV, C(KC_B), 1 << _SYM);
+const key_override_t COLN_TO_M = ko_make_with_layers(MOD_MASK_CTRL, KC_COLN, C(KC_M), 1 << _SYM);
+const key_override_t RPRN_TO_P = ko_make_with_layers(MOD_MASK_CTRL, KC_RPRN, C(KC_P), 1 << _SYM);
+const key_override_t AMPR_TO_U = ko_make_with_layers(MOD_MASK_CTRL, KC_AMPR, C(KC_U), 1 << _SYM);
+const key_override_t ASTR_TO_I = ko_make_with_layers(MOD_MASK_CTRL, KC_ASTR, C(KC_I), 1 << _SYM);
+const key_override_t CIRC_TO_Y = ko_make_with_layers(MOD_MASK_CTRL, KC_CIRC, C(KC_Y), 1 << _SYM);
 
-//         case GUI_A:
-//         case ALT_S:
-//         case CTL_D:
-//         case SFT_F:
-//             if (record->event.pressed && record->tap.count && get_mods() == MOD_BIT(KC_LSFT)) {
-//                 return false; // do nothing
-//             }
-//             break;
+// NAV layer
+// R Z X C V B M P Y
+const key_override_t TAB_RIGHT_TO_R =
+    ko_make_with_layers(MOD_MASK_CTRL, TAB_RIGHT, C(KC_R), 1 << _NAV);
+const key_override_t MUTE_TO_Z = ko_make_with_layers(MOD_MASK_CTRL, KC_MUTE, C(KC_Z), 1 << _NAV);
+const key_override_t MPRV_TO_X = ko_make_with_layers(MOD_MASK_CTRL, KC_MPRV, C(KC_X), 1 << _NAV);
+const key_override_t VOLD_TO_C = ko_make_with_layers(MOD_MASK_CTRL, KC_VOLD, C(KC_C), 1 << _NAV);
+const key_override_t VOLU_TO_V = ko_make_with_layers(MOD_MASK_CTRL, KC_VOLU, C(KC_V), 1 << _NAV);
+const key_override_t MNXT_TO_B = ko_make_with_layers(MOD_MASK_CTRL, KC_MNXT, C(KC_B), 1 << _NAV);
+const key_override_t F2_TO_M = ko_make_with_layers(MOD_MASK_CTRL, KC_F2, C(KC_M), 1 << _NAV);
+const key_override_t PLACEHOLDER_TO_P =
+    ko_make_with_layers(MOD_MASK_CTRL, PH_P, C(KC_P), 1 << _NAV);
+const key_override_t WFWD_TO_Y = ko_make_with_layers(MOD_MASK_CTRL, KC_WFWD, C(KC_Y), 1 << _NAV);
 
-//         case KC_Y:
-//         case KC_U:
-//         case KC_I:
-//         case KC_O:
-//         case KC_P:
-//         case KC_H:
-//         case KC_QUOT:
-//         case KC_N:
-//         case KC_M:
-//         case KC_COMM:
-//         case KC_DOT:
-//         case KC_SLSH:
-//             if (IS_LAYER_ON(_BASE) && record->event.pressed && get_mods() == MOD_BIT(KC_RSFT)) {
-//                 return false; // do nothing
-//             }
-//             break;
-//         case GUI_SCLN:
-//         case ALT_L:
-//         case CTL_K:
-//         case SFT_J:
-//             if (IS_LAYER_ON(_BASE) && record->event.pressed && record->tap.count &&
-//                 get_mods() == MOD_BIT(KC_RSFT)) {
-//                 return false; // do nothing
-//             }
-//             break;
-//     }
-//     return true;
-// }
+// noshifts
+const key_override_t ONE_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_1, KC_1);
+const key_override_t TWO_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_2, KC_2);
+const key_override_t THREE_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_3, KC_3);
+const key_override_t FOUR_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_4, KC_4);
+const key_override_t FIVE_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_5, KC_5);
+const key_override_t SIX_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_6);
+const key_override_t SEVEN_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_7, KC_7);
+const key_override_t EIGHT_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_8, KC_8);
+const key_override_t NINE_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_9, KC_9);
+const key_override_t ZERO_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_0, KC_0);
 
-// const key_override_t CW_CL_TO_TAB_BACKWARDS =
-//     ko_make_basic(TABBING_TRIGGER_MODS, TD(TD_CW_CL), TAB_BACKWARD);
+// \[]-=`
+const key_override_t BSLS_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_BSLS, KC_BSLS);
+const key_override_t LBRC_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_LBRC, KC_LBRC);
+const key_override_t RBRC_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_RBRC, KC_RBRC);
+const key_override_t MINS_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_MINS, KC_MINS);
+const key_override_t EQL_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_EQL);
+const key_override_t GRV_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_GRV, KC_GRV);
 
-// const key_override_t Q_TO_KILL = ko_make_with_layers(MOD_MASK_GUI, KC_Q, A(KC_F4), 1 << _BASE);
+// this globally defines all key overrides to be used
+const key_override_t* key_overrides[] = {
+    &Q_TO_KILL,
 
-// const key_override_t COMM_TO_TAB_BACKWARDS =
-//     ko_make_with_layers(TABBING_TRIGGER_MODS, KC_COMM, TAB_BACKWARD, 1 << _NUM);
-// const key_override_t TILDE_TO_TAB_BACKWARDS =
-//     ko_make_with_layers(TABBING_TRIGGER_MODS, KC_TILDE, TAB_BACKWARD, 1 << _NAV);
+    &SPACE_TO_MENU,
+    // blocking formatting with this line
+    &BSPC_TO_OBLITERATE,
+    &DEL_TO_OBLITERATE,
 
-// const key_override_t BSPC_TO_OBLITERATE = {
-//     .trigger = KC_BSPC,
-//     .trigger_mods = OBLITERATE_TRIGGER_MODS,
-//     .layers = 0xFF,
-//     .custom_action = obliterate_line_backwards,
-//     .suppressed_mods = OBLITERATE_TRIGGER_MODS,
-// };
-// const key_override_t DEL_TO_OBLITERATE = {
-//     .trigger = KC_DEL,
-//     .trigger_mods = OBLITERATE_TRIGGER_MODS,
-//     .layers = 0xFF,
-//     .custom_action = obliterate_line_forwards,
-//     .suppressed_mods = OBLITERATE_TRIGGER_MODS,
-// };
+    &HOME_NOCTRL,
+    &HOME_TO_MEGA_HOME,
+    &END_NO_CTRL,
+    &END_TO_META_END,
 
-// const key_override_t HOME_NOCTRL = ko_make_basic(MOD_MASK_CTRL, KC_HOME, KC_HOME);
-// const key_override_t HOME_TO_MEGA_HOME = ko_make_basic(MOD_MASK_GUI, KC_HOME, C(KC_HOME));
+    &UP_NO_CTRL,
+    &DOWN_NO_CTRL,
 
-// const key_override_t END_NO_CTRL = ko_make_basic(MOD_MASK_CTRL, KC_END, KC_END);
-// const key_override_t END_TO_META_END = ko_make_basic(MOD_MASK_GUI, KC_END, C(KC_END));
+    // SYM layer Ctrl overrides
+    &BSLS_TO_A,
+    &LBRC_TO_S,
+    &MINS_TO_F,
+    &DLR_TO_R,
+    &PIPE_TO_Z,
+    &LCBR_TO_X,
+    &RCBR_TO_C,
+    &UNDS_TO_V,
+    &GRV_TO_B,
+    &COLN_TO_M,
+    &RPRN_TO_P,
+    &AMPR_TO_U,
+    &ASTR_TO_I,
+    &CIRC_TO_Y,
 
-// const key_override_t ESC_TO_TAB_FORWARD = ko_make_basic(TABBING_TRIGGER_MODS, KC_ESC,
-// TAB_FORWARD);
+    // NAV layer Ctrl overrides
+    &TAB_RIGHT_TO_R,
+    &MUTE_TO_Z,
+    &MPRV_TO_X,
+    &VOLD_TO_C,
+    &VOLU_TO_V,
+    &MNXT_TO_B,
+    &F2_TO_M,
+    &PLACEHOLDER_TO_P,
+    &WFWD_TO_Y,
 
-// const key_override_t GRV_TO_TAB_FORWARD = ko_make_basic(TABBING_TRIGGER_MODS, KC_GRV,
-// TAB_FORWARD); const key_override_t GRV_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_GRV, KC_GRV);
+    // noshifts
+    &ONE_NOSHIFT,
+    &TWO_NOSHIFT,
+    &THREE_NOSHIFT,
+    &FOUR_NOSHIFT,
+    &FIVE_NOSHIFT,
+    &SIX_NOSHIFT,
+    &SEVEN_NOSHIFT,
+    &EIGHT_NOSHIFT,
+    &NINE_NOSHIFT,
+    &ZERO_NOSHIFT,
 
-// const key_override_t DOWN_TO_ZOOM_OUT = ko_make_basic(MOD_MASK_CTRL, DOWN, C(KC_MINS));
-// const key_override_t DOWN_DEFAULT = ko_make_basic(0, DOWN, KC_DOWN);
-// const key_override_t UP_TO_ZOOM_IN = ko_make_basic(MOD_MASK_CTRL, UP, C(KC_EQL));
-// const key_override_t UP_DEFAULT = ko_make_basic(0, UP, KC_UP);
-
-// // NUM layer
-// const key_override_t FIVE_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_5, KC_5);
-// const key_override_t SIX_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_6);
-
-// const key_override_t LOW_6_TO_Z = ko_make_basic(MOD_MASK_CTRL, LOW_6, C(KC_Z));
-// const key_override_t LOW_6_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, LOW_6, KC_6);
-// const key_override_t LOW_6_DEFAULT = ko_make_basic(0, LOW_6, KC_6);
-
-// const key_override_t LOW_7_TO_X = ko_make_basic(MOD_MASK_CTRL, LOW_7, C(KC_X));
-// const key_override_t LOW_7_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, LOW_7, KC_7);
-// const key_override_t LOW_7_DEFAULT = ko_make_basic(0, LOW_7, KC_7);
-
-// const key_override_t LOW_8_TO_C = ko_make_basic(MOD_MASK_CTRL, LOW_8, C(KC_C));
-// const key_override_t LOW_8_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, LOW_8, KC_8);
-// const key_override_t LOW_8_DEFAULT = ko_make_basic(0, LOW_8, KC_8);
-
-// const key_override_t LOW_9_TO_V = ko_make_basic(MOD_MASK_CTRL, LOW_9, C(KC_V));
-// const key_override_t LOW_9_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, LOW_9, KC_9);
-// const key_override_t LOW_9_DEFAULT = ko_make_basic(0, LOW_9, KC_9);
-
-// const key_override_t LOW_0_TO_B = ko_make_basic(MOD_MASK_CTRL, LOW_0, C(KC_B));
-// const key_override_t LOW_0_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, LOW_0, KC_0);
-// const key_override_t LOW_0_DEFAULT = ko_make_basic(0, LOW_0, KC_0);
-
-// // minus -
-// const key_override_t MINUS_TO_R = ko_make_with_layers(MOD_MASK_CTRL, KC_MINS, C(KC_R), 1 <<
-// _NUM); const key_override_t MINUS_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_MINS, KC_MINS);
-// // multiply symbol (prevents conflict with ASTR) *
-// const key_override_t MULT_DEFAULT = ko_make_basic(0, MULT, KC_ASTR);
-// // circ ^
-// const key_override_t CIRC_TO_Y = ko_make_basic(MOD_MASK_CTRL, KC_CIRC, C(KC_Y));
-// // ampr &
-// const key_override_t AMPR_TO_U = ko_make_basic(MOD_MASK_CTRL, KC_AMPR, C(KC_U));
-// // astr *
-// const key_override_t ASTR_TO_I = ko_make_basic(MOD_MASK_CTRL, KC_ASTR, C(KC_I));
-// // rprn (
-// const key_override_t RPRN_TO_P = ko_make_basic(MOD_MASK_CTRL, KC_RPRN, C(KC_P));
-// // coln )
-// const key_override_t COLN_TO_M = ko_make_with_layers(MOD_MASK_CTRL, KC_COLN, C(KC_M), 1 << _NUM);
-// // dlr $
-// const key_override_t DLR_TO_R = ko_make_with_layers(MOD_MASK_CTRL, KC_DLR, C(KC_R), 1 << _NAV);
-// // eql =
-// const key_override_t EQL_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_EQL, KC_EQL);
-// // pipe |
-// const key_override_t PIPE_TO_Z = ko_make_with_layers(MOD_MASK_CTRL, KC_PIPE, C(KC_Z), 1 << _NAV);
-// // lcbr {
-// const key_override_t LCBR_TO_X = ko_make_with_layers(MOD_MASK_CTRL, KC_LCBR, C(KC_X), 1 << _NAV);
-// // rcbr }
-// const key_override_t RCBR_TO_C = ko_make_with_layers(MOD_MASK_CTRL, KC_RCBR, C(KC_C), 1 << _NAV);
-// // unds _
-// const key_override_t UNDS_TO_V = ko_make_with_layers(MOD_MASK_CTRL, KC_UNDS, C(KC_V), 1 << _NAV);
-// // plus +
-// const key_override_t PLUS_TO_B = ko_make_with_layers(MOD_MASK_CTRL, KC_PLUS, C(KC_B), 1 << _NAV);
-// // F2
-// const key_override_t F2_TO_M = ko_make_with_layers(MOD_MASK_CTRL, KC_F2, C(KC_M), 1 << _NAV);
-
-// // this globally defines all key overrides to be used
-// const key_override_t* key_overrides[] = {
-//     &CW_CL_TO_TAB_BACKWARDS,
-//     &COMM_TO_TAB_BACKWARDS,
-//     &TILDE_TO_TAB_BACKWARDS,
-//     &Q_TO_KILL,
-//     //
-//     &BSPC_TO_OBLITERATE,
-//     &DEL_TO_OBLITERATE,
-
-//     &HOME_NOCTRL,
-//     &HOME_TO_MEGA_HOME,
-//     &END_NO_CTRL,
-//     &END_TO_META_END,
-
-//     &ESC_TO_TAB_FORWARD,
-
-//     &GRV_TO_TAB_FORWARD,
-//     &GRV_NOSHIFT,
-
-//     &DOWN_TO_ZOOM_OUT,
-//     &DOWN_DEFAULT,
-//     &UP_TO_ZOOM_IN,
-//     &UP_DEFAULT,
-
-//     &FIVE_NOSHIFT,
-//     &SIX_NOSHIFT,
-//     &LOW_6_TO_Z,
-//     &LOW_6_NOSHIFT,
-//     &LOW_6_DEFAULT,
-//     &LOW_7_TO_X,
-//     &LOW_7_NOSHIFT,
-//     &LOW_7_DEFAULT,
-//     &LOW_8_TO_C,
-//     &LOW_8_NOSHIFT,
-//     &LOW_8_DEFAULT,
-//     &LOW_9_TO_V,
-//     &LOW_9_NOSHIFT,
-//     &LOW_9_DEFAULT,
-//     &LOW_0_TO_B,
-//     &LOW_0_NOSHIFT,
-//     &LOW_0_DEFAULT,
-
-//     &MINUS_TO_R,
-//     &MINUS_NOSHIFT,
-
-//     &MULT_DEFAULT,
-
-//     &CIRC_TO_Y,
-
-//     &AMPR_TO_U,
-
-//     &ASTR_TO_I,
-
-//     &RPRN_TO_P,
-
-//     &COLN_TO_M,
-
-//     &DLR_TO_R,
-
-//     &EQL_NOSHIFT,
-
-//     &PIPE_TO_Z,
-
-//     &LCBR_TO_X,
-
-//     &RCBR_TO_C,
-
-//     &UNDS_TO_V,
-
-//     &PLUS_TO_B,
-
-//     &F2_TO_M,
-// };
+    &BSLS_NOSHIFT,
+    &LBRC_NOSHIFT,
+    &RBRC_NOSHIFT,
+    &MINS_NOSHIFT,
+    &EQL_NOSHIFT,
+    &GRV_NOSHIFT,
+    &GRV_NOSHIFT,
+};
