@@ -19,7 +19,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    CW_TOGG,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       TD_CLS,         GAME,       KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_DEL,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             ALT_LAUNCH, NAV_CANCEL, NUM_SPC,                    OS_LSFT,    SYM_ENT,    COMP_ARROW
+                                             FN_LAUNCH,  NAV_SPC,    KC_SPC,                     OS_LSFT,    SYM_ENT,    COMP_ARROW
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -33,27 +33,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_TRNS,        TG(_GAME),  KC_B,       KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             ALT_T(KC_ESC), KC_I,    KC_SPC,                     KC_TRNS,    KC_TRNS,    KC_TRNS
-//                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
-),
-
-[_NUM] = LAYOUT(
-//┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
-   KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,                                  KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,
-//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_SLSH,    KC_E,       KC_ASTR,    KC_MINS,    KC_PLUS,                                KC_CIRC,    KC_NO,      KC_NO,      KC_LPRN,    KC_RPRN,    KC_TRNS,
-//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                                   KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_TRNS,
-//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_TRNS,        QK_BOOT,    KC_NO,      KC_COLN,    KC_COMM,    KC_DOT,     KC_SCLN,    KC_TRNS,
-//└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             ALT_LAUNCH, NAV_CANCEL, KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             FN_ESC,     KC_I,       KC_SPC,                     KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
 [_SYM] = LAYOUT(
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
-   KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,                                  KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,
+   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,                                KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_LPRN,    KC_RPRN,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
@@ -61,21 +47,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_CAPS,    KC_PIPE,    KC_LCBR,    KC_RCBR,    KC_UNDS,    KC_GRV,     KC_TRNS,        QK_BOOT,    KC_TILD,    KC_COLN,    KC_LABK,    KC_RABK,    KC_QUES,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             ALT_LAUNCH, NAV_CANCEL, KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             FN_LAUNCH,  NAV_SPC,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
 [_NAV] = LAYOUT(
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
-   KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,                                  KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,
+   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    ZOOM_OUT,   ZOOM_IN,    TAB_LEFT,   TAB_RIGHT,  KC_F11,                                 KC_WFWD,    KC_HOME,    KC_UP,      KC_END,     PH_P,       KC_TRNS,
+   KC_TRNS,    KC_NO,      KC_NO,      TAB_LEFT,   TAB_RIGHT,  KC_NO,                                  KC_NO,      KC_HOME,    KC_UP,      KC_END,     PH_P,       KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    KC_MPLY,                                KC_WBAK,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_SCLN,    KC_TRNS,
+   KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    KC_NO,                                  CW_TOGG,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_SCLN,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_CAPS,    KC_MUTE,    KC_MPRV,    KC_VOLD,    KC_VOLU,    KC_MNXT,    KC_TRNS,        QK_BOOT,    KC_NO,      KC_F2,      KC_COMM,    KC_DOT,     KC_SLSH,    KC_TRNS,
+   KC_CAPS,    C(KC_Z),    C(KC_X),    C(KC_C),    C(KC_V),    KC_NO,      KC_TRNS,        QK_BOOT,    KC_CAPS,    KC_F2,      KC_COMM,    KC_DOT,     KC_SLSH,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             ALT_LAUNCH, NAV_CANCEL, KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             FN_LAUNCH,  NAV_SPC,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+//                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
+),
+
+[_NUM] = LAYOUT(
+//┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
+   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
+   KC_TRNS,    KC_SLSH,    KC_E,       KC_ASTR,    KC_MINS,    KC_PLUS,                                KC_CIRC,    KC_NO,      KC_NO,      KC_LPRN,    KC_RPRN,    KC_TRNS,
+//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
+   KC_TRNS,    KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                                   KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_TRNS,
+//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
+   KC_TRNS,    KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_TRNS,        QK_BOOT,    KC_NO,      KC_COLN,    KC_COMM,    KC_DOT,     KC_SCLN,    KC_TRNS,
+//└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
+                                             FN_LAUNCH,  NAV_SPC,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -89,13 +89,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
 //    KC_TRNS,    KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_TRNS,        QK_BOOT,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_TRNS,    
 // //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-//                                              KC_TRNS,    NAV_CANCEL, KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+//                                              KC_TRNS,    NAV_SPC, KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 // //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 // ),
 
+[_FUNC] = LAYOUT( // functions
+//┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
+   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
+   KC_TRNS,    KC_NO,      KC_NO,      ZOOM_OUT,   ZOOM_IN,    KC_F11,                                 KC_NO,      KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_NO,
+//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
+   KC_TRNS,    KC_MPLY,    KC_MPRV,    KC_VOLD,    KC_VOLU,    KC_MNXT,                                KC_NO,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_NO,
+//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
+   KC_TRNS,    KC_BRID,    KC_BRIU,    KC_WBAK,    KC_WFWD,    KC_MUTE,    KC_TRNS,        QK_BOOT,    KC_NO,      KC_F9,      KC_F10,     KC_F11,     KC_F12,     KC_NO,
+//└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
+                                             FN_LAUNCH,  NAV_SPC,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+//                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
+),
+
 [_SH_ARROW] = LAYOUT( // single-handed arrows
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
-   KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,                                  KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,
+   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,                                  KC_NO,      KC_NO,      KC_UP,      KC_NO,      KC_NO,      KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
@@ -103,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_TRNS,        QK_BOOT,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_TRNS,    
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             KC_TRNS,    NAV_CANCEL, KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             FN_LAUNCH,  NAV_SPC, KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -115,7 +129,7 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_GAMER_MODE] = ACTION_TAP_DANCE_FN(enter_gamer_mode),
 };
 
-// const uint16_t PROGMEM num_layer_combo[] = {NAV_CANCEL, SYM_ENT, COMBO_END};
+// const uint16_t PROGMEM num_layer_combo[] = {NAV_SPC, SYM_ENT, COMBO_END};
 const uint16_t PROGMEM win_swap_combo[] = {TAB_LEFT, TAB_RIGHT, COMBO_END};
 
 combo_t key_combos[] = {
@@ -139,17 +153,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             //     }
             //     break;
 
-        case NAV_CANCEL: // allow oneshot mods to be canceled by pressing this key
-            if (record->tap.count) {
-                if (record->event.pressed) {
-                    clear_oneshot_mods();
-                }
-                return false;
-            }
-            // else {
-            //     NAV_is_on = record->event.pressed; // track NAV's state for SYM
-            // }
-            break;
+            // case NAV_SPC: // allow oneshot mods to be canceled by pressing this key
+            //     if (record->tap.count) {
+            //         if (record->event.pressed) {
+            //             clear_oneshot_mods();
+            //         }
+            //         return false;
+            //     }
+            //     // else {
+            //     //     NAV_is_on = record->event.pressed; // track NAV's state for SYM
+            //     // }
+            //     break;
 
         case WIN_SWAP: // easy Alt-Tab
             if (record->event.pressed) {
@@ -160,7 +174,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             break;
 
-        case ALT_LAUNCH: // make the launch keycode work
+        case FN_LAUNCH: // make the launch keycode work
             if (record->tap.count) {
                 if (record->event.pressed) {
                     tap_code16(LAUNCH);
