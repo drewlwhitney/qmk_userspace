@@ -9,7 +9,7 @@ enum {
     _NUM,
     _SYM,
     _NAV,
-    _SH_NUM,
+    // _SH_NUM,
     _SH_ARROW,
 };
 
