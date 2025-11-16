@@ -4,6 +4,7 @@
 #include "./layers/layers.h"
 #include "./tap_dance/tap_dance.h"
 #include "./utils/utils.h"
+#include <stdbool.h>
 #include <stdint.h>
 
 // clang-format off
@@ -70,9 +71,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_ESC,     KC_NO,      TAB_LEFT,   TAB_RIGHT,  KC_NO,                                  KC_NO,      KC_HOME,    KC_UP,      KC_END,     KC_DEL,     KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    CW_TOGG,                                KC_CAPS,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_SLSH,    KC_TRNS,
+   KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    CW_TOGG,                                COMPOSE,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_SLSH,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    C(KC_Z),    C(KC_X),    C(KC_C),    C(KC_V),    C(KC_Y),    TD_CLS,         QK_BOOT,    COMPOSE,    KC_F2,      KC_COMM,    KC_DOT,     KC_SCLN,    KC_TRNS,
+   KC_TRNS,    C(KC_Z),    C(KC_X),    C(KC_C),    C(KC_V),    C(KC_Y),    TD_CLS,         QK_BOOT,    KC_F2,      KC_CAPS,      KC_COMM,    KC_DOT,     KC_SCLN,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
                                              FN_LAUNCH,  NAV_TAB,    NUM_SPC,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
@@ -122,7 +123,24 @@ combo_t key_combos[] = {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    static bool NAV_is_on = false;
+
     switch (keycode) {
+        // allow NAV and SYM to override each other
+        case SYM_ENT:
+            if (!record->tap.count) {
+                if (NAV_is_on) {
+                    record->event.pressed ? layer_off(_NAV) : layer_on(_NAV);
+                }
+            }
+            break;
+
+        case NAV_TAB:
+            if (!record->tap.count) {
+                NAV_is_on = record->event.pressed;
+            }
+            break;
+
         case WIN_SWAP: // easy Alt-Tab
             if (record->event.pressed) {
                 register_mods(MOD_LALT);

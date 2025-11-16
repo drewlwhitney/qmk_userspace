@@ -10,8 +10,6 @@ enum {
     _SYM,
     _NAV,
     _FUNC,
-    // _SH_NUM,
     _SH_ARROW,
 };
 
-// extern bool NUM_latched;
