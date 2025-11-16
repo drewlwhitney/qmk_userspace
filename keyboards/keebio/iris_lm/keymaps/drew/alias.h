@@ -21,14 +21,15 @@ enum CustomKeycodes {
 #define ZOOM_IN C(KC_EQL)
 #define ZOOM_OUT C(KC_MINS)
 
+#define SFT_BSPC SFT_T(KC_BSPC)
+
 // layers
 #define SYM_ENT LT(_SYM, KC_ENT)
-#define NAV_SPC LT(_NAV, KC_SPC)
+#define NAV_TAB LT(_NAV, KC_TAB)
+#define NUM_SPC LT(_NUM, KC_SPC)
 #define FN_LAUNCH LT(_FUNC, LAUNCH)
 #define FN_ESC LT(_FUNC, KC_ESC)
-// #define NUM MO(_NUM)
-// #define LAUNCH_NUM LT(_SH_NUM, LAUNCH)
-#define COMP_ARROW LT(_SH_ARROW, COMPOSE)
+#define ARROW MO(_SH_ARROW)
 
 // trigger mods
 #define OBLITERATE_TRIGGER_MODS MOD_MASK_GUI
