@@ -6,7 +6,6 @@
 /// @brief Custom keycodes.
 enum CustomKeycodes {
     WIN_SWAP = SAFE_RANGE, // custom alt-tabbing
-    OSO_SHIFT, // makes thumb shift oneshot-only
     PH_P, // placeholder key that passes through to P when Ctrl is held
 };
 
@@ -25,7 +24,8 @@ enum CustomKeycodes {
 // layers
 #define SYM_ENT LT(_SYM, KC_ENT)
 #define NAV_CANCEL LT(_NAV, KC_NO) // have to implement this functionality
-#define NUM MO(_NUM)
+#define NUM_SPC LT(_NUM, KC_SPC)
+// #define NUM MO(_NUM)
 #define LAUNCH_NUM LT(_SH_NUM, LAUNCH)
 #define COMP_ARROW LT(_SH_ARROW, COMPOSE)
 

@@ -7,7 +7,7 @@
         "encoder": false,
         "extrakey": false,
         "mousekey": false,
-        "rgb_matrix": true
+        "rgb_matrix": false
     },
     "encoder": {
         "rotary": [
