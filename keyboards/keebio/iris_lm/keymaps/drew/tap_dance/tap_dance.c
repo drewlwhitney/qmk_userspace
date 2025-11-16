@@ -11,7 +11,19 @@ void CAD_lock_sleep(tap_dance_state_t* state, void*) {
             break;
         case 3:
             tap_code16(KC_SLEP);
-        default:
+            reset_tap_dance(state);
+            break;
+    }
+}
+
+void enter_gamer_mode(tap_dance_state_t* state, void*) {
+    switch (state->count) {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            layer_on(_GAME);
             reset_tap_dance(state);
             break;
     }

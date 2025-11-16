@@ -11,6 +11,7 @@ enum CustomKeycodes {
 };
 
 #define TD_CLS TD(TD_CAD_LOCK_SLEEP)
+#define GAME TD(TD_GAMER_MODE)
 #define COMPOSE KC_SCRL
 // keys
 #define CAD C(A(KC_DEL))
@@ -25,7 +26,6 @@ enum CustomKeycodes {
 #define SYM_ENT LT(_SYM, KC_ENT)
 #define NAV_CANCEL LT(_NAV, KC_NO) // have to implement this functionality
 #define NUM MO(_NUM)
-#define GAME MO(_GAME)
 #define LAUNCH_NUM LT(_SH_NUM, LAUNCH)
 #define COMP_ARROW LT(_SH_ARROW, COMPOSE)
 

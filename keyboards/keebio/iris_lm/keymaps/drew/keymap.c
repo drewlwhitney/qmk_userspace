@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_LCTL,    KC_A,       KC_S,       KC_D,       KC_F,                                   KC_G,       KC_H,       KC_J,       KC_K,       KC_L,       KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_TRNS,        KC_TRNS,    KC_B,       KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_TRNS,
+   KC_TRNS,    KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_TRNS,        TG(_GAME),  KC_B,       KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
                                              KC_ESC,     KC_I,       KC_SPC,                     KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
@@ -112,6 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 tap_dance_action_t tap_dance_actions[] = {
     [TD_CAD_LOCK_SLEEP] = ACTION_TAP_DANCE_FN(CAD_lock_sleep),
+    [TD_GAMER_MODE] = ACTION_TAP_DANCE_FN(enter_gamer_mode),
 };
 
 const uint16_t PROGMEM num_layer_combo[] = {NAV_CANCEL, SYM_ENT, COMBO_END};
@@ -123,30 +124,31 @@ combo_t key_combos[] = {
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-    static bool NAV_is_on = false;
+    // static bool NAV_is_on = false;
 
     switch (keycode) {
         // allow the SYM and NAV layers to override each other
-        case SYM_ENT:
-            if (!record->tap.count) {
-                // if NAV is on, turn it off when SYM is turned on, then restore it when SYM
-                // is turned off
-                // if we're NUM-latched, don't interfere with the states
-                if (NAV_is_on) {
-                    record->event.pressed && !NUM_latched ? layer_off(_NAV) : layer_on(_NAV);
-                }
-            }
-            break;
+        // case SYM_ENT:
+        //     if (!record->tap.count) {
+            //         // if NAV is on, turn it off when SYM is turned on, then restore it when SYM
+            //         // is turned off
+            //         // if we're NUM-latched, don't interfere with the states
+            //         if (NAV_is_on) {
+            //             record->event.pressed && !NUM_latched ? layer_off(_NAV) : layer_on(_NAV);
+            //         }
+            //     }
+            //     break;
 
         case NAV_CANCEL: // allow oneshot mods to be canceled by pressing this key
-            if (!record->tap.count) {
-                NAV_is_on = record->event.pressed; // track NAV's state for SYM
-            } else {
+            if (record->tap.count) {
                 if (record->event.pressed) {
                     clear_oneshot_mods();
                 }
                 return false;
             }
+            // else {
+            //     NAV_is_on = record->event.pressed; // track NAV's state for SYM
+            // }
             break;
 
         case WIN_SWAP: // easy Alt-Tab
@@ -169,7 +171,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
         case OSO_SHIFT: // make thumb shift oneshot-only
             if (record->event.pressed) {
-                set_oneshot_mods(MOD_BIT(KC_LSFT));
+                (!get_oneshot_mods() && MOD_BIT(KC_LSFT) ? add_oneshot_mods
+                                                         : del_oneshot_mods)(MOD_BIT(KC_LSFT));
             }
             break;
     }
