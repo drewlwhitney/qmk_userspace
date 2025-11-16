@@ -69,11 +69,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_NO,      KC_NO,      KC_SPC,     KC_NO,      KC_NO,                                  KC_NO,      KC_NO,      KC_NO,      KC_LPRN,    KC_RPRN,    KC_TRNS,
+   KC_TRNS,    KC_SLSH,    KC_E,       KC_ASTR,    KC_MINS,    KC_PLUS,                                KC_CIRC,    KC_NO,      KC_NO,      KC_LPRN,    KC_RPRN,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                                   KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_SLSH,    KC_E,       KC_ASTR,    KC_MINS,    KC_PLUS,    KC_TRNS,        QK_BOOT,    KC_CIRC,    KC_COLN,    KC_COMM,    KC_DOT,     KC_SCLN,    KC_TRNS,
+   KC_TRNS,    KC_NO,      KC_NO,      KC_SPC,     KC_NO,      KC_NO,      KC_TRNS,        QK_BOOT,    KC_NO,      KC_COLN,    KC_COMM,    KC_DOT,     KC_SCLN,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
                                              KC_TRNS,    NAV_CANCEL, KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
@@ -150,15 +150,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             break;
 
         case WIN_SWAP: // easy Alt-Tab
-            tap_code(KC_A);
-
             if (record->event.pressed) {
-                // register_mods(MOD_LALT);
-                // tap_code(KC_TAB);
+                register_mods(MOD_LALT);
+                tap_code(KC_TAB);
             } else {
-                // unregister_mods(MOD_LALT);
+                unregister_mods(MOD_LALT);
             }
-            return false;
             break;
 
         case LAUNCH_NUM: // make the launch keycode work

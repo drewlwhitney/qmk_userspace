@@ -5,7 +5,7 @@
 
 /// @brief Custom keycodes.
 enum CustomKeycodes {
-    WIN_SWAP, // custom alt-tabbing
+    WIN_SWAP = SAFE_RANGE, // custom alt-tabbing
     OSO_SHIFT, // makes thumb shift oneshot-only
     PH_P, // placeholder key that passes through to P when Ctrl is held
 };
