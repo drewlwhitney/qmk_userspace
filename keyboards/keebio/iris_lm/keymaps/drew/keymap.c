@@ -150,13 +150,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             break;
 
         case WIN_SWAP: // easy Alt-Tab
+            tap_code(KC_A);
+
             if (record->event.pressed) {
-                tap_code(KC_A);
                 // register_mods(MOD_LALT);
                 // tap_code(KC_TAB);
             } else {
                 // unregister_mods(MOD_LALT);
             }
+            return false;
             break;
 
         case LAUNCH_NUM: // make the launch keycode work

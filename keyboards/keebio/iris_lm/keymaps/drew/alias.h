@@ -30,5 +30,4 @@ enum CustomKeycodes {
 #define COMP_ARROW LT(_SH_ARROW, COMPOSE)
 
 // trigger mods
-#define TABBING_TRIGGER_MODS MOD_MASK_ALT
 #define OBLITERATE_TRIGGER_MODS MOD_MASK_GUI
