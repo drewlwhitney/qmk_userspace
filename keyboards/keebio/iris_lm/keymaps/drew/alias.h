@@ -21,7 +21,7 @@ enum CustomKeycodes {
 #define ZOOM_OUT C(KC_MINS)
 
 // layers
-#define NUM MO(_NUM)
+#define NUM MO(_NUM) // used by the NumCombo combo
 #define SYM_BSPC LT(_SYM, KC_BSPC)
 #define NAV_TAB LT(_NAV, KC_TAB)
 #define FN_LAUNCH LT(_FUNC, LAUNCH)

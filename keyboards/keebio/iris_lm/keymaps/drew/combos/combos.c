@@ -5,12 +5,14 @@
 uint16_t get_combo_term(uint16_t combo_index, combo_t* combo) {
     switch (combo_index) {
         case NumCombo:
-            return 75; // make a larger window for triggering the combo
+            return 150; // make a larger window for triggering the combo
             break;
     }
     return COMBO_TERM;
 }
 
+// necessary to make sure the layers are turned off for the NUM layer combo, since the original
+// layer keys are consumed by the combo activation
 bool process_combo_key_release(
     uint16_t combo_index, combo_t* combo, uint8_t key_index, uint16_t keycode
 ) {
@@ -26,6 +28,16 @@ bool process_combo_key_release(
                     layer_off(_NAV);
                     break;
             }
+            break;
+    }
+    return false;
+}
+
+// necessary for the NUM layer combo, since it shouldn't trigger on a tap
+bool get_combo_must_hold(uint16_t combo_index, combo_t* combo) {
+    switch (combo_index) {
+        case NumCombo: // make the NUM layer combo hold-only
+            return true;
             break;
     }
     return false;

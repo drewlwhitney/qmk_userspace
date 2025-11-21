@@ -178,11 +178,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             break;
 
         case KC_SPC:
+            // have to implement this here instead of as a key override because it was acting
+            // weird with layers as a key override
             if (get_highest_layer(layer_state) == _GAME) {
                 return true; // return early
             }
-            // have to implement this here instead of as a key override because it was acting
-            // weird with layers as a key override
             if (record->event.pressed) {
                 uint8_t mods = get_mods();
                 if ((mods | get_oneshot_mods()) & MOD_MASK_CTRL) {

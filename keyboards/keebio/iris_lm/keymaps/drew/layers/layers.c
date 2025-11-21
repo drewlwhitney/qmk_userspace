@@ -17,7 +17,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         }
     } else if (IS_LAYER_ON_STATE(state, _NUM)) {
         NUM_latched = true;
-        state |= 1 << _NAV | 1 << _SYM; // turn on NAV and SYM too
+        // turn on NAV and SYM too, since the layer keys were consumed by the combo activation
+        state |= 1 << _NAV | 1 << _SYM; 
     }
 
     return state;
