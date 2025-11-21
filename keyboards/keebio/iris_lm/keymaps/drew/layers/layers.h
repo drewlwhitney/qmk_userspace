@@ -6,10 +6,11 @@
 enum {
     _BASE,
     _GAME,
-    _NUM,
     _SYM,
     _NAV,
+    _NUM,
     _FUNC,
     _SH_ARROW,
 };
 
+extern bool NUM_latched;

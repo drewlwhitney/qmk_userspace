@@ -17,9 +17,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_NO,      KC_A,       KC_S,       KC_D,       KC_F,       KC_G,                                   KC_H,       KC_J,       KC_K,       KC_L,       KC_QUOT,    KC_NO,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_NO,      KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       TD_CLS,         GAME,       KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SCLN,    KC_NO,
+   KC_NO,      KC_Z,       KC_X,       KC_C,       KC_V,       KC_B,       TD_CLS,         GAME,       KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_NO,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             FN_LAUNCH,  NAV_TAB,    NUM_SPC,                    SFT_BSPC,   SYM_ENT,    ARROW
+                                             FN_LAUNCH,  NAV_TAB,    KC_SPC,                     OS_LSFT,    SYM_BSPC,   ARROW
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -33,21 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_LSFT,    KC_Z,       KC_X,       KC_C,       KC_V,       KC_TRNS,        TG(_GAME),  KC_B,       KC_N,       KC_M,       KC_COMM,    KC_DOT,     KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             FN_ESC,     KC_I,       KC_SPC,                     KC_TRNS,    KC_TRNS,    KC_TRNS
-//                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
-),
-
-[_NUM] = LAYOUT(
-//┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
-   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
-//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_SLSH,    KC_E,       KC_ASTR,    KC_MINS,    KC_PLUS,                                KC_CIRC,    KC_NO,      KC_NO,      KC_LPRN,    KC_RPRN,    KC_TRNS,
-//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                                   KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_TRNS,
-//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_DOT,         QK_BOOT,    KC_NO,      KC_COLN,    KC_COMM,    KC_DOT,     KC_SCLN,    KC_TRNS,
-//└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             FN_LAUNCH,  NAV_TAB,    NUM_SPC,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             FN_ESC,     KC_I,       KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -57,11 +43,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,                                KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_LPRN,    KC_RPRN,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_BSLS,    KC_LBRC,    KC_RBRC,    KC_MINS,    KC_EQL,                                 KC_PLUS,    OS_RSFT,    OS_RCTL,    OS_RALT,    OS_RGUI,    KC_TRNS,
+   KC_TRNS,    KC_BSLS,    KC_LBRC,    KC_RBRC,    KC_MINS,    KC_EQL,                                 KC_GRV,     OS_LSFT,    OS_LCTL,    OS_LALT,    OS_LGUI,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_CAPS,    KC_PIPE,    KC_LCBR,    KC_RCBR,    KC_UNDS,    KC_GRV,     TD_CLS,         QK_BOOT,    KC_TILD,    KC_QUES,    KC_LABK,    KC_RABK,    KC_SLSH,    KC_TRNS,
+   KC_CAPS,    KC_PIPE,    KC_LCBR,    KC_RCBR,    KC_UNDS,    KC_PLUS,    TD_CLS,         QK_BOOT,    KC_TILD,    KC_COLN,    KC_LABK,    KC_RABK,    KC_SCLN,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             FN_LAUNCH,  NAV_TAB,    NUM_SPC,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             FN_LAUNCH,  NAV_TAB,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -69,13 +55,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_ESC,     KC_NO,      TAB_LEFT,   TAB_RIGHT,  LAUNCH,                                 KC_NO,      KC_HOME,    KC_UP,      KC_END,     KC_DEL,     KC_TRNS,
+   KC_TRNS,    KC_ESC,     LAUNCH,     TAB_LEFT,   TAB_RIGHT,  C(KC_Y),                                KC_NO,      KC_HOME,    KC_UP,      KC_END,     KC_SCLN,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    CW_TOGG,                                COMPOSE,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_SLSH,    KC_TRNS,
+   KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    CW_TOGG,                                KC_CAPS,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_ENT,     KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    C(KC_Z),    C(KC_X),    C(KC_C),    C(KC_V),    C(KC_Y),    TD_CLS,         QK_BOOT,    KC_F2,      KC_CAPS,      KC_COMM,    KC_DOT,     KC_SCLN,    KC_TRNS,
+   KC_TRNS,    C(KC_Z),    C(KC_X),    C(KC_C),    KC_SPC,     C(KC_V),    TD_CLS,         QK_BOOT,    COMPOSE,    KC_F2,      KC_COMM,    KC_DOT,     KC_DEL,     KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             FN_LAUNCH,  NAV_TAB,    NUM_SPC,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             FN_LAUNCH,  NAV_TAB,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+//                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
+),
+
+[_NUM] = LAYOUT(
+//┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
+   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
+//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
+   KC_TRNS,    KC_SLSH,    KC_E,       KC_ASTR,    KC_MINS,    KC_PLUS,                                KC_CIRC,    KC_NO,      KC_ASTR,    KC_LPRN,    KC_RPRN,    KC_TRNS,
+//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
+   KC_TRNS,    KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                                   KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       KC_TRNS,
+//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
+   KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_SPC,     KC_NO,      KC_DOT,         QK_BOOT,    KC_SCLN,    KC_COLN,    KC_COMM,    KC_DOT,     KC_SLSH,    KC_TRNS,
+//└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
+                                             FN_LAUNCH,  NAV_TAB,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_BRID,    KC_BRIU,    KC_WBAK,    KC_WFWD,    KC_MUTE,    TD_CLS,         QK_BOOT,    KC_NO,      KC_F9,      KC_F10,     KC_F11,     KC_F12,     KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             FN_LAUNCH,  NAV_TAB,    NUM_SPC,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             FN_LAUNCH,  NAV_TAB,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -103,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      TD_CLS,         QK_BOOT,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_TRNS,    
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             FN_LAUNCH,  NAV_TAB,    NUM_SPC,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             FN_LAUNCH,  NAV_TAB,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -115,10 +115,11 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_GAMER_MODE] = ACTION_TAP_DANCE_FN(enter_gamer_mode),
 };
 
-// const uint16_t PROGMEM num_layer_combo[] = {NAV_SPC, SYM_ENT, COMBO_END};
+const uint16_t PROGMEM num_layer_combo[] = {NAV_TAB, SYM_BSPC, COMBO_END};
 const uint16_t PROGMEM win_swap_combo[] = {TAB_LEFT, TAB_RIGHT, COMBO_END};
 
 combo_t key_combos[] = {
+    [NumCombo] = COMBO(num_layer_combo, NUM),
     [WinSwapCombo] = COMBO(win_swap_combo, WIN_SWAP),
 };
 
@@ -127,10 +128,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
     switch (keycode) {
         // allow NAV and SYM to override each other
-        case SYM_ENT:
+        case SYM_BSPC:
             if (!record->tap.count) {
+                // if NAV is on, turn it off when SYM is turned on, then restore it when SYM is
+                // turned off
+                // if we're NUM-latched, don't interfere with the states
                 if (NAV_is_on) {
-                    record->event.pressed ? layer_off(_NAV) : layer_on(_NAV);
+                    record->event.pressed && !NUM_latched ? layer_off(_NAV) : layer_on(_NAV);
+                }
+            } else {
+                // backspace -> obliterate line
+                if (record->event.pressed) {
+                    uint8_t mods = get_mods();
+                    if ((mods | get_oneshot_mods()) & OBLITERATE_TRIGGER_MODS) {
+                        tap_code(DUMMY_MOD_NEUTRALIZER_KEYCODE);
+                        unregister_mods(OBLITERATE_TRIGGER_MODS);
+                        clear_oneshot_mods();
+                        tap_code16(S(KC_HOME));
+                        register_code(KC_BSPC);
+                        set_mods(mods);
+                        return false;
+                    }
                 }
             }
             break;
@@ -159,23 +177,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             break;
 
-        case SFT_BSPC: // obliterate line backwards
-            if (record->tap.count && record->event.pressed) {
-                uint8_t mods = get_mods();
-                if ((mods | get_oneshot_mods()) & OBLITERATE_TRIGGER_MODS) {
-                    tap_code(DUMMY_MOD_NEUTRALIZER_KEYCODE);
-                    unregister_mods(OBLITERATE_TRIGGER_MODS);
-                    clear_oneshot_mods();
-                    tap_code16(S(KC_HOME));
-                    register_code(KC_BSPC);
-                    set_mods(mods);
-                    return false;
-                }
+        case KC_SPC:
+            if (get_highest_layer(layer_state) == _GAME) {
+                return true; // return early
             }
-            break;
-
-        case NUM_SPC: // menu shortcut
-            if (record->tap.count && record->event.pressed) {
+            // have to implement this here instead of as a key override because it was acting
+            // weird with layers as a key override
+            if (record->event.pressed) {
                 uint8_t mods = get_mods();
                 if ((mods | get_oneshot_mods()) & MOD_MASK_CTRL) {
                     del_mods(MOD_MASK_CTRL);
@@ -232,6 +240,7 @@ const key_override_t GRV_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_GRV, KC_GRV)
 // this globally defines all key overrides to be used
 const key_override_t* key_overrides[] = {
     &Q_TO_KILL,
+
     // blocking formatting with this line
     &DEL_TO_OBLITERATE,
 
