@@ -119,12 +119,12 @@ const uint16_t PROGMEM num_layer_combo[] = {NAV_TAB, SYM_BSPC, COMBO_END};
 const uint16_t PROGMEM win_swap_combo[] = {TAB_LEFT, TAB_RIGHT, COMBO_END};
 
 combo_t key_combos[] = {
-    [NumCombo] = COMBO(num_layer_combo, NUM),
+   //  [NumCombo] = COMBO(num_layer_combo, NUM),
     [WinSwapCombo] = COMBO(win_swap_combo, WIN_SWAP),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-    static bool NAV_is_on = false;
+    // static bool NAV_is_on = false;
 
     switch (keycode) {
         // allow NAV and SYM to override each other
@@ -133,9 +133,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
                 // if NAV is on, turn it off when SYM is turned on, then restore it when SYM is
                 // turned off
                 // if we're NUM-latched, don't interfere with the states
-                if (NAV_is_on) {
-                    record->event.pressed && !NUM_latched ? layer_off(_NAV) : layer_on(_NAV);
-                }
+                // if (NAV_is_on) {
+                //     record->event.pressed && !NUM_latched ? layer_off(_NAV) : layer_on(_NAV);
+                // }
             } else {
                 // backspace -> obliterate line
                 if (record->event.pressed) {
@@ -153,11 +153,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             }
             break;
 
-        case NAV_TAB:
-            if (!record->tap.count) {
-                NAV_is_on = record->event.pressed;
-            }
-            break;
+        // case NAV_TAB:
+        //     if (!record->tap.count) {
+        //         NAV_is_on = record->event.pressed;
+        //     }
+        //     break;
 
         case WIN_SWAP: // easy Alt-Tab
             if (record->event.pressed) {
