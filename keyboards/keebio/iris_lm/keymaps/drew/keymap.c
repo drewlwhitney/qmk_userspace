@@ -55,11 +55,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_ESC,     LAUNCH,     TAB_LEFT,   TAB_RIGHT,  C(KC_Y),                                KC_NO,      KC_HOME,    KC_UP,      KC_END,     KC_SCLN,    KC_TRNS,
+   KC_TRNS,    KC_ESC,     LAUNCH,     TAB_LEFT,   TAB_RIGHT,  C(KC_Y),                                COMPOSE,    KC_HOME,    KC_UP,      KC_END,     KC_DEL,     KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    CW_TOGG,                                KC_CAPS,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_ENT,     KC_TRNS,
+   KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    KC_F2,                                  KC_CAPS,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_ENT,     KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    C(KC_Z),    C(KC_X),    C(KC_C),    KC_SPC,     C(KC_V),    TD_CLS,         KC_TRNS,    COMPOSE,    KC_F2,      KC_COMM,    KC_DOT,     KC_DEL,     KC_TRNS,
+   KC_TRNS,    C(KC_Z),    C(KC_X),    C(KC_C),    KC_SPC,     C(KC_V),    TD_CLS,         KC_TRNS,    KC_NO,      CW_TOGG,    KC_COMM,    KC_DOT,     KC_SLSH,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
                                              KC_NO,      NAV_TAB,    FN_SPC,                     KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
