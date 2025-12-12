@@ -43,9 +43,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,                                KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_QUES,    KC_GRV,     KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_PLUS,    KC_EQL,     KC_UNDS,    KC_MINS,    KC_COLN,                                KC_PIPE,    OS_LSFT,    OS_LCTL,    OS_LALT,    OS_LGUI,    KC_TRNS,
+   KC_TRNS,    KC_PLUS,    KC_EQL,     KC_UNDS,    KC_MINS,    KC_COLN,                                KC_SCLN,    OS_LSFT,    OS_LCTL,    OS_LALT,    OS_LGUI,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_LBRC,    KC_RBRC,    KC_LPRN,    KC_RPRN,    KC_SCLN,    TD_CLS,         KC_TRNS,    KC_BSLS,    KC_LCBR,    KC_RCBR,    KC_RABK,    KC_TILD,    KC_TRNS,
+   KC_TRNS,    KC_LBRC,    KC_RBRC,    KC_LPRN,    KC_RPRN,    KC_PIPE,    TD_CLS,         KC_TRNS,    KC_BSLS,    KC_LCBR,    KC_RCBR,    KC_RABK,    KC_TILD,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
                                              KC_NO,      NAV_TAB,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
