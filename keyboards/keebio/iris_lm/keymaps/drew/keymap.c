@@ -41,11 +41,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,                                KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_LPRN,    KC_RPRN,    KC_TRNS,
+   KC_TRNS,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,                                KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_QUES,    KC_GRV,     KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_BSLS,    KC_LBRC,    KC_RBRC,    KC_MINS,    KC_EQL,                                 KC_GRV,     OS_LSFT,    OS_LCTL,    OS_LALT,    OS_LGUI,    KC_TRNS,
+   KC_TRNS,    KC_PLUS,    KC_EQL,     KC_UNDS,    KC_MINS,    KC_COLN,                                KC_PIPE,    OS_LSFT,    OS_LCTL,    OS_LALT,    OS_LGUI,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_CAPS,    KC_PIPE,    KC_LCBR,    KC_RCBR,    KC_UNDS,    KC_PLUS,    TD_CLS,         KC_TRNS,    KC_TILD,    KC_COLN,    KC_LABK,    KC_RABK,    KC_SCLN,    KC_TRNS,
+   KC_TRNS,    KC_LBRC,    KC_RBRC,    KC_LPRN,    KC_RPRN,    KC_SCLN,    TD_CLS,         KC_TRNS,    KC_BSLS,    KC_LCBR,    KC_RCBR,    KC_RABK,    KC_TILD,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
                                              KC_NO,      NAV_TAB,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
@@ -85,9 +85,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_NO,      KC_NO,      ZOOM_OUT,   ZOOM_IN,    KC_F11,                                 QK_BOOT,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_MPRV,    KC_MNXT,    KC_VOLD,    KC_VOLU,    KC_MPLY,                                KC_NO,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_TRNS,
+   KC_TRNS,    KC_MPRV,    KC_MNXT,    KC_VOLD,    KC_VOLU,    KC_MPLY,                                CAD,        KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_BRID,    KC_BRIU,    KC_WBAK,    KC_WFWD,    KC_MUTE,    TD_CLS,         KC_TRNS,    KC_NO,      KC_F9,      KC_F10,     KC_F11,     KC_F12,     KC_TRNS,
+   KC_TRNS,    KC_BRID,    KC_BRIU,    KC_WBAK,    KC_WFWD,    KC_MUTE,    TD_CLS,         KC_TRNS,    KC_SLEP,    KC_F9,      KC_F10,     KC_F11,     KC_F12,     KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
                                              KC_NO,      TG(_GAME),  KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
