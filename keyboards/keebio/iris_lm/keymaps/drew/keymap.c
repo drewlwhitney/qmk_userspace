@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,                                KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_QUES,    KC_GRV,     KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_PIPE,    KC_PLUS,    KC_UNDS,    KC_MINS,    KC_EQL,                                 KC_RABK,    OS_LSFT,    OS_LCTL,    OS_LALT,    OS_LGUI,    KC_TRNS,
+   KC_TRNS,    KC_PIPE,    KC_PLUS,    KC_UNDS,    KC_MINS,    KC_EQL,                                 KC_DQUO,    OS_LSFT,    OS_LCTL,    OS_LALT,    OS_LGUI,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_LPRN,    KC_RPRN,    KC_LBRC,    KC_RBRC,    KC_BSLS,    TD_CLS,         KC_TRNS,    KC_SCLN,    KC_COLN,    KC_LCBR,    KC_RCBR,    KC_TILD,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
@@ -207,6 +207,9 @@ const key_override_t END_TO_META_END = ko_make_basic(MOD_MASK_GUI, KC_END, C(KC_
 const key_override_t UP_NO_CTRL = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_UP, KC_UP, 0xFF, MOD_MASK_SAG);
 const key_override_t DOWN_NO_CTRL = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_DOWN, KC_DOWN, 0xFF, MOD_MASK_SAG);
 
+const key_override_t LPRN_TO_LABK = ko_make_with_layers(MOD_MASK_SHIFT, KC_LPRN, KC_LABK, 1 << _SYM);
+const key_override_t RPRN_TO_RABK = ko_make_with_layers(MOD_MASK_SHIFT, KC_RPRN, KC_RABK, 1 << _SYM);
+
 // noshifts
 const key_override_t ONE_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_1, KC_1);
 const key_override_t TWO_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_2, KC_2);
@@ -241,6 +244,9 @@ const key_override_t* key_overrides[] = {
 
     &UP_NO_CTRL,
     &DOWN_NO_CTRL,
+
+    &LPRN_TO_LABK,
+    &RPRN_TO_RABK,
 
     // noshifts
     &ONE_NOSHIFT,
