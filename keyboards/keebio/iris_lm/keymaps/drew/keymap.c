@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_ESC,     LAUNCH,     TAB_LEFT,   TAB_RIGHT,  C(KC_Y),                                COMPOSE,    KC_HOME,    KC_UP,      KC_END,     KC_DEL,     KC_TRNS,
+   KC_TRNS,    KC_ESC,     C(KC_Y),    TAB_LEFT,   TAB_RIGHT,  LAUNCH,                                COMPOSE,    KC_HOME,    KC_UP,      KC_END,     KC_DEL,     KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    KC_F2,                                  KC_CAPS,    KC_LEFT,    KC_DOWN,    KC_RGHT,    KC_ENT,     KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
