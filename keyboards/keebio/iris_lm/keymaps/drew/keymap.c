@@ -204,8 +204,8 @@ const key_override_t HOME_TO_MEGA_HOME = ko_make_basic(MOD_MASK_GUI, KC_HOME, C(
 const key_override_t END_NO_CTRL = ko_make_basic(MOD_MASK_CTRL, KC_END, KC_END);
 const key_override_t END_TO_META_END = ko_make_basic(MOD_MASK_GUI, KC_END, C(KC_END));
 
-const key_override_t UP_NO_CTRL = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_UP, KC_UP, 0xFF, MOD_MASK_SAG);
-const key_override_t DOWN_NO_CTRL = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_DOWN, KC_DOWN, 0xFF, MOD_MASK_SAG);
+const key_override_t UP_NO_CTRL = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_UP, KC_UP, 0xFF & ~(1 << _SH_ARROW), MOD_MASK_SAG);
+const key_override_t DOWN_NO_CTRL = ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_DOWN, KC_DOWN, 0xFF & ~(1 << _SH_ARROW), MOD_MASK_SAG);
 
 const key_override_t LPRN_TO_LABK = ko_make_with_layers(MOD_MASK_SHIFT, KC_LPRN, KC_LABK, 1 << _SYM);
 const key_override_t RPRN_TO_RABK = ko_make_with_layers(MOD_MASK_SHIFT, KC_RPRN, KC_RABK, 1 << _SYM);
