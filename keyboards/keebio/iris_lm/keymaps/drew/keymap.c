@@ -170,7 +170,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case KC_SPC:
             // have to implement this here instead of as a key override because it was acting
             // weird with layers as a key override
-            if (get_highest_layer(layer_state) == _GAME) {
+            if (get_highest_layer(layer_state) != _BASE) {
                 return true; // return early
             }
             if (record->event.pressed) {
