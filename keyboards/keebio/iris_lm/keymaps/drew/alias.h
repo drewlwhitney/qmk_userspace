@@ -23,7 +23,7 @@ enum CustomKeycodes {
 #define NUM MO(_NUM) // used by the NumCombo combo
 #define SYM_BSPC LT(_SYM, KC_BSPC)
 #define NAV_TAB LT(_NAV, KC_TAB)
-#define ARROW TG(_SH_ARROW)
+#define ARROW MO(_SH_ARROW)
 #define FN_SPC LT(_FUNC, KC_SPC)
 #define FUNC MO(_FUNC)
 
