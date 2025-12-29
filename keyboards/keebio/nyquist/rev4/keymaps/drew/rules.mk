@@ -1,8 +1,9 @@
 SRC += caps_word/caps_word.c
+SRC += tap_dance/tap_dance.c
+SRC += layers/layers.c
+SRC += combos/combos.c
 SRC += taphold/taphold_options.c
 SRC += utils/utils.c
-# SRC += chordal_hold/chordal_options.c
-# SRC += flow_tap/flow_tap_options.c
 
 # VIA_ENABLE = yes
 LTO_ENABLE = yes
@@ -13,5 +14,6 @@ CAPS_WORD_ENABLE = yes
 
 TAP_DANCE_ENABLE = yes
 KEY_OVERRIDE_ENABLE = yes
-
-RGBLIGHT_ENABLE = no # turn off RGB lights
+COMBO_ENABLE = yes
+qwfpbarstgzxcdvjluy'mneiokh,./
+NKRO_ENABLE = yes

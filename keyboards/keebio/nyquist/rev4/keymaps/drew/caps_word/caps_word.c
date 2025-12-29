@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "caps_word.h"
 #include "../alias.h"
 #include "../tap_dance/tap_dance.h"
 
@@ -12,7 +11,6 @@ bool caps_word_press_user(uint16_t keycode) {
             break;
         // Keycodes that continue Caps Word, without shifting
         case KC_1 ... KC_0:
-        case LOW_6 ... LOW_0:
         case KC_BSPC:
         case KC_DEL:
         case KC_LEFT:
@@ -20,7 +18,6 @@ bool caps_word_press_user(uint16_t keycode) {
         case KC_MINS:
         case KC_UNDS:
         case KC_SLSH:
-        case TD(TD_CW_CL): // this makes toggling work
             return true;
             break;
         default:
