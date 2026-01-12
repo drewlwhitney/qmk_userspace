@@ -24,8 +24,7 @@ enum CustomKeycodes {
 #define SYM_BSPC LT(_SYM, KC_BSPC)
 #define NAV_TAB LT(_NAV, KC_TAB)
 #define ARROW MO(_SH_ARROW)
-#define FN_SPC LT(_FUNC, KC_SPC)
-#define FUNC MO(_FUNC)
+#define FN_ESC LT(_FUNC, KC_ESC)
 
 // trigger mods
 #define OBLITERATE_TRIGGER_MODS MOD_MASK_GUI
