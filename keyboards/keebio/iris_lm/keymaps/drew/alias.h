@@ -21,10 +21,14 @@ enum CustomKeycodes {
 
 // layers
 #define NUM MO(_NUM) // used by the NumCombo combo
+#define NAV MO(_NAV)
+#define SYM MO(_SYM)
+#define FUNC MO(_FUNC)
 #define SYM_BSPC LT(_SYM, KC_BSPC)
 #define NAV_TAB LT(_NAV, KC_TAB)
 #define ARROW MO(_SH_ARROW)
+
 #define FN_ESC LT(_FUNC, KC_ESC)
 
 // trigger mods
-#define OBLITERATE_TRIGGER_MODS MOD_MASK_GUI
+#define OBLITERATE_TRIGGER_MODS MOD_MASK_SHIFT

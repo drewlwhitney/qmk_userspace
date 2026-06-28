@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
 #include "../alias.h"
-#include "../tap_dance/tap_dance.h"
 
 bool caps_word_press_user(uint16_t keycode) {
     switch (keycode) {
