@@ -1,10 +1,10 @@
 BOOTLOADER = stm32-dfu
 
-SRC += caps_word/caps_word.c
-SRC += layers/layers.c
-SRC += combos/combos.c
-# SRC += taphold/taphold_options.c
-SRC += utils/utils.c
+# SRC += caps_word/caps_word.c
+# SRC += layers/layers.c
+# SRC += combos/combos.c
+# # SRC += taphold/taphold_options.c
+# SRC += utils/utils.c
 
 # VIA_ENABLE = yes
 LTO_ENABLE = yes
