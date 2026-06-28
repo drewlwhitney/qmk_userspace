@@ -44,6 +44,7 @@ enum {
 // character mod-taps
 #define CTL_BSLS CTL_T(KC_BSLS)
 #define ALT_PIPE ALT_T(KC_PIPE)
+#define GUI_PLUS GUI_T(KC_PLUS)
 
 // trigger mods
 #define OBLITERATE_TRIGGER_MODS MOD_MASK_SHIFT
@@ -132,9 +133,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_EXLM,    KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,                                KC_CIRC,    KC_AMPR,    KC_ASTR,    KC_QUES,    KC_GRV,     KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_SCLN,    KC_COLN,    KC_UNDS,    KC_MINS,    KC_EQL,                                 KC_DQUO,    OS_LSFT,    CTL_BSLS,   ALT_PIPE,   OS_LGUI,    KC_TRNS,
+   KC_TRNS,    KC_SCLN,    KC_COLN,    KC_UNDS,    KC_MINS,    KC_EQL,                                 KC_DQUO,    OS_LSFT,    CTL_BSLS,   ALT_PIPE,   GUI_PLUS,   KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_LPRN,    KC_RPRN,    KC_LBRC,    KC_RBRC,    KC_RABK,    KC_TRNS,        KC_TRNS,    KC_PLUS,    KC_BSPC,    KC_LCBR,    KC_RCBR,    KC_TILDE,     KC_RABK,
+   KC_TRNS,    KC_LPRN,    KC_RPRN,    KC_LBRC,    KC_RBRC,    KC_LABK,    KC_TRNS,        KC_TRNS,    KC_RABK,    KC_BSPC,    KC_LCBR,    KC_RCBR,    KC_TILDE,     KC_RABK,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
                                              KC_TRNS,    KC_TRNS,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
@@ -233,6 +234,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             if (record->tap.count > 0) {
                 (record->event.pressed ? register_code16 : unregister_code16)(KC_PIPE);
             }
+            return false;
+            break;
+
+        case GUI_PLUS:
+            if (record->tap.count > 0) {
+                (record->event.pressed ? register_code16 : unregister_code16)(KC_PLUS);
+            }
+            return false;
+            break;
     }
     return true;
 }
@@ -245,6 +255,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t* record) {
         case CTL_SPC:
         case CTL_BSLS:
         case ALT_PIPE:
+        case GUI_PLUS:
             return false;
             break;
     }
@@ -256,6 +267,7 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t* record) {
         case CTL_SPC:
         case CTL_BSLS:
         case ALT_PIPE:
+        case GUI_PLUS:
             return true;
             break;
     }
@@ -270,6 +282,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
         case CTL_BSLS:
         case ALT_PIPE:
+        case GUI_PLUS:
             return TAPPING_TERM;
             break;
     }
@@ -288,12 +301,12 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool caps_word_press_user(uint16_t keycode) {
     switch (keycode) {
-        // keycodes that continue Caps Word, with shift applied
+        // key codes that continue Caps Word, with shift applied
         case KC_A ... KC_Z:
             add_weak_mods(MOD_BIT(KC_LSFT)); // Apply shift to next key
             return true;
             break;
-        // keycodes that continue Caps Word, without shifting
+        // key codes that continue Caps Word, without shifting
         case KC_1 ... KC_0:
         case KC_BSPC:
         case KC_DEL:
