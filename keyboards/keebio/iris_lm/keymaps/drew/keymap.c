@@ -147,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    CAD,        KC_F11,     TAB_LEFT,   TAB_RIGHT,  KC_NO,                                  KC_PGUP,    KC_HOME,    KC_UP,      KC_END,     COMPOSE,    KC_TRNS,
+   KC_TRNS,    CAD,        TAB_LEFT,   TAB_RIGHT,  KC_F11,     KC_NO,                                  KC_PGUP,    KC_HOME,    KC_UP,      KC_END,     COMPOSE,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    KC_F2,                                  KC_CAPS,    KC_LEFT,    KC_DOWN,    KC_RGHT,    CW_TOGG,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
@@ -353,6 +353,12 @@ const key_override_t LEFT_TO_MOVE_TAB_LEFT = ko_make_with_layers_and_negmods(
 const key_override_t RIGHT_TO_MOVE_TAB_RIGHT = ko_make_with_layers_and_negmods(
     MOD_MASK_ALT | MOD_MASK_SHIFT, KC_RIGHT, MOVE_TAB_RIGHT, 1 << _NAV, MOD_MASK_CG
 );
+const key_override_t TAB_LEFT_TO_MOVE_TAB_LEFT = ko_make_with_layers_and_negmods(
+    MOD_MASK_SHIFT, TAB_LEFT, MOVE_TAB_LEFT, 1 << _NAV, MOD_MASK_CAG
+);
+const key_override_t TAB_RIGHT_TO_MOVE_TAB_RIGHT = ko_make_with_layers_and_negmods(
+    MOD_MASK_SHIFT, TAB_RIGHT, MOVE_TAB_RIGHT, 1 << _NAV, MOD_MASK_CAG
+);
 
 // noshifts
 const key_override_t ONE_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_1, KC_1);
@@ -385,6 +391,8 @@ const key_override_t* key_overrides[] = {
     &RIGHT_TO_TAB_RIGHT,
     &LEFT_TO_MOVE_TAB_LEFT,
     &RIGHT_TO_MOVE_TAB_RIGHT,
+    &TAB_LEFT_TO_MOVE_TAB_LEFT,
+    &TAB_RIGHT_TO_MOVE_TAB_RIGHT,
 
     // noshifts
     &ONE_NOSHIFT,
