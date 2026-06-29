@@ -23,6 +23,8 @@ enum {
 #define MENU S(KC_F10)
 #define TAB_RIGHT C(KC_TAB)
 #define TAB_LEFT (C(S(KC_TAB)))
+#define MOVE_TAB_LEFT C(S(KC_PGUP))
+#define MOVE_TAB_RIGHT C(S(KC_PGDN))
 #define ZOOM_IN C(KC_EQL)
 #define ZOOM_OUT C(KC_MINS)
 
@@ -135,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_SCLN,    KC_COLN,    KC_UNDS,    KC_MINS,    KC_EQL,                                 KC_DQUO,    OS_LSFT,    CTL_BSLS,   ALT_PIPE,   GUI_PLUS,   KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_LPRN,    KC_RPRN,    KC_LBRC,    KC_RBRC,    KC_LABK,    KC_TRNS,        KC_TRNS,    KC_RABK,    KC_BSPC,    KC_LCBR,    KC_RCBR,    KC_TILDE,     KC_RABK,
+   KC_TRNS,    KC_LPRN,    KC_RPRN,    KC_LBRC,    KC_RBRC,    KC_LABK,    KC_TRNS,        KC_TRNS,    KC_RABK,    KC_BSPC,    KC_LCBR,    KC_RCBR,    KC_TILDE,   KC_RABK,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
                                              KC_TRNS,    KC_TRNS,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
@@ -145,11 +147,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    CAD,        KC_F11,     TAB_LEFT,   TAB_RIGHT,  LAUNCH,                                 KC_PGUP,    KC_HOME,    KC_UP,      KC_END,     COMPOSE,    KC_TRNS,
+   KC_TRNS,    CAD,        KC_F11,     TAB_LEFT,   TAB_RIGHT,  KC_NO,                                  KC_PGUP,    KC_HOME,    KC_UP,      KC_END,     COMPOSE,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    KC_F2,                                  KC_PGDN,    KC_LEFT,    KC_DOWN,    KC_RGHT,    CW_TOGG,    KC_TRNS,
+   KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    KC_F2,                                  KC_CAPS,    KC_LEFT,    KC_DOWN,    KC_RGHT,    CW_TOGG,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    ZOOM_OUT,   ZOOM_IN,    KC_WBAK,    KC_WFWD,    KC_NO,      KC_TRNS,        KC_TRNS,    KC_NO,      KC_CAPS,    KC_COMM,    KC_DOT,     KC_SLSH,    KC_TRNS,
+   KC_TRNS,    ZOOM_OUT,   ZOOM_IN,    KC_WBAK,    KC_WFWD,    KC_NO,      KC_TRNS,        KC_TRNS,    KC_PGDN,    KC_NO,      KC_COMM,    KC_DOT,     KC_SLSH,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
                                              KC_TRNS,    KC_TRNS,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
@@ -340,6 +342,18 @@ const key_override_t BSPC_TO_OBLITERATE = {
     .custom_action = obliterate_line_backwards_callback,
 };
 
+// tabbing and moving tabs
+const key_override_t LEFT_TO_TAB_LEFT =
+    ko_make_with_layers_and_negmods(MOD_MASK_ALT, KC_LEFT, TAB_LEFT, 1 << _NAV, MOD_MASK_CSG);
+const key_override_t RIGHT_TO_TAB_RIGHT =
+    ko_make_with_layers_and_negmods(MOD_MASK_ALT, KC_RIGHT, TAB_RIGHT, 1 << _NAV, MOD_MASK_CSG);
+const key_override_t LEFT_TO_MOVE_TAB_LEFT = ko_make_with_layers_and_negmods(
+    MOD_MASK_ALT | MOD_MASK_SHIFT, KC_LEFT, MOVE_TAB_LEFT, 1 << _NAV, MOD_MASK_CG
+);
+const key_override_t RIGHT_TO_MOVE_TAB_RIGHT = ko_make_with_layers_and_negmods(
+    MOD_MASK_ALT | MOD_MASK_SHIFT, KC_RIGHT, MOVE_TAB_RIGHT, 1 << _NAV, MOD_MASK_CG
+);
+
 // noshifts
 const key_override_t ONE_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_1, KC_1);
 const key_override_t TWO_NOSHIFT = ko_make_basic(MOD_MASK_SHIFT, KC_2, KC_2);
@@ -365,6 +379,12 @@ const key_override_t* key_overrides[] = {
     // blocking formatting with this line
     &DEL_TO_OBLITERATE,
     &BSPC_TO_OBLITERATE,
+
+    // tabbing and moving tabs
+    &LEFT_TO_TAB_LEFT,
+    &RIGHT_TO_TAB_RIGHT,
+    &LEFT_TO_MOVE_TAB_LEFT,
+    &RIGHT_TO_MOVE_TAB_RIGHT,
 
     // noshifts
     &ONE_NOSHIFT,
