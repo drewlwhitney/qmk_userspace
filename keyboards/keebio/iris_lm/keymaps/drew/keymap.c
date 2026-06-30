@@ -235,15 +235,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
         case ALT_PIPE:
             if (record->tap.count > 0) {
                 (record->event.pressed ? register_code16 : unregister_code16)(KC_PIPE);
+                return false;
             }
-            return false;
             break;
 
         case GUI_PLUS:
             if (record->tap.count > 0) {
                 (record->event.pressed ? register_code16 : unregister_code16)(KC_PLUS);
+                return false;
             }
-            return false;
             break;
     }
     return true;
