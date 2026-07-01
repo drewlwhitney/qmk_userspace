@@ -25,6 +25,8 @@ enum {
 #define TAB_LEFT (C(S(KC_TAB)))
 #define MOVE_TAB_LEFT C(S(KC_PGUP))
 #define MOVE_TAB_RIGHT C(S(KC_PGDN))
+#define MOVE_WINDOW_LEFT G(S(KC_LEFT))
+#define MOVE_WINDOW_RIGHT G(S(KC_RIGHT))
 #define ZOOM_IN C(KC_EQL)
 #define ZOOM_OUT C(KC_MINS)
 
@@ -147,11 +149,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    CAD,        TAB_LEFT,   TAB_RIGHT,  KC_F11,     KC_NO,                                  KC_PGUP,    KC_HOME,    KC_UP,      KC_END,     COMPOSE,    KC_TRNS,
+   KC_TRNS,    KC_WBAK,    TAB_LEFT,   TAB_RIGHT,  KC_WFWD,    KC_F11,                                 KC_PGUP,    KC_HOME,    KC_UP,      KC_END,     COMPOSE,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    KC_F2,                                  KC_CAPS,    KC_LEFT,    KC_DOWN,    KC_RGHT,    CW_TOGG,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    ZOOM_OUT,   ZOOM_IN,    KC_WBAK,    KC_WFWD,    KC_NO,      KC_TRNS,        KC_TRNS,    KC_PGDN,    KC_NO,      KC_COMM,    KC_DOT,     KC_SLSH,    KC_TRNS,
+   KC_TRNS,    C(KC_Z),    C(KC_X),    C(KC_C),    KC_SPC,     C(KC_V),    KC_TRNS,        KC_TRNS,    KC_PGDN,    KC_NO,      KC_COMM,    KC_DOT,     KC_SLSH,    KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
                                              KC_TRNS,    KC_TRNS,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
@@ -175,11 +177,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_SLEP,                                QK_BOOT,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_TRNS,
+   KC_TRNS,    CAD,        KC_NO,      KC_NO,      KC_NO,      KC_SLEP,                                QK_BOOT,    KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_MPRV,    KC_MNXT,    KC_VOLD,    KC_VOLU,    KC_MUTE,                                KC_NO,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_NO,      KC_NO,      KC_BRID,    KC_BRIU,    QK_BOOT,    KC_TRNS,        KC_TRNS,    KC_NO,      KC_F9,      KC_F10,     KC_F11,     KC_F12,     KC_TRNS,
+   KC_TRNS,    KC_BRID,    KC_BRIU,    ZOOM_OUT,   ZOOM_IN,    QK_BOOT,    KC_TRNS,        KC_TRNS,    KC_NO,      KC_F9,      KC_F10,     KC_F11,     KC_F12,     KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
                                              KC_TRNS,    KC_TRNS,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
@@ -342,6 +344,10 @@ const key_override_t BSPC_TO_OBLITERATE = {
     .custom_action = obliterate_line_backwards_callback,
 };
 
+// menu
+const key_override_t SPACE_TO_MENU =
+    ko_make_with_layers_and_negmods(MOD_MASK_CTRL, KC_SPC, MENU, ~0, MOD_MASK_SAG);
+
 // tabbing and moving tabs
 const key_override_t LEFT_TO_TAB_LEFT =
     ko_make_with_layers_and_negmods(MOD_MASK_ALT, KC_LEFT, TAB_LEFT, 1 << _NAV, MOD_MASK_CSG);
@@ -358,6 +364,12 @@ const key_override_t TAB_LEFT_TO_MOVE_TAB_LEFT = ko_make_with_layers_and_negmods
 );
 const key_override_t TAB_RIGHT_TO_MOVE_TAB_RIGHT = ko_make_with_layers_and_negmods(
     MOD_MASK_SHIFT, TAB_RIGHT, MOVE_TAB_RIGHT, 1 << _NAV, MOD_MASK_CAG
+);
+const key_override_t TAB_LEFT_TO_MOVE_WINDOW_LEFT = ko_make_with_layers_and_negmods(
+    MOD_MASK_SG, TAB_LEFT, MOVE_WINDOW_LEFT, 1 << _NAV, MOD_MASK_CA
+);
+const key_override_t TAB_RIGHT_TO_MOVE_WINDOW_RIGHT = ko_make_with_layers_and_negmods(
+    MOD_MASK_SG, TAB_RIGHT, MOVE_WINDOW_RIGHT, 1 << _NAV, MOD_MASK_CA
 );
 
 // noshifts
@@ -386,6 +398,9 @@ const key_override_t* key_overrides[] = {
     &DEL_TO_OBLITERATE,
     &BSPC_TO_OBLITERATE,
 
+    // menu
+    &SPACE_TO_MENU,
+
     // tabbing and moving tabs
     &LEFT_TO_TAB_LEFT,
     &RIGHT_TO_TAB_RIGHT,
@@ -393,6 +408,8 @@ const key_override_t* key_overrides[] = {
     &RIGHT_TO_MOVE_TAB_RIGHT,
     &TAB_LEFT_TO_MOVE_TAB_LEFT,
     &TAB_RIGHT_TO_MOVE_TAB_RIGHT,
+    &TAB_LEFT_TO_MOVE_WINDOW_LEFT,
+    &TAB_RIGHT_TO_MOVE_WINDOW_RIGHT,
 
     // noshifts
     &ONE_NOSHIFT,
