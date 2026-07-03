@@ -1,5 +1,5 @@
-#include "config.h"
 #include QMK_KEYBOARD_H
+#include "config.h"
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -8,7 +8,6 @@
 
 enum {
     _BASE,
-    _VIDEO,
     _NUMPAD,
     _SYM,
     _NAV,
@@ -31,7 +30,7 @@ enum {
 #define ZOOM_OUT C(KC_MINS)
 
 // layers
-#define VIDEO_PLAY LT(_VIDEO, KC_MPLY)
+#define VIDEO_PLAY LT(_VIDEO, KC_SPC)
 #define NUMPAD MO(_NUMPAD)
 #define NAV MO(_NAV)
 #define SYM MO(_SYM)
@@ -97,23 +96,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    GUI_ESC,    KC_A,       KC_R,       KC_S,       KC_T,       KC_G,                                   KC_M,       KC_N,       KC_E,       KC_I,       KC_O,       ALT_ENT,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   NUMPAD,     KC_Z,       KC_X,       KC_C,       KC_D,       KC_V,       KC_NO,          KC_NO,      KC_K,       KC_H,       KC_COMM,    KC_DOT,     KC_SLSH,    VIDEO_PLAY,
+   NUMPAD,     KC_Z,       KC_X,       KC_C,       KC_D,       KC_V,       KC_NO,          KC_NO,      KC_K,       KC_H,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_RIGHT,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             FUNC_PLAY,  NAV_TAB,    CTL_SPC,                    SFT_BSPC,   SYM_DEL,    KC_NO
-//                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
-),
-
-[_VIDEO] = LAYOUT(
-//┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
-   KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
-//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,                                  KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_TRNS,
-//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,                                  KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_TRNS,
-//├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_TRNS,        KC_TRNS,    KC_NO,      KC_NO,      KC_LEFT,    KC_RIGHT,   KC_SPC,     KC_TRNS,
-//└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
-                                             KC_TRNS,    KC_TRNS,    KC_TRNS,                    KC_TRNS,    KC_TRNS,    KC_TRNS
+                                             FUNC_PLAY,  NAV_TAB,    CTL_SPC,                    SFT_BSPC,   SYM_DEL,    KC_LEFT
 //                                          └───────────┴───────────┴──────────┘                └───────────┴───────────┴───────────┘
 ),
 
@@ -437,12 +422,15 @@ const key_override_t* key_overrides[] = {
 
 enum Combos {
     WinSwap,
+    VideoSpace,
 };
 
 const uint16_t PROGMEM win_swap_combo[] = {KC_F, KC_P, COMBO_END};
+const uint16_t PROGMEM video_space_combo[] = {KC_LEFT, KC_RIGHT, COMBO_END};
 
 combo_t key_combos[] = {
     [WinSwap] = COMBO(win_swap_combo, KC_NO),
+    [VideoSpace] = COMBO(video_space_combo, KC_SPC),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
@@ -456,6 +444,17 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
             }
             break;
     }
+}
+
+bool combo_should_trigger(
+    uint16_t combo_index, combo_t* combo, uint16_t keycode, keyrecord_t* record
+) {
+    switch (combo_index) {
+        case VideoSpace:
+            return get_highest_layer(layer_state) == _BASE;
+            break;
+    }
+    return true;
 }
 
 bool process_combo_key_repress(
