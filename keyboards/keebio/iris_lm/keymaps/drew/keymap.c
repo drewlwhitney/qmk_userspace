@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "config.h"
 #include <stdbool.h>
 #include <stdint.h>
 
@@ -44,6 +43,12 @@ enum {
 #define ALT_ENT ALT_T(KC_ENT)
 #define CTL_SPC CTL_T(KC_SPC)
 #define SFT_BSPC SFT_T(KC_BSPC)
+
+// oneshot mods
+#define S_OS_LGUI GUI_T(OS_LGUI)
+#define S_OS_LALT ALT_T(OS_LALT)
+#define S_OS_LCTL CTL_T(OS_LCTL)
+#define S_OS_LSFT SFT_T(OS_LSFT)
 
 // trigger mods
 #define OBLITERATE_TRIGGER_MODS MOD_MASK_SHIFT
@@ -102,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,                                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_NO,      KC_DOT,     KC_COMM,    KC_BSPC,    KC_NO,                                  KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_TRNS,
+   KC_TRNS,    KC_NO,      KC_DOT,     KC_COMM,    KC_BSPC,    KC_MINS,                                KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                                   KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
@@ -147,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_F11,     TAB_LEFT,   TAB_RIGHT,  KC_WBAK,    KC_WFWD,                                KC_PGUP,    KC_HOME,    KC_UP,      KC_END,     KC_NO,      KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    OS_LGUI,    OS_LALT,    OS_LCTL,    OS_LSFT,    KC_F2,                                  KC_CAPS,    KC_LEFT,    KC_DOWN,    KC_RGHT,    CW_TOGG,    KC_TRNS,
+   KC_TRNS,    S_OS_LGUI,  S_OS_LALT,  S_OS_LCTL,  S_OS_LSFT,  KC_F2,                                  KC_CAPS,    KC_LEFT,    KC_DOWN,    KC_RGHT,    CW_TOGG,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┐   ┌───────────┼───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    C(KC_Z),    C(KC_X),    C(KC_C),    KC_SPC,     C(KC_V),    KC_TRNS,        KC_TRNS,    KC_PGDN,    KC_NO,      KC_COMM,    KC_DOT,     KC_DEL,     KC_TRNS,
 //└───────────┴───────────┴───────────┴─────┬─────┴─────┬─────┴─────┬─────┴────┬──────┘   └─────┬─────┴─────┬─────┴─────┬─────┴─────┬─────┴───────────┴───────────┴───────────┘
@@ -189,6 +194,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
+        case S_OS_LGUI:
+            if (record->event.pressed && record->tap.count > 0) {
+                add_oneshot_mods(MOD_BIT(KC_LGUI));
+                return false;
+            }
+            break;
+
+        case S_OS_LALT:
+            if (record->event.pressed && record->tap.count > 0) {
+                add_oneshot_mods(MOD_BIT(KC_LALT));
+                return false;
+            }
+            break;
+
+        case S_OS_LCTL:
+            if (record->event.pressed && record->tap.count > 0) {
+                add_oneshot_mods(MOD_BIT(KC_LCTL));
+                return false;
+            }
+            break;
+
+        case S_OS_LSFT:
+            if (record->event.pressed && record->tap.count > 0) {
+                add_oneshot_mods(MOD_BIT(KC_LSFT));
+                return false;
+            }
+            break;
+
         case CTL_SPC:
             if (get_highest_layer(layer_state) != _BASE) {
                 return true;
