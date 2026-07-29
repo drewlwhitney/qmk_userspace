@@ -305,9 +305,11 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
     return 0;
 }
 
-bool is_flow_tap_key(uint16_t keycode) {
-    switch (get_tap_keycode(keycode)) {
-        case KC_SPC:
+uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record, uint16_t prev_keycode) {
+    if (keycode != CTL_SPC) {
+        return 0;
+    }
+    switch (prev_keycode) {
         case KC_A ... KC_Z:
         case KC_1 ... KC_0:
         case KC_QUOT:
@@ -342,9 +344,10 @@ bool is_flow_tap_key(uint16_t keycode) {
         case KC_LCBR:
         case KC_RCBR:
         case KC_TILDE:
-            return true;
+            return FLOW_TAP_TERM;
+            break;
     }
-    return false;
+    return 0;
 }
 
 // -------------------------------------------------------------------------------------------------
