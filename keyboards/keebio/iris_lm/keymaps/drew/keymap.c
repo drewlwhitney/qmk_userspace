@@ -305,50 +305,50 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
     return 0;
 }
 
-uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record, uint16_t prev_keycode) {
-    if (keycode != CTL_SPC) {
-        return 0;
-    }
-    switch (prev_keycode) {
-        case KC_A ... KC_Z:
-        case KC_1 ... KC_0:
-        case KC_QUOT:
-        case KC_DOT:
-        case KC_COMM:
-        case KC_SCLN:
-        case KC_SLSH:
-        case KC_EXLM:
-        case KC_AT:
-        case KC_HASH:
-        case KC_DLR:
-        case KC_PERC:
-        case KC_CIRC:
-        case KC_AMPR:
-        case KC_ASTR:
-        case KC_QUES:
-        case KC_GRV:
-        case KC_PLUS:
-        case KC_COLN:
-        case KC_UNDS:
-        case KC_MINS:
-        case KC_EQL:
-        case KC_DQUO:
-        case KC_LBRC:
-        case KC_RBRC:
-        case KC_LPRN:
-        case KC_RPRN:
-        case KC_LABK:
-        case KC_RABK:
-        case KC_PIPE:
-        case KC_BSLS:
-        case KC_LCBR:
-        case KC_RCBR:
-        case KC_TILDE:
-            return FLOW_TAP_TERM;
-            break;
-    }
-    return 0;
-}
+// uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record, uint16_t prev_keycode) {
+//     if (keycode != CTL_SPC) {
+//         return 0;
+//     }
+//     switch (prev_keycode) {
+//         case KC_A ... KC_Z:
+//         case KC_1 ... KC_0:
+//         case KC_QUOT:
+//         case KC_DOT:
+//         case KC_COMM:
+//         case KC_SCLN:
+//         case KC_SLSH:
+//         case KC_EXLM:
+//         case KC_AT:
+//         case KC_HASH:
+//         case KC_DLR:
+//         case KC_PERC:
+//         case KC_CIRC:
+//         case KC_AMPR:
+//         case KC_ASTR:
+//         case KC_QUES:
+//         case KC_GRV:
+//         case KC_PLUS:
+//         case KC_COLN:
+//         case KC_UNDS:
+//         case KC_MINS:
+//         case KC_EQL:
+//         case KC_DQUO:
+//         case KC_LBRC:
+//         case KC_RBRC:
+//         case KC_LPRN:
+//         case KC_RPRN:
+//         case KC_LABK:
+//         case KC_RABK:
+//         case KC_PIPE:
+//         case KC_BSLS:
+//         case KC_LCBR:
+//         case KC_RCBR:
+//         case KC_TILDE:
+//             return FLOW_TAP_TERM;
+//             break;
+//     }
+//     return 0;
+// }
 
 // -------------------------------------------------------------------------------------------------
 // tri-layer

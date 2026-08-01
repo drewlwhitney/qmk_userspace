@@ -9,7 +9,7 @@
 #define PERMISSIVE_HOLD_PER_KEY
 #define QUICK_TAP_TERM_PER_KEY
 #define SPECULATIVE_HOLD
-#define FLOW_TAP_TERM 150
+// #define FLOW_TAP_TERM 150
 
 // combos
 // #define COMBO_PROCESS_KEY_RELEASE
