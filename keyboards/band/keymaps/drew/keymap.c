@@ -40,7 +40,6 @@ enum {
 
 // mod-taps
 #define GUI_ESC GUI_T(KC_ESC)
-#define ALT_ENT ALT_T(KC_ENT)
 #define CTL_SPC CTL_T(KC_SPC)
 #define SFT_SPC SFT_T(KC_SPC)
 #define SFT_BSPC SFT_T(KC_BSPC)
@@ -119,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,                                  KC_NO,      KC_NO,      MS_UP,      KC_NO,      KC_NO,      KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    S_OS_LGUI,  S_OS_LALT,  S_OS_LCTL,  S_OS_LSFT,  KC_NO,                                  MS_WHLU,    MS_LEFT,    MS_DOWN,    MS_RGHT,    MS_WHLR,    KC_TRNS,
+   KC_TRNS,    KC_LGUI,    KC_LALT,    KC_LCTL,    KC_LSFT,    KC_NO,                                  MS_WHLU,    MS_LEFT,    MS_DOWN,    MS_RGHT,    MS_WHLR,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,                                  MS_WHLD,    KC_SPACE,   KC_LEFT,    KC_RGHT,    MS_WHLL,    KC_TRNS,
 //└───────────┴───────────┴───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┴───────────┴───────────┴───────────┴───────────┘
@@ -143,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_F11,     TAB_LEFT,   TAB_RIGHT,  KC_WBAK,    KC_WFWD,                                KC_PGUP,    KC_HOME,    KC_UP,      KC_END,     KC_NO,      KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_LGUI,    KC_LALT,    KC_LCTL,    KC_LSFT,    KC_F2,                                  KC_CAPS,    KC_LEFT,    KC_DOWN,    KC_RGHT,    CW_TOGG,    KC_TRNS,
+   KC_TRNS,    S_OS_LGUI,  S_OS_LALT,  S_OS_LCTL,  S_OS_LSFT,  KC_F2,                                  KC_CAPS,    KC_LEFT,    KC_DOWN,    KC_RGHT,    CW_TOGG,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    C(KC_Z),    C(KC_X),    C(KC_C),    KC_SPC,     C(KC_V),                                KC_PGDN,    KC_NO,      KC_COMM,    KC_DOT,     KC_DEL,     KC_TRNS,
 //└───────────┴───────────┴───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┴───────────┴───────────┴───────────┴───────────┘
