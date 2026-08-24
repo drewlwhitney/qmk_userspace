@@ -21,10 +21,7 @@
 #define CAPS_WORD_IDLE_TIMEOUT 0
 
 // mouse keys
-#define MK_3_SPEED // constant speed
-#define MK_MOMENTARY_ACCEL
-#define MK_C_OFFSET_UNMOD 8
-#define MK_C_INTERVAL_UNMOD 32
+#define MOUSEKEY_MAX_SPEED 5 // default is 10
 #define MK_W_INTERVAL_UNMOD 80
 
 #define DUMMY_MOD_NEUTRALIZER_KEYCODE KC_RCTL
