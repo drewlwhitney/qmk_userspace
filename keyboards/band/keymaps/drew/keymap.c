@@ -208,6 +208,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
             break;
 
         case CTL_SPC:
+        case SFT_SPC:
             if (get_highest_layer(layer_state) != _BASE) {
                 return true;
             }
@@ -276,6 +277,7 @@ void keyboard_post_init_user(void) {
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
         case CTL_SPC:
+        case SFT_SPC:
         case GUI_ESC:
             return false;
             break;
@@ -286,6 +288,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t* record) {
 bool get_permissive_hold(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
         case CTL_SPC:
+        case SFT_SPC:
         case GUI_ESC:
             return true;
             break;
