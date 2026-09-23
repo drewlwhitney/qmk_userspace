@@ -35,6 +35,7 @@ enum {
 #define SYM MO(_SYM)
 #define NUM MO(_NUM)
 #define FUNC_PLAY LT(_FUNC, KC_MPLY)
+#define MOUSE_MEDIA_PLAY LT(_MOUSE_MEDIA, KC_SPC)
 #define NAV_TAB LT(_NAV, KC_TAB)
 #define SYM_DEL LT(_SYM, KC_DEL)
 
@@ -97,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    TOG_NUMPAD, KC_Z,       KC_X,       KC_C,       KC_D,       KC_V,                                   KC_K,       KC_H,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_NO,
 //└───────────┴───────────┴───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┴───────────┴───────────┴───────────┴───────────┘
-                                       FUNC_PLAY,  NAV_TAB,    CTL_SPC,                                SFT_BSPC,   SYM_DEL,    MO(_MOUSE_MEDIA)
+                                       FUNC_PLAY,  NAV_TAB,    CTL_SPC,                                SFT_BSPC,   SYM_DEL,    MOUSE_MEDIA_PLAY
 //                                    └───────────┴───────────┴───────────┘                           └───────────┴───────────┴───────────┘
 ),
 
@@ -118,11 +119,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
    KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,                                  KC_NO,      KC_NO,      MS_UP,      KC_NO,      KC_NO,      KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_LGUI,    KC_LALT,    KC_LCTL,    KC_LSFT,    KC_NO,                                  MS_WHLU,    MS_LEFT,    MS_DOWN,    MS_RGHT,    MS_WHLR,    KC_TRNS,
+   KC_TRNS,    KC_LGUI,    KC_LALT,    KC_LCTL,    KC_LSFT,    KC_NO,                                  KC_NO,      MS_LEFT,    MS_DOWN,    MS_RGHT,    KC_NO,      KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,                                  MS_WHLD,    KC_SPACE,   KC_LEFT,    KC_RGHT,    MS_WHLL,    KC_TRNS,
+   KC_TRNS,    KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,                                  KC_NO,      MS_WHLL,    MS_WHLU,    MS_WHLD,    MS_WHLR,    KC_TRNS,
 //└───────────┴───────────┴───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┴───────────┴───────────┴───────────┴───────────┘
-                                       MS_BTN3,    MS_BTN2,    MS_BTN1,                                KC_TRNS,    KC_TRNS,    KC_TRNS
+                                       MS_BTN3,    MS_BTN2,    MS_BTN1,                                KC_LEFT,    KC_RGHT,    KC_TRNS
 //                                    └───────────┴───────────┴───────────┘                           └───────────┴───────────┴───────────┘
 ),
 
@@ -304,51 +305,6 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
     return 0;
 }
 
-// uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record, uint16_t prev_keycode) {
-//     if (keycode != CTL_SPC) {
-//         return 0;
-//     }
-//     switch (prev_keycode) {
-//         case KC_A ... KC_Z:
-//         case KC_1 ... KC_0:
-//         case KC_QUOT:
-//         case KC_DOT:
-//         case KC_COMM:
-//         case KC_SCLN:
-//         case KC_SLSH:
-//         case KC_EXLM:
-//         case KC_AT:
-//         case KC_HASH:
-//         case KC_DLR:
-//         case KC_PERC:
-//         case KC_CIRC:
-//         case KC_AMPR:
-//         case KC_ASTR:
-//         case KC_QUES:
-//         case KC_GRV:
-//         case KC_PLUS:
-//         case KC_COLN:
-//         case KC_UNDS:
-//         case KC_MINS:
-//         case KC_EQL:
-//         case KC_DQUO:
-//         case KC_LBRC:
-//         case KC_RBRC:
-//         case KC_LPRN:
-//         case KC_RPRN:
-//         case KC_LABK:
-//         case KC_RABK:
-//         case KC_PIPE:
-//         case KC_BSLS:
-//         case KC_LCBR:
-//         case KC_RCBR:
-//         case KC_TILDE:
-//             return FLOW_TAP_TERM;
-//             break;
-//     }
-//     return 0;
-// }
-
 // -------------------------------------------------------------------------------------------------
 // tri-layer
 
@@ -386,6 +342,7 @@ bool caps_word_press_user(uint16_t keycode) {
 // -------------------------------------------------------------------------------------------------
 // key overrides
 
+// delete and backspace
 const key_override_t DEL_TO_OBLITERATE = {
     .trigger = KC_DEL,
     .trigger_mods = OBLITERATE_TRIGGER_MODS,
