@@ -133,7 +133,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    KC_TRNS,    KC_PLUS,    KC_COLN,    KC_UNDS,    KC_MINS,    KC_EQL,                                 KC_DQUO,    KC_LBRC,    KC_RBRC,    KC_LPRN,    KC_RPRN,    KC_TRNS,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   KC_TRNS,    COMPOSE,    KC_LABK,    KC_RABK,    KC_SCLN,    KC_PIPE,                                KC_BSLS,    KC_BSPC,    KC_LCBR,    KC_RCBR,    KC_TILDE,   KC_TRNS,
+   KC_TRNS,    COMPOSE,    KC_LCBR,    KC_RCBR,    KC_SCLN,    KC_PIPE,                                KC_BSLS,    KC_BSPC,    KC_LABK,    KC_RABK,    KC_TILDE,   KC_TRNS,
 //└───────────┴───────────┴───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┴───────────┴───────────┴───────────┴───────────┘
                                        KC_TRNS,    KC_TRNS,    SFT_SPC,                                KC_TRNS,    KC_TRNS,    KC_TRNS
 //                                    └───────────┴───────────┴───────────┘                           └───────────┴───────────┴───────────┘
