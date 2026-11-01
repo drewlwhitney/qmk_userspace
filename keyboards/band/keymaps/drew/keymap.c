@@ -264,6 +264,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 // -------------------------------------------------------------------------------------------------
 // setup
 void keyboard_post_init_user(void) {
+    // turn off all the lights
     gpio_set_pin_output(GP16);
     gpio_set_pin_output(GP17);
     gpio_set_pin_output(GP25);
