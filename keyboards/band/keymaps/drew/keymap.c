@@ -92,11 +92,11 @@ bool obliterate_line_forwards_callback(bool key_down, void* _) {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_BASE] = LAYOUT_split_3x6_3(
 //┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐                           ┌───────────┬───────────┬───────────┬───────────┬───────────┬───────────┐
-   KC_NO,      KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,                                   KC_J,       KC_L,       KC_U,       KC_Y,       KC_QUOT,    KC_NO,
+   TOG_NUMPAD, KC_Q,       KC_W,       KC_F,       KC_P,       KC_B,                                   KC_J,       KC_L,       KC_U,       KC_Y,       KC_QUOT,    KC_NO,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
    GUI_ESC,    KC_A,       KC_R,       KC_S,       KC_T,       KC_G,                                   KC_M,       KC_N,       KC_E,       KC_I,       KC_O,       KC_ENT,
 //├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┼───────────┼───────────┼───────────┼───────────┤
-   TOG_NUMPAD, KC_Z,       KC_X,       KC_C,       KC_D,       KC_V,                                   KC_K,       KC_H,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_NO,
+   KC_NO,      KC_Z,       KC_X,       KC_C,       KC_D,       KC_V,                                   KC_K,       KC_H,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_NO,
 //└───────────┴───────────┴───────────┼───────────┼───────────┼───────────┤                           ├───────────┼───────────┴───────────┴───────────┴───────────┴───────────┘
                                        FUNC_PLAY,  NAV_TAB,    CTL_SPC,                                SFT_BSPC,   SYM_DEL,    MOUSE_MEDIA_PLAY
 //                                    └───────────┴───────────┴───────────┘                           └───────────┴───────────┴───────────┘
@@ -180,6 +180,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     switch (keycode) {
+        // speculative hold doesn't work on these because the layer doesn't
+        // resolve fast enough
         case S_OS_LGUI:
             if (record->event.pressed && record->tap.count > 0) {
                 add_oneshot_mods(MOD_BIT(KC_LGUI));
